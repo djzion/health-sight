@@ -60,9 +60,61 @@
         .main-content {
             margin-left: 250px;
             padding: 30px;
+            padding-top: 80px;
             min-height: 100vh;
             transition: margin-left 0.3s ease;
-            width: 1200px !important;
+            width: calc(100% - 250px) !important;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .step {
+            flex: 0 1 auto;
+            min-width: 80px;
+            max-width: 120px;
+            margin: 5px;
+        }
+
+        .validation-error {
+            border: 2px solid #dc3545 !important;
+            background-color: rgba(220, 53, 69, 0.05);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        style.textContent=` .border-danger {
+            border: 2px solid #dc3545 !important;
+        }
+
+        .section-validation-error ul {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .section-validation-error li {
+            margin-bottom: 5px;
+        }
+
+        @keyframes flash {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .flash-error {
+            animation: flash 0.5s 3;
         }
 
         .header {
@@ -292,19 +344,27 @@
         }
 
         @media (max-width: 768px) {
+            .main-content {
+                margin-left: 60px;
+                width: calc(100% - 60px) !important;
+            }
+
             .location-banner {
-                left: 60px;
+                width: calc(100% - 60px);
             }
         }
 
         /* Enhanced Step indicator */
         .step-indicator {
             display: flex;
+            width: 100%;
+            position: relative;
             justify-content: center;
             align-items: center !important;
             margin-bottom: 30px;
             padding: 0 15px;
-            overflow-x: auto;
+            overflow-x: visible !important;
+            display: block;
             /* Allow horizontal scrolling for many steps */
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
@@ -411,6 +471,55 @@
         .step-1 .step-connector.right {
             background-color: #28a745;
         }
+
+
+        .save-progress-btn {
+            margin-right: auto;
+            /* This pushes the next/prev buttons to the right */
+            border-color: #0199dc;
+            color: #0199dc;
+            transition: all 0.2s;
+        }
+
+        .save-progress-btn:hover {
+            background-color: #e6f7ff;
+            border-color: #0199dc;
+            color: #0199dc;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 0 5px;
+        }
+
+        /* Toast styles */
+        .toast {
+            background-color: white;
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            max-width: 350px;
+        }
+
+        .toast-header {
+            border-bottom: none;
+        }
+
+        .toast-body {
+            padding: 0.75rem;
+        }
+
+        /* Resume banner styles */
+        .resume-btn {
+            background-color: #0199dc;
+            border-color: #0199dc;
+        }
+
+        .resume-btn:hover {
+            background-color: #0181b8;
+            border-color: #0181b8;
+        }
     </style>
 </head>
 
@@ -490,22 +599,20 @@
                     </div>
                 @endif
 
-                <!-- Progress bar similar to screenshot -->
-                <div class="progress-container">
-                    <div class="progress" id="assessment-progress-bar">
-                        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                <div class="assessment-progress-container">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30"
                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="progress-sections">
+                        <!-- These will be generated dynamically via JavaScript -->
                     </div>
                 </div>
 
-                <!-- Step indicator - horizontal tabs style -->
                 <div class="step-indicator mb-4" id="step-indicator">
-                    <!-- Steps will be generated dynamically via JavaScript -->
                 </div>
 
-                <!-- Step Indicator -->
                 <div class="step-indicator mb-4" id="step-indicator">
-                    <!-- Steps will be generated dynamically via JavaScript -->
                 </div>
 
                 <!-- Form with paginated sections -->
@@ -1006,6 +1113,7 @@
 
 
     <!-- jQuery -->
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Bootstrap JS -->
@@ -1020,8 +1128,10 @@
     @endif
 
     <script>
+        let currentSectionIndex = 0;
+        let goToSection; // Forward declaration for function we'll define in first listener
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Show modal for directors only if location not selected
             @if (auth()->user()->role->name === 'director' && !session('assessment_location_selected'))
                 var modalElement = document.getElementById('phcSelectionModal');
                 if (modalElement) {
@@ -1033,7 +1143,11 @@
             // Set up pagination and progress tracking
             const sections = document.querySelectorAll('.section-page');
             const totalSections = sections.length;
-            let currentSectionIndex = 0;
+            const style = document.createElement('style');
+            document.head.appendChild(style);
+
+            // Initialize currentSectionIndex (now defined globally)
+            currentSectionIndex = 0;
 
             // Create step indicators
             createStepIndicators(totalSections);
@@ -1065,7 +1179,10 @@
                         `Section ${sectionNames.length + 1}`);
                 });
 
-                // Create step indicators
+                // Create step indicators - use flex layout with wrap
+                const stepsContainer = document.createElement('div');
+                stepsContainer.className = 'steps-container d-flex flex-wrap justify-content-center';
+
                 for (let i = 0; i < totalSteps; i++) {
                     const step = document.createElement('div');
                     step.className = `step ${i === 0 ? 'active' : ''}`;
@@ -1081,13 +1198,143 @@
 
                     step.appendChild(stepNumber);
                     step.appendChild(stepTitle);
-                    stepIndicator.appendChild(step);
+                    stepsContainer.appendChild(step);
 
                     // Add click event to jump to step
                     step.addEventListener('click', function() {
                         goToSection(parseInt(this.dataset.index));
                     });
                 }
+
+                stepIndicator.appendChild(stepsContainer);
+            }
+
+
+            function validateCurrentSection() {
+                const currentSection = document.querySelectorAll('.section-page')[currentSectionIndex];
+
+                // Variables to track validation status
+                let isValid = true;
+                let firstInvalidElement = null;
+                let errorMessages = [];
+
+                // Check all radio button groups in current section
+                const radioGroups = new Map();
+
+                // Find all radio button groups in the current section
+                currentSection.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    const name = radio.getAttribute('name');
+                    if (!radioGroups.has(name)) {
+                        radioGroups.set(name, {
+                            elements: [],
+                            question: radio.closest('.mb-4').querySelector('.form-label')
+                                .textContent.trim(),
+                            checked: false
+                        });
+                    }
+
+                    radioGroups.get(name).elements.push(radio);
+                    if (radio.checked) {
+                        radioGroups.get(name).checked = true;
+                    }
+                });
+
+                // Check if at least one option is selected for each radio group
+                radioGroups.forEach((group, name) => {
+                    if (!group.checked) {
+                        isValid = false;
+
+                        // Add to error messages
+                        errorMessages.push(`Please answer: ${group.question}`);
+
+                        // Set first invalid element for scrolling
+                        if (!firstInvalidElement) {
+                            firstInvalidElement = group.elements[0];
+                        }
+
+                        // Mark the container as invalid
+                        const container = group.elements[0].closest('.mb-4');
+                        container.classList.add('border-danger', 'p-2', 'rounded');
+                    } else {
+                        // Remove validation styling
+                        const container = group.elements[0].closest('.mb-4');
+                        container.classList.remove('border-danger', 'p-2', 'rounded');
+                    }
+                });
+
+                // Check required selects
+                currentSection.querySelectorAll('select[required]').forEach(select => {
+                    if (!select.value) {
+                        isValid = false;
+
+                        const label = select.closest('.mb-4').querySelector('.form-label').textContent
+                            .trim();
+                        errorMessages.push(`Please select an option for: ${label}`);
+
+                        if (!firstInvalidElement) {
+                            firstInvalidElement = select;
+                        }
+
+                        select.classList.add('border-danger');
+                    } else {
+                        select.classList.remove('border-danger');
+                    }
+                });
+
+                // Show validation message if there are errors
+                if (!isValid) {
+                    // Check if there's already an error alert
+                    let errorAlert = currentSection.querySelector('.section-validation-error');
+                    if (!errorAlert) {
+                        errorAlert = document.createElement('div');
+                        errorAlert.className = 'alert alert-danger section-validation-error mb-4';
+
+                        // Create error list
+                        let errorHTML =
+                            '<i class="fas fa-exclamation-circle me-2"></i>Please complete all questions in this section before proceeding:<ul>';
+                        errorMessages.forEach(msg => {
+                            errorHTML += `<li>${msg}</li>`;
+                        });
+                        errorHTML += '</ul>';
+
+                        errorAlert.innerHTML = errorHTML;
+
+                        // Insert at the top of the section
+                        const cardHeader = currentSection.querySelector('.card-header');
+                        cardHeader.parentNode.insertBefore(errorAlert, cardHeader.nextSibling);
+                    } else {
+                        // Update existing error message
+                        let errorHTML =
+                            '<i class="fas fa-exclamation-circle me-2"></i>Please complete all questions in this section before proceeding:<ul>';
+                        errorMessages.forEach(msg => {
+                            errorHTML += `<li>${msg}</li>`;
+                        });
+                        errorHTML += '</ul>';
+
+                        errorAlert.innerHTML = errorHTML;
+                    }
+
+                    // Scroll to first invalid element
+                    if (firstInvalidElement) {
+                        firstInvalidElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+                } else {
+                    // Remove error alert if validation passes
+                    const errorAlert = currentSection.querySelector('.section-validation-error');
+                    if (errorAlert) {
+                        errorAlert.remove();
+                    }
+
+                    // Remove any validation styling
+                    currentSection.querySelectorAll('.border-danger').forEach(el => {
+                        el.classList.remove('border-danger', 'p-2', 'rounded');
+                    });
+                }
+
+                return isValid;
             }
 
             // Function to update the progress bar and step indicators
@@ -1113,6 +1360,13 @@
 
             // Function to move to the next section
             function moveToNextSection() {
+                // First validate the current section
+                if (!validateCurrentSection()) {
+                    return; // Stop navigation if validation fails
+                }
+
+                // saveTemporaryResponses();
+
                 if (currentSectionIndex < totalSections - 1) {
                     // Hide current section
                     sections[currentSectionIndex].classList.remove('active');
@@ -1127,8 +1381,10 @@
                 }
             }
 
+
             // Function to move to the previous section
             function moveToPreviousSection() {
+                // saveTemporaryResponses();
                 if (currentSectionIndex > 0) {
                     // Hide current section
                     sections[currentSectionIndex].classList.remove('active');
@@ -1143,20 +1399,20 @@
                 }
             }
 
-            // Function to go to a specific section
-            function goToSection(index) {
-                if (index >= 0 && index < totalSections) {
-                    // Hide current section
+            // Function to go to a specific section - define as global function
+            goToSection = function(index) {
+                if (index < currentSectionIndex || validateCurrentSection()) {
                     sections[currentSectionIndex].classList.remove('active');
-                    // Show target section
                     currentSectionIndex = index;
                     sections[currentSectionIndex].classList.add('active');
-                    // Update progress
-                    updateProgressBar();
-                    // Scroll to top of the form
-                    document.querySelector('#assessment-form').scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    if (index >= 0 && index < totalSections) {
+                        // Update progress
+                        updateProgressBar();
+                        // Scroll to top of the form
+                        document.querySelector('#assessment-form').scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             }
 
@@ -1183,12 +1439,12 @@
                                 let html = '<div class="ps-4 border-start border-3 border-primary">';
                                 data.childQuestions.forEach(question => {
                                     html += `
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">${question.question || 'N/A'}</label>
-                            <!-- Render appropriate input based on question type -->
-                            ${renderQuestionInput(question)}
-                        </div>
-                        `;
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">${question.question || 'N/A'}</label>
+                        <!-- Render appropriate input based on question type -->
+                        ${renderQuestionInput(question)}
+                    </div>
+                    `;
                                 });
                                 html += '</div>';
                                 childQuestionsContainer.innerHTML = html;
@@ -1217,35 +1473,35 @@
             switch (question.response_type) {
                 case 'text':
                     return `<input type="text" class="form-control assessment-response" data-assessment-id="${question.id}"
-                name="responses[${question.id}]" value="${question.existing_response || ''}">`;
+            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
                 case 'textarea':
                     return `
-            <textarea class="form-control assessment-response" data-assessment-id="${question.id}"
-                name="responses[${question.id}]" rows="3">${question.existing_response || ''}</textarea>`;
+        <textarea class="form-control assessment-response" data-assessment-id="${question.id}"
+            name="responses[${question.id}]" rows="3">${question.existing_response || ''}</textarea>`;
                 case 'yes_no':
                     return `
-            <div class="d-flex gap-3 mt-2">
-                <div class="form-check">
-                    <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                        name="responses[${question.id}]" value="yes" ${question.existing_response === 'yes' ? 'checked' : '' }
-                        onchange="toggleChildQuestions(this, '${question.id}', 'yes')">
-                    <label class="form-check-label">Yes</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                        name="responses[${question.id}]" value="no" ${question.existing_response === 'no' ? 'checked' : '' }
-                        onchange="toggleChildQuestions(this, '${question.id}', 'no')">
-                    <label class="form-check-label">No</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                        name="responses[${question.id}]" value="n/a" ${question.existing_response === 'n/a' ? 'checked' : '' }
-                        onchange="toggleChildQuestions(this, '${question.id}', 'n/a')">
-                    <label class="form-check-label">Not Applicable</label>
-                </div>
+        <div class="d-flex gap-3 mt-2">
+            <div class="form-check">
+                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}]" value="yes" ${question.existing_response === 'yes' ? 'checked' : '' }
+                    onchange="toggleChildQuestions(this, '${question.id}', 'yes')">
+                <label class="form-check-label">Yes</label>
             </div>
-            <div id="childQuestions-${question.id}" class="child-questions mt-3" style="display: none;"></div>
-            `;
+            <div class="form-check">
+                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}]" value="no" ${question.existing_response === 'no' ? 'checked' : '' }
+                    onchange="toggleChildQuestions(this, '${question.id}', 'no')">
+                <label class="form-check-label">No</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}]" value="n/a" ${question.existing_response === 'n/a' ? 'checked' : '' }
+                    onchange="toggleChildQuestions(this, '${question.id}', 'n/a')">
+                <label class="form-check-label">Not Applicable</label>
+            </div>
+        </div>
+        <div id="childQuestions-${question.id}" class="child-questions mt-3" style="display: none;"></div>
+        `;
                 case 'multiple_choice':
                     if (!question.options || !Array.isArray(question.options)) {
                         return `<div class="alert alert-warning">No options available</div>`;
@@ -1253,12 +1509,12 @@
                     let optionsHtml = '';
                     question.options.forEach(option => {
                         optionsHtml += `
-                <div class="form-check">
-                    <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                        name="responses[${question.id}]" value="${option}" ${question.existing_response === option ? 'checked' : '' }>
-                    <label class="form-check-label">${option}</label>
-                </div>
-                `;
+            <div class="form-check">
+                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}]" value="${option}" ${question.existing_response === option ? 'checked' : '' }>
+                <label class="form-check-label">${option}</label>
+            </div>
+            `;
                     });
                     return optionsHtml;
                 case 'checkbox':
@@ -1269,37 +1525,37 @@
                     const existingResponses = question.existing_response ? question.existing_response.split(',') : [];
                     question.options.forEach(option => {
                         checkboxHtml += `
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                        name="responses[${question.id}][]" value="${option}" ${existingResponses.includes(option) ? 'checked' : '' }>
-                    <label class="form-check-label">${option}</label>
-                </div>
-                `;
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}][]" value="${option}" ${existingResponses.includes(option) ? 'checked' : '' }>
+                <label class="form-check-label">${option}</label>
+            </div>
+            `;
                     });
                     return checkboxHtml;
                 case 'date':
                     return `<input type="date" class="form-control assessment-response" data-assessment-id="${question.id}"
-                name="responses[${question.id}]" value="${question.existing_response || ''}">`;
+            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
                 case 'number':
                     return `<input type="number" class="form-control assessment-response" data-assessment-id="${question.id}"
-                name="responses[${question.id}]" value="${question.existing_response || ''}">`;
+            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
                 case 'file':
                     let filePreview = '';
                     if (question.existing_response) {
                         filePreview = `
-                <div class="mt-2">
-                    <small>Current file: <a href="${question.existing_response}" target="_blank">${getFileName(question.existing_response)}</a></small>
-                </div>
-                `;
+            <div class="mt-2">
+                <small>Current file: <a href="${question.existing_response}" target="_blank">${getFileName(question.existing_response)}</a></small>
+            </div>
+            `;
                     }
                     return `
-            <input type="file" class="form-control assessment-response" data-assessment-id="${question.id}"
-                name="file_responses[${question.id}]">
-            ${filePreview}
-            `;
+        <input type="file" class="form-control assessment-response" data-assessment-id="${question.id}"
+            name="file_responses[${question.id}]">
+        ${filePreview}
+        `;
                 default:
                     return `<input type="text" class="form-control assessment-response" data-assessment-id="${question.id}"
-                name="responses[${question.id}]" value="${question.existing_response || ''}">`;
+            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
             }
         }
 
@@ -1363,7 +1619,8 @@
 
             // Show loading state
             $('#submit-btn').html(
-                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...')
+                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...'
+                )
                 .prop('disabled', true);
 
             // AJAX request to save assessment
@@ -1380,11 +1637,12 @@
                     if (response.success) {
                         // Normal success case
                         $('#assessment-form').replaceWith(`
-                <div class="alert alert-success mt-4">
-                    <h4 class="alert-heading">Success!</h4>
-                    <p>${response.message}</p>
-                </div>
-                `);
+            <div class="alert alert-success mt-4">
+                <h4 class="alert-heading">Success!
+                <h4 class="alert-heading">Success!</h4>
+                <p>${response.message}</p>
+            </div>
+            `);
 
                         // Redirect after showing the message
                         setTimeout(function() {
@@ -1393,13 +1651,13 @@
                     } else if (response.create_new) {
                         // Special case: Outside editable window but open for new submissions
                         $('#assessment-form').replaceWith(`
-                <div class="alert alert-info mt-4">
-                    <h4 class="alert-heading">Notice</h4>
-                    <p>${response.message}</p>
-                    <hr>
-                    <p class="mb-0">Redirecting you to submit a new assessment...</p>
-                </div>
-                `);
+            <div class="alert alert-info mt-4">
+                <h4 class="alert-heading">Notice</h4>
+                <p>${response.message}</p>
+                <hr>
+                <p class="mb-0">Redirecting you to submit a new assessment...</p>
+            </div>
+            `);
 
                         // Redirect to create new assessment
                         setTimeout(function() {
@@ -1408,11 +1666,11 @@
                     } else {
                         // Other non-success case
                         $('#assessment-form').replaceWith(`
-                <div class="alert alert-info mt-4">
-                    <h4 class="alert-heading">Notice</h4>
-                    <p>${response.message}</p>
-                </div>
-                `);
+            <div class="alert alert-info mt-4">
+                <h4 class="alert-heading">Notice</h4>
+                <p>${response.message}</p>
+            </div>
+            `);
 
                         // Redirect
                         setTimeout(function() {
@@ -1425,7 +1683,8 @@
                     $('#submit-btn').html('Submit Assessment').prop('disabled', false);
 
                     // Show error message
-                    let errorMessage = 'An error occurred while saving your assessment. Please try again.';
+                    let errorMessage =
+                        'An error occurred while saving your assessment. Please try again.';
 
                     try {
                         const response = JSON.parse(xhr.responseText);
@@ -1437,10 +1696,10 @@
                     }
 
                     $('#form-errors').html(`
-            <div class="alert alert-danger">
-                <i class="fas fa-exclamation-circle"></i> ${errorMessage}
-            </div>
-            `).show();
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-circle"></i> ${errorMessage}
+        </div>
+        `).show();
 
                     // Scroll to error message
                     $('html, body').animate({
@@ -1508,6 +1767,308 @@
                 const isUpdate = $('#form-action').val() === 'update';
                 submitAssessmentForm(isUpdate);
             });
+
+            const assessmentForm = document.getElementById('assessment-form');
+            const phcId = "{{ session('assessment_phc_id') ?? '' }}"; // Get current PHC ID from session
+
+            // Load any existing temporary responses when the page loads
+            loadTemporaryResponses();
+
+            // Set up autosave on page navigation
+            document.querySelectorAll('.next-btn, .prev-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Save responses before navigating
+                    saveTemporaryResponses();
+                });
+            });
+
+            // Also add autosave on step indicator clicks
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.step')) {
+                    saveTemporaryResponses();
+                }
+            });
+
+            // Add a "Save Progress" button to each page
+            document.querySelectorAll('.navigation-buttons').forEach(navButtons => {
+                const saveBtn = document.createElement('button');
+                saveBtn.type = 'button';
+                saveBtn.className = 'btn btn-outline-primary save-progress-btn';
+                saveBtn.innerHTML = '<i class="fas fa-save me-2"></i> Save Progress';
+                saveBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    saveTemporaryResponses(true); // true = show confirmation
+                });
+
+                // Insert before the next/submit button
+                const nextBtn = navButtons.querySelector('.next-btn, #submit-btn');
+                if (nextBtn) {
+                    navButtons.insertBefore(saveBtn, nextBtn);
+                } else {
+                    navButtons.appendChild(saveBtn);
+                }
+            });
+
+
+
+            /**
+             * Save responses temporarily in the database
+             */
+            function saveTemporaryResponses(showConfirmation = false) {
+                if (!phcId) {
+                    console.warn('No PHC ID found. Temporary save is not available.');
+                    return;
+                }
+
+                const responses = collectFormResponses();
+
+                const currentPage = currentSectionIndex;
+                console.log('Current section for saving:', currentPage);
+
+                // Create the data to be sent
+                const saveData = {
+                    _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    phc_id: phcId,
+                    responses: responses,
+                    current_page: currentPage
+                };
+
+                // Show a saving indicator if requested
+                let saveIndicator = null;
+                if (showConfirmation) {
+                    saveIndicator = document.createElement('div');
+                    saveIndicator.className = 'position-fixed top-0 end-0 p-3';
+                    saveIndicator.style.zIndex = '9999';
+                    saveIndicator.innerHTML = `
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-primary text-white">
+                    <i class="fas fa-save me-2"></i>
+                    <strong class="me-auto">Saving Progress</strong>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    <div class="d-flex align-items-center">
+                        <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
+                            <span class="visually-hidden">Saving...</span>
+                        </div>
+                        <span>Saving your progress...</span>
+                    </div>
+                </div>
+            </div>
+        `;
+                    document.body.appendChild(saveIndicator);
+                }
+
+                // Send the AJAX request to save temporary data
+                $.ajax({
+                    url: '/assessments/save-temporary',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: saveData,
+                    success: function(response) {
+                        if (showConfirmation) {
+                            // Update the toast to show success
+                            if (saveIndicator) {
+                                const toastBody = saveIndicator.querySelector('.toast-body');
+                                if (toastBody) {
+                                    toastBody.innerHTML = `
+                            <div class="d-flex align-items-center text-success">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span>Progress saved successfully!</span>
+                            </div>
+                        `;
+
+                                    // Remove the toast after a delay
+                                    setTimeout(function() {
+                                        saveIndicator.remove();
+                                    }, 3000);
+                                }
+                            }
+
+                            console.log('Progress saved successfully');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error saving temporary responses:', error);
+                        console.error('Response:', xhr.responseText);
+
+                        if (showConfirmation && saveIndicator) {
+                            const toastBody = saveIndicator.querySelector('.toast-body');
+                            if (toastBody) {
+                                toastBody.innerHTML = `
+                        <div class="d-flex align-items-center text-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            <span>Failed to save progress. Please try again.</span>
+                        </div>
+                    `;
+
+                                // Remove the toast after a delay
+                                setTimeout(function() {
+                                    saveIndicator.remove();
+                                }, 3000);
+                            }
+                        }
+                    }
+                });
+            }
+
+            /**
+             * Load temporary responses from the database
+             */
+            function loadTemporaryResponses() {
+                if (!phcId) {
+                    return;
+                }
+
+                $.ajax({
+                    url: `/assessments/load-temporary/${phcId}`,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success && response.data) {
+                            // Display resume banner if there's saved data
+                            showResumeBanner(response.data.current_page || 0);
+
+                            // Fill the form with the saved responses
+                            if (response.data.responses) {
+                                fillFormWithResponses(response.data.responses);
+                            }
+
+                            console.log('Temporary responses loaded successfully');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error loading temporary responses:', error);
+                    }
+                });
+            }
+
+            /**
+             * Show resume banner with option to continue from where they left off
+             */
+            function showResumeBanner(savedPage) {
+                if (savedPage <= 0) return;
+
+                const banner = document.createElement('div');
+                banner.className = 'alert alert-info alert-dismissible fade show mb-4';
+                banner.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Resume Assessment</strong>
+                <p class="mb-0">You have a partially completed assessment. Would you like to resume from where you left off?</p>
+            </div>
+            <div>
+                <button type="button" class="btn btn-sm btn-primary resume-btn me-2">
+                    <i class="fas fa-play me-1"></i> Resume
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="alert">
+                    Start Over
+                </button>
+            </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+                // Insert the banner at the top of the form
+                const container = document.querySelector('.container.py-4');
+                const firstElement = container.firstChild;
+                container.insertBefore(banner, firstElement);
+
+                // Add event listener to resume button
+                banner.querySelector('.resume-btn').addEventListener('click', function() {
+                    goToSection(savedPage);
+                    banner.remove();
+                });
+            }
+
+            /**
+             * Collect all form responses
+             */
+            function collectFormResponses() {
+                const responses = {};
+
+                // Handle text inputs, selects, textareas
+                $('.assessment-response').each(function() {
+                    const assessmentId = $(this).data('assessment-id');
+
+                    // Skip if we've already processed this question
+                    if (responses[assessmentId]) return;
+
+                    // Different handling based on input type
+                    if ($(this).is(':radio') || $(this).is(':checkbox')) {
+                        // For radio buttons, only collect if checked
+                        if ($(this).is(':checked')) {
+                            responses[assessmentId] = $(this).val();
+                        }
+                    } else {
+                        // For other inputs (text, select, etc.)
+                        const response = $(this).val();
+                        if (response) {
+                            responses[assessmentId] = response;
+                        }
+                    }
+                });
+
+                // Now collect checkbox groups which may have multiple selected values
+                $('input[type="checkbox"]:checked').each(function() {
+                    const assessmentId = $(this).data('assessment-id');
+                    // If this is part of a checkbox group
+                    if ($(this).attr('name').includes('[]')) {
+                        if (!responses[assessmentId]) {
+                            responses[assessmentId] = [];
+                        }
+                        if (Array.isArray(responses[assessmentId])) {
+                            responses[assessmentId].push($(this).val());
+                        } else {
+                            // Convert to array if it wasn't already
+                            responses[assessmentId] = [responses[assessmentId], $(this).val()];
+                        }
+                    }
+                });
+
+                return responses;
+            }
+
+            /**
+             * Fill the form with saved responses
+             */
+
+            function fillFormWithResponses(responses) {
+                // Process each saved response
+                Object.keys(responses).forEach(assessmentId => {
+                    const value = responses[assessmentId];
+
+                    // Find all elements for this assessment ID
+                    const elements = document.querySelectorAll(
+                        `.assessment-response[data-assessment-id="${assessmentId}"]`);
+
+                    elements.forEach(element => {
+                        if (element.type === 'radio') {
+                            // For radio buttons, check if value matches
+                            if (element.value === value) {
+                                element.checked = true;
+
+                                // Trigger change event for any conditional logic
+                                if (element.hasAttribute('onchange')) {
+                                    const event = new Event('change');
+                                    element.dispatchEvent(event);
+                                }
+                            }
+                        } else if (element.type === 'checkbox') {
+                            // For checkboxes, check if value is in the array
+                            if (Array.isArray(value) && value.includes(element.value)) {
+                                element.checked = true;
+                            } else if (value === element.value) {
+                                element.checked = true;
+                            }
+                        } else {
+                            // For text inputs, selects, and textareas
+                            element.value = value;
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>
