@@ -8,6 +8,7 @@ use App\Models\AssessmentSection;
 use App\Models\District;
 use App\Models\Lga;
 use App\Models\Phc;
+use App\Models\TemporaryAssessment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -269,194 +270,7 @@ class AssessmentController extends Controller
             'isNewAssessmentPeriod'
         ));
     }
-    // public function store(Request $request)
-    // {
-    //     $user = auth()->user();
-    //     $responses = $request->input('responses', []);
 
-    //     // Log all submitted responses for debugging
-    //     Log::info('Submitted responses', [
-    //         'user_id' => $user->id,
-    //         'response_data' => $responses
-    //     ]);
-
-    //     // Check if user is director
-    //     $isDirector = $user->role->name === 'director' || $user->role->name === 'Director';
-
-    //     // For directors, verify location is selected
-    //     if ($isDirector) {
-    //         if (!session('assessment_location_selected')) {
-    //             return redirect()->route('assessments.index')
-    //                 ->with('error', 'Please select a location before submitting assessments.');
-    //         }
-
-    //         // Get location details from session
-    //         $districtId = session('assessment_district_id');
-    //         $lgaId = session('assessment_lga_id');
-    //         $phcId = session('assessment_phc_id');
-
-    //         if (!$districtId || !$lgaId || !$phcId) {
-    //             return redirect()->route('assessments.index')
-    //                 ->with('error', 'Location information is incomplete. Please select location again.');
-    //         }
-    //     }
-
-    //     // Get all accessible assessment IDs for the user's role
-    //     $role = $user->role;
-    //     $accessibleAssessmentIds = DB::table('assessment_role_category')
-    //         ->join('role_categories', 'assessment_role_category.role_category_id', '=', 'role_categories.id')
-    //         ->where('role_categories.role_id', $role->id)
-    //         ->pluck('assessment_role_category.assessment_id')
-    //         ->unique()
-    //         ->toArray();
-
-    //     Log::info('Accessible assessments', [
-    //         'user_id' => $user->id,
-    //         'assessment_ids' => $accessibleAssessmentIds
-    //     ]);
-
-    //     // Get all required assessments (excluding child questions)
-    //     $requiredAssessments = Assessment::whereIn('id', $accessibleAssessmentIds)
-    //         ->whereNull('parent_id')
-    //         ->get();
-
-    //     // Check if all required assessments have responses
-    //     $missingResponses = [];
-    //     foreach ($requiredAssessments as $assessment) {
-    //         $assessmentId = $assessment->id;
-
-    //         // More detailed logging for each required assessment
-    //         Log::info('Checking assessment', [
-    //             'id' => $assessmentId,
-    //             'question' => $assessment->question,
-    //             'has_response' => isset($responses[$assessmentId]),
-    //             'response_value' => $responses[$assessmentId] ?? 'not set'
-    //         ]);
-
-    //         if (
-    //             !isset($responses[$assessmentId]) ||
-    //             (is_string($responses[$assessmentId]) && trim($responses[$assessmentId]) === '')
-    //         ) {
-    //             $missingResponses[$assessmentId] = $assessment->question;
-    //         }
-    //     }
-
-    //     // If there are missing responses, return with error
-    //     if (!empty($missingResponses)) {
-    //         Log::warning('Missing responses detected', [
-    //             'user_id' => $user->id,
-    //             'missing' => $missingResponses
-    //         ]);
-
-    //         $errorMessage = 'The following questions require answers:';
-    //         $count = 0;
-
-    //         foreach ($missingResponses as $id => $question) {
-    //             if ($count < 3) {
-    //                 $errorMessage .= "\n- Question #{$id}: " . substr($question, 0, 100) . (strlen($question) > 100 ? '...' : '');
-    //                 $count++;
-    //             } else {
-    //                 break;
-    //             }
-    //         }
-
-    //         if (count($missingResponses) > 3) {
-    //             $errorMessage .= "\n- And " . (count($missingResponses) - 3) . " more question(s)";
-    //         }
-
-    //         if ($request->ajax()) {
-    //             return response()->json([
-    //                 'success' => false,
-    //                 'message' => $errorMessage,
-    //                 'missing_ids' => array_keys($missingResponses)
-    //             ], 422);
-    //         }
-
-    //         return redirect()->back()
-    //             ->with('error', $errorMessage)
-    //             ->withInput();
-    //     }
-
-    //     // If we get here, validation passed, proceed with storing responses
-    //     Log::info('Validation passed, proceeding with storing responses', [
-    //         'user_id' => $user->id
-    //     ]);
-
-    //     $successCount = 0;
-    //     $errorCount = 0;
-
-    //     // Process each assessment response
-    //     foreach ($responses as $assessmentId => $responseValue) {
-    //         try {
-    //             // Base response data
-    //             $responseData = [
-    //                 'user_id' => $user->id,
-    //                 'assessment_id' => $assessmentId,
-    //                 'response' => is_array($responseValue) ? json_encode($responseValue) : $responseValue
-    //             ];
-
-    //             // Add location information for directors
-    //             if ($isDirector) {
-    //                 $responseData['district_id'] = session('assessment_district_id');
-    //                 $responseData['lga_id'] = session('assessment_lga_id');
-    //                 $responseData['phc_id'] = session('assessment_phc_id');
-    //             }
-
-    //             // Check for existing response
-    //             $query = AssessmentResponse::where('user_id', $user->id)
-    //                 ->where('assessment_id', $assessmentId);
-
-    //             // For directors, add PHC condition to check existing response
-    //             if ($isDirector) {
-    //                 $query->where('phc_id', session('assessment_phc_id'));
-    //             }
-
-    //             $existingResponse = $query->first();
-
-    //             if ($existingResponse) {
-    //                 // Update the existing response
-    //                 $existingResponse->update([
-    //                     'response' => $responseData['response'],
-    //                     'updated_at' => now()
-    //                 ]);
-    //             } else {
-    //                 // Create new response
-    //                 AssessmentResponse::create($responseData);
-    //             }
-
-    //             $successCount++;
-    //         } catch (\Exception $e) {
-    //             $errorCount++;
-    //             Log::error('Failed to save response', [
-    //                 'error' => $e->getMessage(),
-    //                 'assessment_id' => $assessmentId
-    //             ]);
-    //         }
-    //     }
-
-    //     // For directors, clear the location selection session variables
-    //     if ($isDirector) {
-    //         session()->forget([
-    //             'assessment_district_id',
-    //             'assessment_lga_id',
-    //             'assessment_phc_id',
-    //             'assessment_location_selected'
-    //         ]);
-    //     }
-
-    //     // Return success response
-    //     $message = 'Assessment responses saved successfully';
-
-    //     if ($request->ajax()) {
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => $message,
-    //             'redirect' => route('dashboard')
-    //         ]);
-    //     }
-
-    //     return redirect()->route('dashboard')->with('success', $message);
-    // }
     public function store(Request $request)
     {
         $user = auth()->user();
@@ -651,6 +465,12 @@ class AssessmentController extends Controller
                 'assessment_location_selected'
             ]);
         }
+        if (auth()->user()->role->name === 'director') {
+            $phcId = session('assessment_phc_id');
+            if ($phcId) {
+                $this->clearTemporaryResponses($phcId);
+            }
+        }
 
         // Return success response
         $message = 'Assessment responses saved successfully';
@@ -664,13 +484,26 @@ class AssessmentController extends Controller
         }
 
         return redirect()->route('dashboard')->with('success', $message);
+
     }
 
     public function getChildQuestions(Assessment $assessment, Request $request)
     {
         $user = auth()->user();
         $selectedOption = $request->input('selected_option'); // 'yes' or 'no'
-        $conditionPrefix = $selectedOption === 'no' ? 'if no' : 'if yes';
+
+        if ($selectedOption == 'yes') {
+            $conditionPrefix = 'if yes';
+
+        } else if ($selectedOption == 'no') {
+            $conditionPrefix = 'if no';
+
+        } else if ($selectedOption == 'n/a') {
+            $conditionPrefix = 'if n/a';
+
+        }
+
+        // $conditionPrefix = $selectedOption === 'no' ? 'if no' : 'if yes';
 
         $childQuestions = Assessment::where('parent_id', $assessment->id)
             ->whereRaw('LOWER(question) LIKE ?', [strtolower($conditionPrefix) . '%'])
@@ -970,6 +803,113 @@ class AssessmentController extends Controller
                 return $customIntervalDays ?? 91; // Default to quarterly if custom days not set
             default:
                 return 91; // Default to quarterly (4 times per year)
+        }
+    }
+
+    public function saveTemporary(Request $request)
+    {
+        try {
+            $user = auth()->user();
+            $phcId = $request->input('phc_id');
+            $responses = $request->input('responses', []);
+            $currentPage = $request->input('current_page', 0);
+
+            if (!$phcId) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'PHC ID is required'
+                ], 400);
+            }
+
+            // Check for existing temporary record for this user and PHC
+            $tempAssessment = TemporaryAssessment::where('user_id', $user->id)
+                ->where('phc_id', $phcId)
+                ->first();
+
+            if ($tempAssessment) {
+                // Update existing record
+                $tempAssessment->update([
+                    'responses' => json_encode($responses),
+                    'current_page' => $currentPage,
+                    'updated_at' => now()
+                ]);
+            } else {
+                // Create new record
+                TemporaryAssessment::create([
+                    'user_id' => $user->id,
+                    'phc_id' => $phcId,
+                    'responses' => json_encode($responses),
+                    'current_page' => $currentPage,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Temporary responses saved successfully'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error saving temporary responses: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to save temporary responses: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+
+    public function loadTemporary($phcId)
+    {
+        try {
+            $user = auth()->user();
+
+            // Get the temporary assessment for this user and PHC
+            $tempAssessment = TemporaryAssessment::where('user_id', $user->id)
+                ->where('phc_id', $phcId)
+                ->first();
+
+            if ($tempAssessment) {
+                return response()->json([
+                    'success' => true,
+                    'data' => [
+                        'responses' => json_decode($tempAssessment->responses, true),
+                        'current_page' => $tempAssessment->current_page,
+                        'updated_at' => $tempAssessment->updated_at
+                    ]
+                ]);
+            }
+
+            return response()->json([
+                'success' => false,
+                'message' => 'No temporary responses found'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error loading temporary responses: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to load temporary responses: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+
+    private function clearTemporaryResponses($phcId)
+    {
+        try {
+            $user = auth()->user();
+
+            // Delete temporary assessment for this user and PHC
+            TemporaryAssessment::where('user_id', $user->id)
+                ->where('phc_id', $phcId)
+                ->delete();
+
+            return true;
+        } catch (\Exception $e) {
+            Log::error('Error clearing temporary responses: ' . $e->getMessage());
+            return false;
         }
     }
 }

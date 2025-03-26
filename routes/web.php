@@ -41,7 +41,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/assessments', [AssessmentController::class, 'index'])->name('assessments.index');
     Route::post('/assessments', [AssessmentController::class, 'store'])->name('assessments.store');
     Route::put('/assessments', [AssessmentController::class, 'update']);
-    Route::get('/no-available-assessments', [AssessmentController::class, 'noAvailableAssessments'])->name('no-available-assessments');});
+    Route::get('/no-available-assessments', [AssessmentController::class, 'noAvailableAssessments'])->name('no-available-assessments');
+});
 
 Route::post('/assessments/select-phc', [App\Http\Controllers\AssessmentController::class, 'selectPHC'])->name('assessments.select-phc');
 
@@ -134,7 +135,7 @@ require __DIR__ . '/auth.php';
 
 
 // Create a temporary route to see all questions
-Route::get('/assessment-debug', function() {
+Route::get('/assessment-debug', function () {
     $assessments = \App\Models\Assessment::whereNull('parent_id')
         ->orderBy('id')
         ->select('id', 'question', 'order')
@@ -143,4 +144,10 @@ Route::get('/assessment-debug', function() {
     return view('debug-assessments', compact('assessments'));
 });
 
+Route::post('/assessments/save-temporary', [AssessmentController::class, 'saveTemporary'])
+    ->name('assessments.save-temporary')
+    ->middleware(['auth']);
 
+Route::get('/assessments/load-temporary/{phcId}', [AssessmentController::class, 'loadTemporary'])
+    ->name('assessments.load-temporary')
+    ->middleware(['auth']);
