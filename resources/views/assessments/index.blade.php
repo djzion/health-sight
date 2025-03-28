@@ -520,6 +520,182 @@
             background-color: #0181b8;
             border-color: #0181b8;
         }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100% !important;
+                margin-right: 0 !important;
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+
+            .main-content {
+                width: calc(100% - 60px) !important;
+                padding: 15px !important;
+                padding-top: 70px !important;
+            }
+
+            /* Fix for sidebar transition */
+            .sidebar {
+                transition: width 0.3s ease, transform 0.3s ease;
+            }
+
+            /* Keep location banner full width but adjust left margin */
+            .location-banner {
+                left: 60px;
+                width: calc(100% - 60px);
+                padding: 10px;
+            }
+
+            .location-info-text {
+                font-size: 0.9rem;
+            }
+
+            /* Fix form input widths for mobile */
+            .form-input,
+            select {
+                width: 100% !important;
+                max-width: 100%;
+            }
+
+            /* Make the form layout more compact */
+            .card-body {
+                padding: 15px !important;
+            }
+
+            /* Adjust question padding */
+            .border-bottom {
+                padding-left: 5px !important;
+            }
+
+            /* Better form group handling */
+            .formp {
+                flex-direction: column;
+            }
+
+            .formp .formea {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .formp input {
+                width: 100% !important;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 576px) {
+
+            /* Make the step indicators more mobile-friendly */
+            .step-indicator {
+                overflow-x: auto !important;
+            }
+
+            .steps-container {
+                flex-wrap: nowrap !important;
+                justify-content: flex-start !important;
+                min-width: max-content !important;
+            }
+
+            .step {
+                min-width: 80px !important;
+                flex: 0 0 auto !important;
+            }
+
+            .step-title {
+                font-size: 0.8rem;
+            }
+
+            /* More compact location banner */
+            .location-banner {
+                padding: 8px;
+            }
+
+            .location-info-text {
+                font-size: 0.8rem;
+            }
+
+            .location-map-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+
+            .btn-change-location {
+                padding: 5px 10px;
+                font-size: 0.9rem;
+            }
+
+            /* Make navigation buttons more accessible */
+            .navigation-buttons {
+                padding: 0;
+            }
+
+            .navigation-buttons .btn {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            /* Progress sections for small screens */
+            .progress-sections {
+                overflow-x: auto;
+            }
+
+            /* Form elements for small screens */
+            .form-check-label {
+                font-size: 0.9rem;
+            }
+
+            /* Fix checkbox groups in multi-select questions */
+            .checkbox-group .row {
+                margin-left: -5px;
+                margin-right: -5px;
+            }
+
+            .checkbox-group .col-md-6 {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+        /* Fix for the form structure overall on mobile */
+        @media (max-width: 768px) {
+
+            /* Fix for duplicate step indicators */
+            .step-indicator:nth-of-type(2) {
+                display: none !important;
+            }
+
+            /* Fix for checkbox groups */
+            .checkbox-group .col-md-6,
+            .checkbox-group .col-lg-4 {
+                width: 100%;
+            }
+
+            /* Fix for validation error messages */
+            .section-validation-error {
+                font-size: 0.9rem;
+            }
+
+            /* Make sure toast notifications are visible */
+            .toast {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mb-4.pb-4.border-bottom {
+                margin-bottom: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .d-flex.gap-3.mt-2 {
+                flex-direction: column;
+                gap: 0.5rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -611,10 +787,6 @@
 
                 <div class="step-indicator mb-4" id="step-indicator">
                 </div>
-
-                <div class="step-indicator mb-4" id="step-indicator">
-                </div>
-
                 <!-- Form with paginated sections -->
                 <form id="assessment-form" action="{{ route('assessments.store') }}" method="POST" class="mb-5">
                     @csrf
@@ -1381,34 +1553,25 @@
                 }
             }
 
-
-            // Function to move to the previous section
             function moveToPreviousSection() {
                 // saveTemporaryResponses();
                 if (currentSectionIndex > 0) {
-                    // Hide current section
                     sections[currentSectionIndex].classList.remove('active');
-                    // Show previous section
                     sections[--currentSectionIndex].classList.add('active');
-                    // Update progress
                     updateProgressBar();
-                    // Scroll to top of the form
                     document.querySelector('#assessment-form').scrollIntoView({
                         behavior: 'smooth'
                     });
                 }
             }
 
-            // Function to go to a specific section - define as global function
             goToSection = function(index) {
                 if (index < currentSectionIndex || validateCurrentSection()) {
                     sections[currentSectionIndex].classList.remove('active');
                     currentSectionIndex = index;
                     sections[currentSectionIndex].classList.add('active');
                     if (index >= 0 && index < totalSections) {
-                        // Update progress
                         updateProgressBar();
-                        // Scroll to top of the form
                         document.querySelector('#assessment-form').scrollIntoView({
                             behavior: 'smooth'
                         });
@@ -1416,7 +1579,6 @@
                 }
             }
 
-            // Function to toggle child questions based on parent response
             function toggleChildQuestions(element, assessmentId, value) {
                 const childQuestionsContainer = document.getElementById(`childQuestions-${assessmentId}`);
 
@@ -2069,6 +2231,202 @@
                     });
                 });
             }
+        });
+
+        function enhanceMobileExperience() {
+            // Check if we're on a mobile device
+            const isMobile = window.innerWidth <= 768;
+
+            if (isMobile) {
+                // Add smooth scrolling to form sections
+                enhanceSmoothScrolling();
+
+                // Make step indicators mobile friendly
+                enhanceStepIndicators();
+
+                // Adjust validation behavior for mobile
+                enhanceMobileValidation();
+
+                // Add swipe navigation between sections (if supported)
+                setupSwipeNavigation();
+            }
+        }
+
+        /**
+         * Enhance smooth scrolling behavior for form sections
+         */
+        function enhanceSmoothScrolling() {
+            // Make sure all scrolling to sections is smooth and considers the fixed header
+            const scrollToSection = (element) => {
+                const headerOffset = 70; // Account for the fixed header
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            };
+
+            // Override the default scrollIntoView behavior
+            const originalGoToSection = window.goToSection;
+            window.goToSection = function(index) {
+                if (index >= 0 && index < totalSections) {
+                    sections[currentSectionIndex].classList.remove('active');
+                    currentSectionIndex = index;
+                    sections[currentSectionIndex].classList.add('active');
+                    updateProgressUI();
+
+                    // Use our custom scroll function
+                    scrollToSection(document.querySelector('#assessment-form'));
+                }
+            };
+
+            // Also update moveToNextSection and moveToPreviousSection
+            window.moveToNextSection = function() {
+                if (!validateCurrentSection()) return;
+
+                if (currentSectionIndex < totalSections - 1) {
+                    sections[currentSectionIndex].classList.remove('active');
+                    sections[++currentSectionIndex].classList.add('active');
+                    updateProgressUI();
+                    scrollToSection(document.querySelector('#assessment-form'));
+                }
+            };
+
+            window.moveToPreviousSection = function() {
+                if (currentSectionIndex > 0) {
+                    sections[currentSectionIndex].classList.remove('active');
+                    sections[--currentSectionIndex].classList.add('active');
+                    updateProgressUI();
+                    scrollToSection(document.querySelector('#assessment-form'));
+                }
+            };
+        }
+
+        /**
+         * Enhanced step indicators for mobile
+         */
+        function enhanceStepIndicators() {
+            // Make sure we only have one step indicator visible
+            const stepIndicators = document.querySelectorAll('.step-indicator');
+            if (stepIndicators.length > 1) {
+                for (let i = 1; i < stepIndicators.length; i++) {
+                    stepIndicators[i].style.display = 'none';
+                }
+            }
+
+            // Add horizontal scrolling for step indicators on mobile
+            const stepsContainer = document.querySelector('.steps-container');
+            if (stepsContainer) {
+                stepsContainer.style.flexWrap = 'nowrap';
+                stepsContainer.style.justifyContent = 'flex-start';
+                stepsContainer.style.minWidth = 'max-content';
+                stepsContainer.style.overflowX = 'auto';
+
+                // Scroll to active step
+                const scrollToActiveStep = () => {
+                    const activeStep = stepsContainer.querySelector('.step.active');
+                    if (activeStep) {
+                        stepsContainer.scrollLeft = activeStep.offsetLeft - stepsContainer.offsetWidth / 2 + activeStep
+                            .offsetWidth / 2;
+                    }
+                };
+
+                // Call on init and after navigation
+                scrollToActiveStep();
+
+                // Override updateProgressUI to scroll to active step
+                const originalUpdateProgressUI = window.updateProgressUI;
+                window.updateProgressUI = function() {
+                    originalUpdateProgressUI();
+                    scrollToActiveStep();
+                };
+            }
+        }
+
+        /**
+         * Enhance mobile validation for better UX
+         */
+        function enhanceMobileValidation() {
+            // Scroll to the first error message more precisely
+            const originalValidateCurrentSection = window.validateCurrentSection;
+            if (typeof originalValidateCurrentSection === 'function') {
+                window.validateCurrentSection = function() {
+                    const result = originalValidateCurrentSection();
+
+                    if (!result) {
+                        // Find the error alert
+                        const errorAlert = document.querySelector('.section-validation-error');
+                        if (errorAlert) {
+                            const headerOffset = 70;
+                            const elementPosition = errorAlert.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+
+                    return result;
+                };
+            }
+        }
+
+        /**
+         * Set up swipe navigation for mobile devices
+         */
+        function setupSwipeNavigation() {
+            // Only proceed if touch events are supported
+            if ('ontouchstart' in window) {
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                const handleSwipe = (e) => {
+                    const sectionsContainer = document.getElementById('sections-container');
+                    if (!sectionsContainer.contains(e.target)) return;
+
+                    const swipeThreshold = 100; // Minimum distance for a swipe
+                    const swipeDistance = touchEndX - touchStartX;
+
+                    // Detect left/right swipe
+                    if (Math.abs(swipeDistance) > swipeThreshold) {
+                        if (swipeDistance > 0) {
+                            // Right swipe - go to previous section
+                            window.moveToPreviousSection();
+                        } else {
+                            // Left swipe - go to next section
+                            window.moveToNextSection();
+                        }
+                    }
+                };
+
+                // Add touch event listeners
+                document.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, {
+                    passive: true
+                });
+
+                document.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe(e);
+                }, {
+                    passive: true
+                });
+            }
+        }
+
+        // Call our mobile enhancements on document ready
+        document.addEventListener('DOMContentLoaded', function() {
+            enhanceMobileExperience();
+
+            // Also call on resize to handle orientation changes
+            window.addEventListener('resize', function() {
+                enhanceMobileExperience();
+            });
         });
     </script>
 </body>
