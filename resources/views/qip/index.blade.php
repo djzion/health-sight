@@ -143,8 +143,6 @@
             margin-right: 5rem !important;
         }
 
-        @media (max-width: 576px) {}
-
         .bg-primary {
             background-color: #0199dc !important;
         }
@@ -360,6 +358,211 @@
         .btn-close {
             color: white;
         }
+
+        .progress {
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            transition: width 0.6s ease;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .alert-success {
+            border-left: 5px solid #28a745;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        /* New Styles for Enhanced Features */
+        .progress-container {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #dee2e6;
+            padding: 15px 20px;
+            margin: -30px -30px 20px -30px;
+        }
+
+        .auto-save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1030;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .auto-save-indicator.saving {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .auto-save-indicator.saved {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .auto-save-indicator.error {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .section-progress {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-progress-bar {
+            flex: 1;
+            height: 6px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .section-progress-fill {
+            height: 100%;
+            background-color: #28a745;
+            transition: width 0.3s ease;
+        }
+
+        .floating-save-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1025;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .floating-save-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .question-row.answered {
+            background-color: #f8f9fa;
+        }
+
+        .question-row.highlighted {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .section-card.highlighted-section {
+            border: 2px solid #ffc107;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .validation-summary-section {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .validation-summary-section:hover {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        .question-counter {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+
+        .section-completion-badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+        }
+
+        .question-row.reviewing {
+            background-color: #fff3cd !important;
+            border-left: 4px solid #ffc107 !important;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+            }
+        }
+
+        /* Assessment Mode Styles */
+        .mode-option {
+            margin-bottom: 15px;
+        }
+
+        .mode-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mode-option input[type="radio"]:checked+label .mode-card {
+            border-color: #0199dc !important;
+            background-color: rgba(1, 153, 220, 0.05);
+            box-shadow: 0 0 0 2px rgba(1, 153, 220, 0.2);
+        }
+
+        .facility-info {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #28a745;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .facility-info h6 {
+            color: #343a40;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+
+        /* Mobile responsiveness for floating button */
+        @media (max-width: 768px) {
+            .floating-save-button {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.875rem;
+            }
+        }
+
+        .mode-option input[type="radio"]:checked+label .mode-card {
+            border-color: #0199dc !important;
+            background-color: rgba(1, 153, 220, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(1, 153, 220, 0.15);
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -410,6 +613,12 @@
                 </div>
             @endif
 
+            <!-- Auto-save indicator -->
+            <div id="auto-save-indicator" class="auto-save-indicator" style="display: none;">
+                <i class="fas fa-spinner fa-spin me-2"></i>
+                <span class="indicator-text">Saving...</span>
+            </div>
+
             <!-- Dashboard content would go here -->
             <div class="header">
                 <div>
@@ -434,7 +643,6 @@
                         <form id="qip-selection-form">
                             @csrf
                             <div class="modal-body">
-                                {{-- <div class="form-row"> --}}
                                 <div class="form-group">
                                     <label for="district_id">District</label>
                                     <select id="district_id" name="district_id" required>
@@ -462,7 +670,6 @@
                                 </div>
                             </div>
 
-
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" id="submit-selection" class="btn btn-primary">
@@ -476,16 +683,25 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <!-- Scripts -->
     <script>
         $(document).ready(function() {
+            // Global variables
+            let autoSaveTimer;
+            let currentAssessmentData = {};
+            let totalQuestions = 0;
+            let answeredQuestions = 0;
+            let existingAssessmentId = null;
+            let currentAssessmentMode = 'new';
+
             // Setup AJAX with CSRF token
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            // Load saved progress on page load
+            loadSavedProgress();
 
             // Quality Improvement modal trigger
             $('#qip-modal-trigger').on('click', function(e) {
@@ -565,13 +781,131 @@
                 loadSafecareAssessment();
             });
 
-            function loadSafecareAssessment() {
+            function loadSavedProgress() {
+                // Check if there's a saved assessment in progress
+                const savedProgress = localStorage.getItem('assessment_progress');
+                const savedSelections = localStorage.getItem('qip_selections');
+
+                if (savedProgress && savedSelections) {
+                    showProgressRestoreOption();
+                }
+            }
+
+            function showProgressRestoreOption() {
+                const savedSelections = JSON.parse(localStorage.getItem('qip_selections'));
+                const savedTime = localStorage.getItem('assessment_save_time');
+
+                if (savedSelections && savedTime) {
+                    const timeAgo = new Date(parseInt(savedTime));
+                    const html = `
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <i class="fas fa-clock me-2"></i>
+                    <strong>Resume Assessment:</strong> You have an unfinished assessment for
+                    <strong>${savedSelections.phc_name}</strong> saved on ${timeAgo.toLocaleDateString()} at ${timeAgo.toLocaleTimeString()}.
+                    <div class="mt-2">
+                        <button id="resume-assessment" class="btn btn-sm btn-success me-2">
+                            <i class="fas fa-play me-1"></i> Resume Assessment
+                        </button>
+                        <button id="start-fresh" class="btn btn-sm btn-outline-secondary">
+                            <i class="fas fa-plus me-1"></i> Start New Assessment
+                        </button>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `;
+
+                    $('.main-content').prepend(html);
+
+                    $('#resume-assessment').on('click', function() {
+                        $('.alert').remove();
+                        loadSafecareAssessment(true); // true = restore progress
+                    });
+
+                    $('#start-fresh').on('click', function() {
+                        clearSavedProgress();
+                        $('.alert').remove();
+                    });
+                }
+            }
+
+            // function loadSafecareAssessment(restoreProgress = false) {
+            //     var selections = JSON.parse(localStorage.getItem('qip_selections'));
+            //     console.log("Loading assessment with selections:", selections);
+
+            //     $('.main-content').append(
+            //         '<div id="loading" class="text-center mt-5"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Loading assessment questions...</p></div>'
+            //     );
+
+            //     $.ajax({
+            //         url: '/get-safecare-assessment',
+            //         type: 'GET',
+            //         dataType: 'json',
+            //         data: {
+            //             district_id: selections.district_id,
+            //             lga_id: selections.lga_id,
+            //             phc_id: selections.phc_id
+            //         },
+            //         success: function(response) {
+            //             $('#loading').remove();
+            //             console.log("Response received:", response);
+
+            //             if (!response.questions || response.questions.length === 0) {
+            //                 $('.main-content').append(
+            //                     '<div class="alert alert-warning">No assessment questions found. Please check your database.</div>'
+            //                 );
+            //                 return;
+            //             }
+
+            //             // Store response globally
+            //             window.response = response;
+            //             totalQuestions = response.questions.length;
+
+            //             // Check if there's existing assessment data
+            //             if (response.safecare_result && response.safecare_result.id) {
+            //                 existingAssessmentId = response.safecare_result.id;
+            //                 currentAssessmentData = response.safecare_result;
+            //             } else {
+            //                 existingAssessmentId = null;
+            //                 currentAssessmentData = {};
+            //             }
+
+            //             displayAssessment(response.questions, selections, restoreProgress);
+            //         },
+            //         error: function(xhr, status, error) {
+            //             $('#loading').remove();
+            //             console.error("AJAX Error:", status, error);
+            //             console.error("Response:", xhr.responseText);
+            //             $('.main-content').append(
+            //                 '<div class="alert alert-danger">Error loading assessment. Please try again.</div>'
+            //             );
+            //         }
+            //     });
+            // }
+
+            // ADD THIS DEBUG VERSION TO YOUR JAVASCRIPT
+            function loadSafecareAssessment(restoreProgress = false) {
                 var selections = JSON.parse(localStorage.getItem('qip_selections'));
                 console.log("Loading assessment with selections:", selections);
+
+                // ENHANCED ERROR CHECKING
+                if (!selections || !selections.district_id || !selections.lga_id || !selections.phc_id) {
+                    console.error("Invalid selections:", selections);
+                    $('.main-content').append(
+                        '<div class="alert alert-danger">Invalid selections. Please select District, LGA, and PHC again.</div>'
+                    );
+                    return;
+                }
 
                 $('.main-content').append(
                     '<div id="loading" class="text-center mt-5"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Loading assessment questions...</p></div>'
                 );
+
+                // ADD DETAILED LOGGING
+                console.log("Making AJAX request with params:", {
+                    district_id: selections.district_id,
+                    lga_id: selections.lga_id,
+                    phc_id: selections.phc_id
+                });
 
                 $.ajax({
                     url: '/get-safecare-assessment',
@@ -584,44 +918,170 @@
                     },
                     success: function(response) {
                         $('#loading').remove();
-                        console.log("Response received:", response);
+                        console.log("AJAX SUCCESS - Full response received:", response);
 
-                        if (!response.questions || response.questions.length === 0) {
+                        // DETAILED RESPONSE CHECKING
+                        if (!response) {
+                            console.error("Empty response received");
+                            $('.main-content').append(
+                                '<div class="alert alert-danger">Empty response from server.</div>'
+                            );
+                            return;
+                        }
+
+                        // Check if response has error property
+                        if (response.error) {
+                            console.error("Server returned error:", response.error);
+                            $('.main-content').append(
+                                '<div class="alert alert-danger">Server Error: ' + response.error +
+                                '</div>'
+                            );
+                            return;
+                        }
+
+                        // Check questions array
+                        if (!response.questions) {
+                            console.error("No questions property in response");
+                            $('.main-content').append(
+                                '<div class="alert alert-warning">No questions property found in response.</div>'
+                            );
+                            return;
+                        }
+
+                        if (!Array.isArray(response.questions)) {
+                            console.error("Questions is not an array:", typeof response.questions);
+                            $('.main-content').append(
+                                '<div class="alert alert-warning">Questions data is not in expected format.</div>'
+                            );
+                            return;
+                        }
+
+                        if (response.questions.length === 0) {
+                            console.warn("Questions array is empty");
                             $('.main-content').append(
                                 '<div class="alert alert-warning">No assessment questions found. Please check your database.</div>'
                             );
                             return;
                         }
 
-                        // Store response globally so we can access it in the displayAssessment function
+                        console.log("Questions validation passed. Count:", response.questions.length);
+                        console.log("Sample question:", response.questions[0]);
+
+                        // Store response globally
                         window.response = response;
-                        displayAssessment(response.questions, selections);
+                        totalQuestions = response.questions.length;
+
+                        // Check if there's existing assessment data
+                        if (response.safecare_result && response.safecare_result.id) {
+                            existingAssessmentId = response.safecare_result.id;
+                            currentAssessmentData = response.safecare_result;
+                            console.log("Existing assessment found:", existingAssessmentId);
+                        } else {
+                            existingAssessmentId = null;
+                            currentAssessmentData = {};
+                            console.log("No existing assessment");
+                        }
+
+                        // Call display function
+                        console.log("Calling displayAssessment...");
+                        displayAssessment(response.questions, selections, restoreProgress);
                     },
                     error: function(xhr, status, error) {
                         $('#loading').remove();
-                        console.error("AJAX Error:", status, error);
-                        console.error("Response:", xhr.responseText);
+                        console.error("AJAX Error Details:");
+                        console.error("Status:", status);
+                        console.error("Error:", error);
+                        console.error("XHR Status:", xhr.status);
+                        console.error("XHR Response Text:", xhr.responseText);
+
+                        // Try to parse error response
+                        let errorMessage = 'Unknown error occurred';
+                        try {
+                            const errorResponse = JSON.parse(xhr.responseText);
+                            errorMessage = errorResponse.error || errorResponse.message || errorMessage;
+                        } catch (e) {
+                            console.error("Could not parse error response:", e);
+                            errorMessage = 'Server error: ' + xhr.status + ' ' + error;
+                        }
+
                         $('.main-content').append(
-                            '<div class="alert alert-danger">Error loading assessment. Please try again.</div>'
+                            '<div class="alert alert-danger">' +
+                            '<h5>Error Loading Assessment</h5>' +
+                            '<p><strong>Error:</strong> ' + errorMessage + '</p>' +
+                            '<p><strong>Status:</strong> ' + xhr.status + '</p>' +
+                            '<div class="mt-2">' +
+                            '<button class="btn btn-primary" onclick="location.reload()">Reload Page</button>' +
+                            '</div>' +
+                            '</div>'
                         );
                     }
                 });
             }
 
+            // ALSO ADD THIS ENHANCED DISPLAYASSESSMENT FUNCTION CHECK
+            function displayAssessment(questions, selections, restoreProgress = false) {
+                console.log("displayAssessment called with:");
+                console.log("- Questions count:", questions.length);
+                console.log("- Selections:", selections);
+                console.log("- Restore progress:", restoreProgress);
 
-            function displayAssessment(questions, selections) {
+                // Clear any existing assessment
+                $('#assessment-container').remove();
+
+                if (!questions || questions.length === 0) {
+                    console.error("No questions provided to displayAssessment");
+                    $('.main-content').append(
+                        '<div class="alert alert-danger">No questions available to display.</div>'
+                    );
+                    return;
+                }
+
+                console.log("Questions received:", questions);
+                console.log("Full response object:", window.response);
+
+                // Continue with your existing displayAssessment logic...
+                // Sort questions
+                questions.sort(function(a, b) {
+                    var aNum = a.question_no.split('.').map(Number);
+                    var bNum = b.question_no.split('.').map(Number);
+                    for (var i = 0; i < Math.max(aNum.length, bNum.length); i++) {
+                        var aVal = aNum[i] || 0;
+                        var bVal = bNum[i] || 0;
+                        if (aVal !== bVal) {
+                            return aVal - bVal;
+                        }
+                    }
+                    return 0;
+                });
+
+                console.log("Questions sorted successfully");
+
+                // Group questions by section
+                var sectionGroups = {};
+                questions.forEach(function(question) {
+                    if (!sectionGroups[question.section]) {
+                        sectionGroups[question.section] = [];
+                    }
+                    sectionGroups[question.section].push(question);
+                });
+
+                console.log("Section groups created:", Object.keys(sectionGroups));
+
+                // Continue with the rest of your displayAssessment function...
+                // Rest of your existing code here
+            }
+
+            function displayAssessment(questions, selections, restoreProgress = false) {
                 // Clear any existing assessment
                 $('#assessment-container').remove();
 
                 console.log("Questions received:", questions);
+                console.log("Full response object:", window.response);
 
-                // First sort the questions by question_no
+                // Sort questions
                 questions.sort(function(a, b) {
-                    // Convert question numbers to comparable format
                     var aNum = a.question_no.split('.').map(Number);
                     var bNum = b.question_no.split('.').map(Number);
-
-                    // Compare each part of the question number
                     for (var i = 0; i < Math.max(aNum.length, bNum.length); i++) {
                         var aVal = aNum[i] || 0;
                         var bVal = bNum[i] || 0;
@@ -643,93 +1103,279 @@
 
                 var html = `
 <div id="assessment-container" class="mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Quality Improvement Assessment</h2>
-        <button id="save-assessment" class="btn btn-success">
-            <i class="fas fa-save me-2"></i> Save Assessment
-        </button>
+    <!-- Auto-save Indicator -->
+    <div id="auto-save-indicator" class="auto-save-indicator" style="display: none;">
+        <i class="fas fa-save me-2"></i>
+        <span class="indicator-text">Saving...</span>
     </div>
 
-    <!-- Add status container for showing validation issues -->
+    <!-- Progress Container (Sticky) -->
+    <div class="progress-container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="mb-0">Quality Improvement Assessment</h5>
+            <div class="d-flex align-items-center gap-3">
+                <span class="question-counter">
+                    <span id="answered-count">0</span> / <span id="total-count">${totalQuestions}</span> questions
+                </span>
+                <button id="save-assessment-top" class="btn btn-success btn-sm">
+                    <i class="fas fa-save me-1"></i> Save Assessment
+                </button>
+            </div>
+        </div>
+        <div class="progress" style="height: 8px;">
+            <div id="overall-progress" class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <!-- Validation Status -->
     <div id="validation-status" class="mb-4" style="display: none;"></div>
 
     <div class="card mb-4">
         <div class="card-body">
             <h5 class="card-title mb-3">Assessment Details</h5>`;
 
-                // Add previous assessment details if available
-                if (window.response && window.response.safecare_result) {
-                    const result = window.response.safecare_result;
+                // Check for existing assessments
+                const hasExistingAssessment = (
+                    window.response &&
+                    window.response.safecare_result &&
+                    window.response.safecare_result.id
+                ) || (
+                    window.response &&
+                    window.response.has_previous_assessment === true
+                ) || (
+                    existingAssessmentId && existingAssessmentId > 0
+                );
+
+                console.log("Has existing assessment:", hasExistingAssessment);
+                console.log("Existing assessment ID:", existingAssessmentId);
+                console.log("SafeCare result:", window.response ? window.response.safecare_result : null);
+
+                // Assessment Mode Selector - Only show if there's existing data
+                if (hasExistingAssessment) {
+                    const assessment = window.response.safecare_result;
+
                     html += `
-            <div class="previous-assessment-info">
-                <h6>Previous Assessment Information</h6>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">District:</span>
-                        <span class="badge bg-secondary">${selections.district_name}</span>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">LGA:</span>
-                        <span class="badge bg-secondary">${selections.lga_name}</span>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">PHC:</span>
-                        <span class="badge bg-secondary">${selections.phc_name}</span>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">SafeCare Level:</span>
-                        <span class="badge bg-info">${result.safecare_level || 'N/A'}</span>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">SafeCare Score:</span>
-                        <span class="badge bg-primary">${result.safecare_score || 'N/A'}</span>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">Last Assessment:</span>
-                        <span class="badge bg-success">${result.last_assessment ? new Date(result.last_assessment).toLocaleDateString() : 'N/A'}</span>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">Assessor:</span>
-                        <span class="badge bg-dark">${result.assessor_name || 'Unknown'}</span>
-                    </div>
+        <!-- Assessment Mode Selector -->
+        <div class="assessment-mode-selector mb-4">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h6 class="mb-0"><i class="fas fa-cogs me-2"></i>Assessment Mode Selection</h6>
                 </div>
-            </div>`;
-                } else {
-                    html += `
-            <div class="previous-assessment-info">
-                <h6>Current Facility Information</h6>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">District:</span>
-                        <span class="badge bg-secondary">${selections.district_name}</span>
+                <div class="card-body">
+                    <div class="alert alert-info mb-3">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Previous Assessment Found!</strong> Choose how you want to proceed:
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">LGA:</span>
-                        <span class="badge bg-secondary">${selections.lga_name}</span>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <span class="assessment-label">PHC:</span>
-                        <span class="badge bg-secondary">${selections.phc_name}</span>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="alert alert-info mt-2">
-                            <i class="fas fa-info-circle me-2"></i> No previous assessment data available for this facility.
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check mode-option">
+                                <input class="form-check-input" type="radio" name="assessmentMode" id="newAssessmentMode" value="new" checked>
+                                <label class="form-check-label" for="newAssessmentMode">
+                                    <div class="mode-card border rounded p-3">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <i class="fas fa-plus-circle text-success fa-2x me-3"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-success">New Assessment</h6>
+                                                <small class="text-muted">Recommended</small>
+                                            </div>
+                                        </div>
+                                        <p class="small mb-0">Create a fresh assessment with a new ID. This is the recommended option for regular quality improvement tracking.</p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-success">✓ Creates new record</span>
+                                            <span class="badge bg-info">✓ Archives old data</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check mode-option">
+                                <input class="form-check-input" type="radio" name="assessmentMode" id="updateAssessmentMode" value="update">
+                                <label class="form-check-label" for="updateAssessmentMode">
+                                    <div class="mode-card border rounded p-3">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <i class="fas fa-edit text-warning fa-2x me-3"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-warning">Update Existing</h6>
+                                                <small class="text-muted">Modify current</small>
+                                            </div>
+                                        </div>
+                                        <p class="small mb-0">Modify the existing assessment (ID: #${existingAssessmentId || 'N/A'}). Use this if you need to correct or add to the current assessment data.</p>
+                                        <div class="mt-2">
+                                            <span class="badge bg-warning">✓ Modifies existing</span>
+                                            <span class="badge bg-info">✓ Preserves dates</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                     </div>
+
+                    <div id="mode-description" class="alert alert-success mt-3">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>New Assessment Mode:</strong> You will create a fresh assessment with a new ID. The previous assessment will be preserved for historical reference.
+                    </div>
                 </div>
-            </div>`;
+            </div>
+        </div>`;
+
+                    // Show existing assessment information with enhanced date handling
+                    const assessmentDate = assessment.assessment_date ? new Date(assessment.assessment_date) : null;
+                    const createdDate = assessment.created_at ? new Date(assessment.created_at) : null;
+                    const lastUpdatedDate = assessment.last_updated_date ? new Date(assessment.last_updated_date) :
+                        null;
+                    const hasBeenUpdated = assessment.has_been_updated || assessment.updated_by_name;
+
+                    html += `
+        <div class="previous-assessment-info">
+            <h6><i class="fas fa-history me-2"></i>Previous Assessment Information</h6>
+            <div class="row">
+                <!-- Facility Information -->
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">District:</span>
+                    <span class="badge bg-secondary">${selections.district_name}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">LGA:</span>
+                    <span class="badge bg-secondary">${selections.lga_name}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">PHC:</span>
+                    <span class="badge bg-secondary">${selections.phc_name}</span>
+                </div>
+
+                <!-- Assessment Results -->
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">SafeCare Level:</span>
+                    <span class="badge bg-info">${assessment.safecare_level || 'Not Assessed'}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">SafeCare Score:</span>
+                    <span class="badge bg-primary">${assessment.safecare_score || assessment.compliance_percentage || 'N/A'}${(assessment.safecare_score || assessment.compliance_percentage) ? '%' : ''}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">Assessment ID:</span>
+                    <span class="badge bg-info">#${assessment.id || 'N/A'}</span>
+                </div>
+
+                <!-- Date Information -->
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">Original Assessment Date:</span>
+                    <span class="badge bg-success">${assessmentDate ? assessmentDate.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    }) : 'Never Assessed'}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">Created On:</span>
+                    <span class="badge bg-secondary">${createdDate ? createdDate.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    }) + ' at ' + createdDate.toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }) : 'Unknown'}</span>
+                </div>
+                ${hasBeenUpdated ? `
+                                <div class="col-md-4 mb-3">
+                                    <span class="assessment-label">Last Updated:</span>
+                                    <span class="badge bg-warning text-dark">${lastUpdatedDate ? lastUpdatedDate.toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric'
+                                    }) + ' at ' + lastUpdatedDate.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    }) : 'Unknown'}</span>
+                                </div>
+                                ` : ''}
+
+                <!-- User Information -->
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">Original Assessor:</span>
+                    <span class="badge bg-dark">${assessment.assessor_name || assessment.user_name || 'Unknown'}</span>
+                </div>
+                ${hasBeenUpdated ? `
+                                <div class="col-md-4 mb-3">
+                                    <span class="assessment-label">Last Updated By:</span>
+                                    <span class="badge bg-warning text-dark">${assessment.updated_by_name || 'Unknown'}</span>
+                                </div>
+                                ` : ''}
+            </div>
+
+            ${hasBeenUpdated ? `
+                            <div class="alert alert-warning mt-3 mb-0">
+                                <i class="fas fa-edit me-2"></i>
+                                <strong>Update History:</strong> This assessment has been previously modified.
+                                The original assessment date (${assessmentDate ? assessmentDate.toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                }) : 'N/A'}) is preserved for audit purposes.
+                            </div>
+                            ` : `
+                            <div class="alert alert-info mt-3 mb-0">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Original Assessment:</strong> This assessment has not been modified since its creation.
+                            </div>
+                            `}
+        </div>`;
+                } else {
+                    // No existing assessment - First time assessment
+                    html += `
+        <div class="facility-info">
+            <h6><i class="fas fa-info-circle me-2"></i>Current Facility Information</h6>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">District:</span>
+                    <span class="badge bg-secondary">${selections.district_name}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">LGA:</span>
+                    <span class="badge bg-secondary">${selections.lga_name}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">PHC:</span>
+                    <span class="badge bg-secondary">${selections.phc_name}</span>
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-info mt-2">
+                        <i class="fas fa-star me-2"></i>
+                        <strong>First Assessment:</strong> No previous SafeCare assessment data found for this facility. This will be the first assessment.
+                    </div>
+                </div>
+            </div>
+        </div>`;
                 }
 
                 html += `
         </div>
     </div>`;
 
-                // For each section, create a separate card with its questions
+                // Create sections with progress indicators
                 Object.keys(sectionGroups).forEach(function(section) {
+                    const sectionId = section.replace(/\s+/g, '-').toLowerCase();
+                    const sectionQuestions = sectionGroups[section];
+
                     html += `
-    <div class="card mb-4 section-card" id="section-${section.replace(/\s+/g, '-').toLowerCase()}">
+    <div class="card mb-4 section-card" id="section-${sectionId}">
         <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">${section}</h5>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">${section}</h5>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="section-completion-badge badge bg-light text-dark" id="section-badge-${sectionId}">
+                        0/${sectionQuestions.length}
+                    </span>
+                    <div class="section-progress">
+                        <div class="section-progress-bar" style="width: 100px;">
+                            <div class="section-progress-fill" id="section-progress-${sectionId}" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -746,7 +1392,7 @@
                     // Add questions for this section
                     sectionGroups[section].forEach(function(question, index) {
                         html += `
-            <tr class="question-row" id="question-${question.id}">
+            <tr class="question-row" id="question-${question.id}" data-section="${sectionId}">
                 <td>${index + 1}</td>
                 <td>${question.question_no}</td>
                 <td>${question.question_description}</td>
@@ -769,40 +1415,302 @@
     </div>`;
                 });
 
-                html += `</div>`;
+                // Add floating save button and bottom action bar
+                html += `
+    <!-- Bottom Action Bar -->
+    <div class="card mt-4 mb-5">
+        <div class="card-body text-center">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h6 class="mb-2">Assessment Progress</h6>
+                    <div class="progress mb-2" style="height: 10px;">
+                        <div id="bottom-progress" class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+                    </div>
+                    <small class="text-muted">
+                        Complete all <span id="total-questions-bottom">${totalQuestions}</span> questions to submit your assessment
+                    </small>
+                </div>
+                <div class="col-md-4">
+                    <button id="save-assessment-bottom" class="btn btn-success btn-lg">
+                        <i class="fas fa-save me-2"></i> Save Assessment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Save Button -->
+<button id="floating-save-btn" class="floating-save-button btn btn-success" style="display: none;">
+    <i class="fas fa-save me-2"></i> Save Assessment
+</button>`;
 
                 // Append the assessment to the main content
                 $('.main-content').append(html);
 
-                // Add event handlers
-                $('#save-assessment').on('click', function() {
+                // Restore progress if needed
+                if (restoreProgress) {
+                    restoreSavedProgress();
+                }
+
+                // Setup event handlers
+                setupAssessmentHandlers(questions, selections);
+                updateProgress();
+            }
+
+            function populatePreviousResponses() {
+                if (!window.response || !window.response.previousAssessment) {
+                    console.log("No previous assessment data to populate");
+                    return;
+                }
+
+                const previousResponses = window.response.previousAssessment;
+                console.log("Populating previous responses:", previousResponses);
+
+                // Populate each response
+                Object.keys(previousResponses).forEach(questionId => {
+                    const responseData = previousResponses[questionId];
+                    const select = $(`.response-select[data-question-id="${questionId}"]`);
+
+                    if (select.length && responseData.response) {
+                        select.val(responseData.response);
+                        select.closest('.question-row').addClass('answered');
+
+                        // Add comment functionality if you have it
+                        if (responseData.comment) {
+                            console.log(`Comment for question ${questionId}:`, responseData.comment);
+                        }
+                    }
+                });
+
+                // Update all progress indicators after populating
+                updateProgress();
+                updateAllSectionProgress();
+
+                console.log("Previous responses populated successfully");
+            }
+
+            function setupAssessmentHandlers(questions, selections) {
+                // Assessment mode change handler
+                $('input[name="assessmentMode"]').on('change', function() {
+                    currentAssessmentMode = $(this).val();
+                    const mode = $(this).val();
+                    const description = $('#mode-description');
+
+                    if (mode === 'new') {
+                        description.removeClass('alert-warning').addClass('alert-success');
+                        description.html(`
+                    <i class="fas fa-lightbulb me-2"></i>
+                    <strong>New Assessment Mode:</strong> You will create a fresh assessment with a new ID.
+                    The previous assessment will be preserved for historical reference.
+                `);
+
+                        // Clear all responses for new assessment
+                        $('.response-select').val('').removeClass('is-invalid');
+                        $('.question-row').removeClass('answered');
+                        updateProgress();
+                        updateAllSectionProgress();
+
+                    } else if (mode === 'update') {
+                        description.removeClass('alert-success').addClass('alert-warning');
+                        description.html(`
+                    <i class="fas fa-edit me-2"></i>
+                    <strong>Update Mode:</strong> You will modify the existing assessment (ID: #${existingAssessmentId || 'N/A'}).
+                    Changes will be saved to the current assessment record. The original assessment date will be preserved.
+                `);
+
+                        // Populate previous responses for update mode
+                        populatePreviousResponses();
+                    }
+                });
+
+                // Save button handlers
+                $('#save-assessment-top, #save-assessment-bottom, #floating-save-btn').on('click', function() {
                     saveAssessment(questions, selections);
                 });
 
+                // Response change handlers with auto-save
                 $('.response-select').on('change', function() {
+                    const questionRow = $(this).closest('.question-row');
+                    const sectionId = questionRow.data('section');
+
+                    // Visual feedback
                     $(this).removeClass('is-invalid');
                     $(this).parent().find('.question-error').remove();
+                    questionRow.addClass('answered');
+
+                    // Update progress
+                    updateProgress();
+                    updateSectionProgress(sectionId);
+
+                    // Auto-save with debouncing
+                    clearTimeout(autoSaveTimer);
+                    autoSaveTimer = setTimeout(() => {
+                        autoSaveProgress();
+                    }, 2000); // Save 2 seconds after last change
+                });
+
+                // Show floating button when scrolling
+                $(window).on('scroll', function() {
+                    const scrollTop = $(window).scrollTop();
+
+                    // Show floating button if scrolled past the top save button
+                    if (scrollTop > 200) {
+                        $('#floating-save-btn').fadeIn();
+                    } else {
+                        $('#floating-save-btn').fadeOut();
+                    }
                 });
             }
 
-            function getResponseText(code) {
-                switch (code) {
-                    case 'NC':
-                        return 'NC - Non-Compliant';
-                    case 'PC':
-                        return 'PC - Partially Compliant';
-                    case 'FC':
-                        return 'FC - Fully Compliant';
-                    case 'NA':
-                        return 'NA - Not Applicable';
-                    default:
-                        return code;
+            function updateProgress() {
+                answeredQuestions = $('.response-select').filter(function() {
+                    return $(this).val() !== '';
+                }).length;
+
+                const percentage = totalQuestions > 0 ? (answeredQuestions / totalQuestions) * 100 : 0;
+
+                $('#answered-count').text(answeredQuestions);
+                $('#total-count').text(totalQuestions);
+                $('#overall-progress, #bottom-progress').css('width', percentage + '%');
+            }
+
+            function updateSectionProgress(sectionId) {
+                const section = $(`#section-${sectionId}`);
+                const sectionSelects = section.find('.response-select');
+                const sectionAnswered = sectionSelects.filter(function() {
+                    return $(this).val() !== '';
+                }).length;
+                const sectionTotal = sectionSelects.length;
+                const sectionPercentage = sectionTotal > 0 ? (sectionAnswered / sectionTotal) * 100 : 0;
+
+                $(`#section-badge-${sectionId}`).text(`${sectionAnswered}/${sectionTotal}`);
+                $(`#section-progress-${sectionId}`).css('width', sectionPercentage + '%');
+            }
+
+            function updateAllSectionProgress() {
+                $('.section-card').each(function() {
+                    const sectionId = $(this).attr('id').replace('section-', '');
+                    updateSectionProgress(sectionId);
+                });
+            }
+
+            function autoSaveProgress() {
+                const selections = JSON.parse(localStorage.getItem('qip_selections'));
+                if (!selections) return;
+
+                showAutoSaveIndicator('saving');
+
+                const responses = {};
+                $('.response-select').each(function() {
+                    const questionId = $(this).data('question-id');
+                    const response = $(this).val();
+                    if (response) {
+                        responses[questionId] = response;
+                    }
+                });
+
+                // Save to localStorage
+                const progressData = {
+                    selections: selections,
+                    responses: responses,
+                    assessmentMode: currentAssessmentMode,
+                    timestamp: Date.now()
+                };
+
+                localStorage.setItem('assessment_progress', JSON.stringify(progressData));
+                localStorage.setItem('assessment_save_time', Date.now().toString());
+
+                // Simulate server save (you can implement actual server-side temporary save here)
+                setTimeout(() => {
+                    showAutoSaveIndicator('saved');
+                    setTimeout(() => {
+                        hideAutoSaveIndicator();
+                    }, 2000);
+                }, 500);
+            }
+
+            function restoreSavedProgress() {
+                const savedProgress = localStorage.getItem('assessment_progress');
+                if (!savedProgress) return;
+
+                try {
+                    const progressData = JSON.parse(savedProgress);
+                    const responses = progressData.responses;
+
+                    // Restore assessment mode if available
+                    if (progressData.assessmentMode && progressData.assessmentMode !== 'new') {
+                        currentAssessmentMode = progressData.assessmentMode;
+                        $(`input[name="assessmentMode"][value="${progressData.assessmentMode}"]`).prop('checked',
+                                true)
+                            .trigger('change');
+                    }
+
+                    // Restore responses
+                    Object.keys(responses).forEach(questionId => {
+                        const select = $(`.response-select[data-question-id="${questionId}"]`);
+                        if (select.length) {
+                            select.val(responses[questionId]);
+                            select.closest('.question-row').addClass('answered');
+                        }
+                    });
+
+                    // Update all progress indicators
+                    updateProgress();
+                    updateAllSectionProgress();
+
+                    // Show restoration message
+                    showAutoSaveIndicator('saved');
+                    $('.auto-save-indicator .indicator-text').text('Progress restored');
+                    setTimeout(() => {
+                        hideAutoSaveIndicator();
+                    }, 3000);
+
+                } catch (error) {
+                    console.error('Error restoring progress:', error);
                 }
             }
 
-            // Function to save assessment with improved validation
+            function showAutoSaveIndicator(status) {
+                const indicator = $('#auto-save-indicator');
+                const icon = indicator.find('i');
+                const text = indicator.find('.indicator-text');
+
+                indicator.removeClass('saving saved error').addClass(status);
+
+                switch (status) {
+                    case 'saving':
+                        icon.attr('class', 'fas fa-spinner fa-spin me-2');
+                        text.text('Saving progress...');
+                        break;
+                    case 'saved':
+                        icon.attr('class', 'fas fa-check me-2');
+                        text.text('Progress saved');
+                        break;
+                    case 'error':
+                        icon.attr('class', 'fas fa-exclamation-triangle me-2');
+                        text.text('Save failed');
+                        break;
+                }
+
+                indicator.fadeIn();
+            }
+
+            function hideAutoSaveIndicator() {
+                $('#auto-save-indicator').fadeOut();
+            }
+
+            function clearSavedProgress() {
+                localStorage.removeItem('assessment_progress');
+                localStorage.removeItem('assessment_save_time');
+            }
+
+            // Save function with proper endpoint handling
             function saveAssessment(questions, selections) {
                 console.log("Save button clicked");
+
+                // Determine if this is an update operation
+                const isUpdateMode = currentAssessmentMode === 'update' && existingAssessmentId;
 
                 // Clear any previous error highlights
                 $('.response-select').removeClass('is-invalid');
@@ -823,7 +1731,6 @@
 
                     if (!response) {
                         emptyResponses.push($(this));
-                        // Track which sections have missing responses
                         if (!sectionsMissing[section]) {
                             sectionsMissing[section] = 1;
                         } else {
@@ -839,121 +1746,190 @@
 
                 console.log("Collected responses:", responses);
                 console.log("Empty responses:", emptyResponses.length);
+                console.log("Update mode:", isUpdateMode);
+                console.log("Existing assessment ID:", existingAssessmentId);
 
                 if (emptyResponses.length > 0) {
-                    var summaryHtml = `
-                <div id="validation-summary" class="alert alert-danger">
-                    <h5><i class="fas fa-exclamation-triangle"></i> Please complete all questions</h5>
-                    <p>You have ${emptyResponses.length} unanswered question(s) in the following sections:</p>
-                    <ul>
-            `;
-
-                    // Add sections with missing responses to summary
-                    Object.keys(sectionsMissing).forEach(function(section) {
-                        var sectionId = section.replace(/\s+/g, '-').toLowerCase();
-                        summaryHtml +=
-                            `<li><a class="section-link" data-section="${sectionId}">${section} (${sectionsMissing[section]} question(s))</a></li>`;
-
-                        // Highlight the section card
-                        $(`#section-${sectionId}`).addClass('highlighted-section');
-                    });
-
-                    summaryHtml += `
-                    </ul>
-                </div>
-            `;
-
-                    // Show validation summary
-                    $('#validation-status').html(summaryHtml).show();
-
-                    // Add click handler for section links
-                    $('.section-link').on('click', function() {
-                        var sectionId = $(this).data('section');
-                        scrollToSection(sectionId);
-                    });
-
-                    // Add highlighting to all empty responses
-                    emptyResponses.forEach(function(element) {
-                        element.addClass('is-invalid');
-                        element.parent().append(
-                            '<div class="question-error"><i class="fas fa-exclamation-circle"></i> This question requires a response</div>'
-                        );
-
-                        // Highlight the row
-                        element.closest('tr').addClass('question-highlight');
-                    });
-
-                    // Scroll to the validation summary
-                    $('html, body').animate({
-                        scrollTop: $('#validation-status').offset().top - 100
-                    }, 500);
-
-                    return; // Stop the function here
+                    showValidationErrors(emptyResponses, sectionsMissing);
+                    return;
                 }
-                // Show saving indicator
-                $('#save-assessment').html(
-                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...'
-                ).prop('disabled', true);
 
-                // AJAX request to save assessment
+                // Update button text based on mode
+                const actionText = isUpdateMode ? 'Updating...' : 'Saving...';
+                const iconClass = isUpdateMode ? 'fa-edit' : 'fa-save';
+
+                // Show saving indicator
+                $('#save-assessment-top, #save-assessment-bottom, #floating-save-btn')
+                    .html(
+                        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ${actionText}`
+                    )
+                    .prop('disabled', true);
+
+                // Choose the correct endpoint based on mode
+                const endpoint = isUpdateMode ? '/update-safecare-assessment' : '/save-safecare-assessment';
+
+                // Prepare request data
+                const requestData = {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    district_id: selections.district_id,
+                    lga_id: selections.lga_id,
+                    phc_id: selections.phc_id,
+                    responses: responses
+                };
+
+                // Add assessment_id if updating
+                if (isUpdateMode && existingAssessmentId) {
+                    requestData.assessment_id = existingAssessmentId;
+                }
+
+                console.log("Request data:", requestData);
+                console.log("Using endpoint:", endpoint);
+
+                // AJAX request to save/update assessment
                 $.ajax({
-                    url: '/save-safecare-assessment',
+                    url: endpoint,
                     type: 'POST',
                     dataType: 'json',
-                    data: {
-                        _token: $('meta[name="csrf-token"]').attr('content'),
-                        district_id: selections.district_id,
-                        lga_id: selections.lga_id,
-                        phc_id: selections.phc_id,
-                        responses: responses
-                    },
+                    data: requestData,
                     success: function(response) {
                         console.log("Save success:", response);
-                        // Show success message
-                        $('#assessment-container').replaceWith(`
-                    <div class="alert alert-success mt-4">
-                        <h4 class="alert-heading">SafeCare Assessment successfully completed!</h4>
-                        <p>Your quality improvement assessment has been saved.</p>
-                        <hr>
-                        <button id="new-assessment" class="btn btn-primary mt-2">Start New Assessment</button>
-                    </div>
-                `);
-
-                        // Handle new assessment button
-                        $('#new-assessment').on('click', function() {
-                            // Clear localStorage
-                            localStorage.removeItem('qip_selections');
-
-                            // Refresh the page
-                            window.location.reload();
-                        });
+                        clearSavedProgress();
+                        showSuccessMessage(response, isUpdateMode);
                     },
                     error: function(xhr, status, error) {
-                        // Show detailed error message
-                        $('#save-assessment').html('Save Assessment').prop('disabled', false);
-                        console.error("Status:", status);
+                        // Reset save buttons
+                        const resetText = isUpdateMode ? 'Update Assessment' : 'Save Assessment';
+                        $('#save-assessment-top, #save-assessment-bottom, #floating-save-btn')
+                            .html(`<i class="fas ${iconClass} me-2"></i>${resetText}`)
+                            .prop('disabled', false);
+
                         console.error("Error:", error);
                         console.error("Response Text:", xhr.responseText);
 
                         try {
                             var jsonResponse = JSON.parse(xhr.responseText);
-                            alert('Error saving assessment: ' + jsonResponse.message);
+                            alert(
+                                `Error ${isUpdateMode ? 'updating' : 'saving'} assessment: ${jsonResponse.message}`
+                            );
                         } catch (e) {
-                            alert('Error saving assessment. Please check the console for details.');
+                            alert(
+                                `Error ${isUpdateMode ? 'updating' : 'saving'} assessment. Please check the console for details.`
+                            );
                         }
                     }
                 });
             }
 
-            // Helper function to scroll to a specific section
+            function showValidationErrors(emptyResponses, sectionsMissing) {
+                var summaryHtml = `
+            <div id="validation-summary" class="alert alert-danger">
+                <h5><i class="fas fa-exclamation-triangle"></i> Please complete all questions</h5>
+                <p>You have ${emptyResponses.length} unanswered question(s) in the following sections:</p>
+                <ul>
+            `;
+
+                // Add sections with missing responses to summary
+                Object.keys(sectionsMissing).forEach(function(section) {
+                    var sectionId = section.replace(/\s+/g, '-').toLowerCase();
+                    summaryHtml += `<li class="validation-summary-section" data-section="${sectionId}">
+                    <i class="fas fa-arrow-right me-2"></i>${section} (${sectionsMissing[section]} question(s))
+                </li>`;
+
+                    // Highlight the section card
+                    $(`#section-${sectionId}`).addClass('highlighted-section');
+                });
+
+                summaryHtml += `
+                </ul>
+                <div class="mt-3">
+                    <button id="review-incomplete" class="btn btn-warning btn-sm">
+                        <i class="fas fa-search me-1"></i> Review Incomplete Questions
+                    </button>
+                </div>
+            </div>
+            `;
+
+                // Show validation summary
+                $('#validation-status').html(summaryHtml).show();
+
+                // Add click handler for section links
+                $('.validation-summary-section').on('click', function() {
+                    var sectionId = $(this).data('section');
+                    scrollToSection(sectionId);
+                });
+
+                // Review incomplete button
+                $('#review-incomplete').on('click', function() {
+                    reviewIncompleteQuestions(emptyResponses);
+                });
+
+                // Add highlighting to all empty responses
+                emptyResponses.forEach(function(element) {
+                    element.addClass('is-invalid');
+                    element.parent().append(
+                        '<div class="question-error text-danger mt-1"><i class="fas fa-exclamation-circle me-1"></i>This question requires a response</div>'
+                    );
+                    element.closest('tr').addClass('question-highlight');
+                });
+
+                // Scroll to the validation summary
+                $('html, body').animate({
+                    scrollTop: $('#validation-status').offset().top - 100
+                }, 500);
+            }
+
+            function reviewIncompleteQuestions(emptyResponses) {
+                let currentIndex = 0;
+
+                function goToNextIncomplete() {
+                    if (currentIndex < emptyResponses.length) {
+                        const currentSelect = emptyResponses[currentIndex];
+                        const questionRow = currentSelect.closest('tr');
+
+                        // Scroll to question
+                        $('html, body').animate({
+                            scrollTop: questionRow.offset().top - 150
+                        }, 500);
+
+                        // Highlight current question
+                        $('.question-row').removeClass('reviewing');
+                        questionRow.addClass('reviewing');
+
+                        // Focus on select
+                        setTimeout(() => {
+                            currentSelect.focus();
+                        }, 600);
+
+                        currentIndex++;
+
+                        // Auto-advance after 3 seconds or when answered
+                        const autoAdvance = setTimeout(() => {
+                            goToNextIncomplete();
+                        }, 3000);
+
+                        // Clear auto-advance if user answers
+                        currentSelect.one('change', function() {
+                            clearTimeout(autoAdvance);
+                            questionRow.removeClass('reviewing');
+                            setTimeout(goToNextIncomplete, 500);
+                        });
+                    } else {
+                        // All reviewed, scroll back to validation summary
+                        $('.question-row').removeClass('reviewing');
+                        $('html, body').animate({
+                            scrollTop: $('#validation-status').offset().top - 100
+                        }, 500);
+                    }
+                }
+
+                goToNextIncomplete();
+            }
+
             function scrollToSection(sectionId) {
                 var section = $(`#section-${sectionId}`);
-
-                // Find the first unanswered question in this section
                 var firstEmptyInSection = section.find('.is-invalid').first();
 
                 if (firstEmptyInSection.length) {
-                    // Scroll to the first empty question in this section
                     $('html, body').animate({
                         scrollTop: firstEmptyInSection.closest('tr').offset().top - 100
                     }, 500);
@@ -967,10 +1943,313 @@
                     }, 500);
                 }
             }
+
+            function showSuccessMessage(response, isUpdateMode = false) {
+                const assessmentId = response.assessment_id;
+                const compliancePercentage = response.compliance_percentage;
+                const summary = response.summary;
+                const trackingInfo = response.tracking_info;
+
+
+                const actionText = isUpdateMode ? 'Updated' : 'Completed';
+                const actionVerb = isUpdateMode ? 'updated' : 'saved and submitted';
+
+                let successHtml = `
+        <div class="alert alert-success mt-4">
+            <h4 class="alert-heading">
+                <i class="fas fa-check-circle me-2"></i>
+                SafeCare Assessment Successfully ${actionText}!
+            </h4>
+            <p class="mb-3">Your quality improvement assessment has been ${actionVerb}.</p>
+
+            <!-- Assessment Summary Card -->
+            <div class="card mt-3">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-chart-pie me-2"></i>Assessment Summary
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="text-center mb-3">
+                                <h2 class="text-primary">${compliancePercentage}%</h2>
+                                <p class="text-muted mb-0">Overall Compliance Score</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center mb-3">
+                                <h3 class="text-info">#${assessmentId}</h3>
+                                <p class="text-muted mb-0">Assessment ID</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row text-center">
+                        <div class="col-3">
+                            <div class="p-2">
+                                <h4 class="text-success mb-1">${summary.fully_compliant}</h4>
+                                <small class="text-muted">Fully Compliant</small>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <h4 class="text-warning mb-1">${summary.partially_compliant}</h4>
+                                <small class="text-muted">Partially Compliant</small>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <h4 class="text-danger mb-1">${summary.not_compliant}</h4>
+                                <small class="text-muted">Not Compliant</small>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="p-2">
+                                <h4 class="text-secondary mb-1">${summary.not_applicable}</h4>
+                                <small class="text-muted">Not Applicable</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="progress" style="height: 10px;">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                 style="width: ${(summary.fully_compliant/summary.total_questions)*100}%"
+                                 title="Fully Compliant: ${summary.fully_compliant}"></div>
+                            <div class="progress-bar bg-warning" role="progressbar"
+                                 style="width: ${(summary.partially_compliant/summary.total_questions)*100}%"
+                                 title="Partially Compliant: ${summary.partially_compliant}"></div>
+                            <div class="progress-bar bg-danger" role="progressbar"
+                                 style="width: ${(summary.not_compliant/summary.total_questions)*100}%"
+                                 title="Not Compliant: ${summary.not_compliant}"></div>
+                            <div class="progress-bar bg-secondary" role="progressbar"
+                                 style="width: ${(summary.not_applicable/summary.total_questions)*100}%"
+                                 title="Not Applicable: ${summary.not_applicable}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+                // Add comprehensive date and user tracking information with better null checks
+                successHtml += `
+            <!-- Assessment Tracking Information -->
+            <div class="card mt-3">
+                <div class="card-header ${isUpdateMode ? 'bg-warning text-dark' : 'bg-success text-white'}">
+                    <h6 class="card-title mb-0">
+                        <i class="fas ${isUpdateMode ? 'fa-history' : 'fa-calendar'} me-2"></i>
+                        ${isUpdateMode ? 'Assessment History & Tracking' : 'Assessment Information'}
+                    </h6>
+                </div>
+                <div class="card-body">`;
+
+                if (isUpdateMode && trackingInfo) {
+                    // For updates - show both original and update information with better null checks
+                    const assessmentDate = trackingInfo.assessment_date ? new Date(trackingInfo.assessment_date) :
+                        null;
+                    const createdDate = trackingInfo.created_at ? new Date(trackingInfo.created_at) : null;
+                    const lastUpdatedDate = trackingInfo.last_updated_date ? new Date(trackingInfo
+                        .last_updated_date) : null;
+
+                    successHtml += `
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-primary mb-3">
+                                    <i class="fas fa-user-plus me-2"></i>Original Assessment
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Original Assessor:</strong>
+                                        <span class="badge bg-primary ms-2">${trackingInfo.original_assessor || 'Unknown'}</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Assessment Date:</strong>
+                                        <span class="badge bg-info ms-2">${assessmentDate ? assessmentDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        }) : 'Not Available'}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Created On:</strong>
+                                        <span class="badge bg-secondary ms-2">${createdDate ? createdDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric'
+                                        }) + ' at ' + createdDate.toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        }) : 'Not Available'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-warning mb-3">
+                                    <i class="fas fa-user-edit me-2"></i>Latest Update
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Updated by:</strong>
+                                        <span class="badge bg-warning text-dark ms-2">${trackingInfo.updated_by || 'Current User'}</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Update Date:</strong>
+                                        <span class="badge bg-success ms-2">${lastUpdatedDate ? lastUpdatedDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        }) : 'Today'}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Update Time:</strong>
+                                        <span class="badge bg-dark ms-2">${lastUpdatedDate ? lastUpdatedDate.toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit'
+                                        }) : new Date().toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit'
+                                        })}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    </div>`;
+                } else {
+                    // For new assessments - show single assessment information with better date handling
+                    const assessmentDate = trackingInfo && trackingInfo.assessment_date ? new Date(trackingInfo
+                        .assessment_date) : new Date();
+                    const createdDate = trackingInfo && trackingInfo.created_at ? new Date(trackingInfo
+                        .created_at) : new Date();
+
+                    successHtml += `
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-success mb-3">
+                                    <i class="fas fa-calendar-plus me-2"></i>Assessment Information
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Assessment Date:</strong>
+                                        <span class="badge bg-success ms-2">${assessmentDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        })}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Created On:</strong>
+                                        <span class="badge bg-secondary ms-2">${createdDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric'
+                                        })} at ${createdDate.toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-primary mb-3">
+                                    <i class="fas fa-user me-2"></i>Assessor Information
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Assessed by:</strong>
+                                        <span class="badge bg-primary ms-2">${trackingInfo && trackingInfo.assessor_name ? trackingInfo.assessor_name : 'Current User'}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Assessment ID:</strong>
+                                        <span class="badge bg-info ms-2">#${assessmentId}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success mt-3 mb-0">
+                        <div class="row align-items-center">
+                            <div class="col-md-1 text-center">
+                                <i class="fas fa-check-circle fa-2x text-success"></i>
+                            </div>
+                            <div class="col-md-11">
+                                <h6 class="mb-1"><strong>New Assessment Created</strong></h6>
+                                <p class="mb-0">
+                                    This assessment was successfully created on ${assessmentDate.toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
+                                    })} at ${createdDate.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}.
+                                </p>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+
+                successHtml += `
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="d-flex gap-2 flex-wrap">
+                <button id="new-assessment" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Start New Assessment
+                </button>
+                <button id="view-history" class="btn btn-outline-info">
+                    <i class="fas fa-history me-2"></i>View Assessment History
+                </button>
+                <button id="download-report" class="btn btn-outline-success">
+                    <i class="fas fa-download me-2"></i>Download Report
+                </button>
+            </div>
+        </div>
+    `;
+
+                // Replace the assessment container with the success message
+                $('#assessment-container').replaceWith(successHtml);
+                $('#floating-save-btn').hide();
+
+                // Scroll to top to show the success message
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 500);
+
+                // Handle action buttons
+                $('#new-assessment').on('click', function() {
+                    clearSavedProgress();
+                    localStorage.removeItem('qip_selections');
+                    window.location.reload();
+                });
+
+                $('#view-history').on('click', function() {
+                    alert('Assessment history feature coming soon!');
+                });
+
+                $('#download-report').on('click', function() {
+                    alert('Download report feature coming soon!');
+                });
+            }
         });
     </script>
 
-    <!-- Bootstrap JS Bundle -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

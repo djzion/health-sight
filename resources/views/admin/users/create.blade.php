@@ -126,14 +126,15 @@
             </div>
             <div class="list-group list-group-flush">
                 <a href="{{ route('dashboard') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    class="list-group-item list-group-item-action bg-transparent text-white active">
                     <i class="fas fa-tachometer-alt me-2"></i> Dashboard
                 </a>
                 <a href="{{ route('users.index') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white active">
+                    class="list-group-item list-group-item-action bg-transparent text-white">
                     <i class="fas fa-users me-2"></i> Users
                 </a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent text-white">
+                <a href="{{ route('roles.index') }}"
+                    class="list-group-item list-group-item-action bg-transparent text-white">
                     <i class="fas fa-user-tag me-2"></i> Roles
                 </a>
                 <a href="{{ route('phcs.index') }}"
@@ -147,6 +148,14 @@
                 <a href="{{ route('admin.pendingusers') }}"
                     class="list-group-item list-group-item-action bg-transparent text-white">
                     <i class="fas fa-user-clock me-2"></i> View Pending Users
+                </a>
+                <a href="{{ route('admin.assessments.set-next-date-form') }}"
+                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    <i class="fas fa-user-clock me-2"></i>Set General Assessment Date
+                </a>
+                <a href="{{ route('admin.safecare.dashboard') }}"
+                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    <i class="fas fa-user-clock me-2"></i>Set Safecare Assessment Date
                 </a>
             </div>
         </div>

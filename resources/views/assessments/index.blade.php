@@ -17,7 +17,6 @@
             color: #333;
             font-family: 'Inter', sans-serif;
             padding-top: 60px;
-            /* Add padding for sticky header */
         }
 
         .sidebar {
@@ -88,7 +87,7 @@
             border-radius: 5px;
         }
 
-        style.textContent=` .border-danger {
+        .border-danger {
             border: 2px solid #dc3545 !important;
         }
 
@@ -198,8 +197,6 @@
             margin-right: 5rem !important;
         }
 
-        @media (max-width: 576px) {}
-
         .bg-primary {
             background-color: #0199dc !important;
         }
@@ -213,7 +210,7 @@
         }
 
         .form-input {
-            width: 10%;
+            width: 30%;
             padding: 0.375rem 0.75rem;
             font-size: 1rem;
             line-height: 1.5;
@@ -231,8 +228,11 @@
             border-color: #0199dc;
         }
 
+        .form-select,
         select {
-            width: 30%;
+            min-width: 200px;
+            max-width: 400px;
+            width: auto;
             padding: 0.375rem 0.75rem;
             font-size: 1rem;
             line-height: 1.5;
@@ -243,6 +243,7 @@
             border-radius: 0.25rem;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
             display: block;
+            cursor: pointer;
         }
 
         .label {
@@ -252,13 +253,17 @@
 
         .formp {
             display: flex;
+            gap: 20px;
+        }
+
+        .formea {
+            flex: 1;
         }
 
         .formp input {
-            width: 30%;
+            width: 100%;
         }
 
-        /* New styles for pagination */
         .section-page {
             display: none;
         }
@@ -278,12 +283,10 @@
             margin-top: 20px;
         }
 
-        /* Location banner - improved based on screenshots */
         .location-banner {
             position: fixed;
             top: 0;
             left: 250px;
-            /* Align with sidebar width */
             right: 0;
             z-index: 1020;
             padding: 15px 20px;
@@ -354,7 +357,6 @@
             }
         }
 
-        /* Enhanced Step indicator */
         .step-indicator {
             display: flex;
             width: 100%;
@@ -365,7 +367,6 @@
             padding: 0 15px;
             overflow-x: visible !important;
             display: block;
-            /* Allow horizontal scrolling for many steps */
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-color: #0199dc #f1f5f9;
@@ -392,7 +393,6 @@
             position: relative;
             margin: 0 20px;
             min-width: 100px;
-            /* Ensure minimum width for each step */
             cursor: pointer;
         }
 
@@ -446,36 +446,8 @@
             transform: scale(1.05);
         }
 
-        .step-connector {
-            position: absolute;
-            top: 18px;
-            height: 3px;
-            background-color: #e9ecef;
-            z-index: -1;
-        }
-
-        .step-connector.left {
-            right: 50%;
-            width: 80px;
-            margin-right: 25px;
-        }
-
-        .step-connector.right {
-            left: 50%;
-            width: 80px;
-            margin-left: 25px;
-        }
-
-        .step.completed .step-connector.left,
-        .step.active .step-connector.left,
-        .step-1 .step-connector.right {
-            background-color: #28a745;
-        }
-
-
         .save-progress-btn {
             margin-right: auto;
-            /* This pushes the next/prev buttons to the right */
             border-color: #0199dc;
             color: #0199dc;
             transition: all 0.2s;
@@ -494,7 +466,6 @@
             padding: 0 5px;
         }
 
-        /* Toast styles */
         .toast {
             background-color: white;
             border: none;
@@ -510,7 +481,6 @@
             padding: 0.75rem;
         }
 
-        /* Resume banner styles */
         .resume-btn {
             background-color: #0199dc;
             border-color: #0199dc;
@@ -535,12 +505,6 @@
                 padding-top: 70px !important;
             }
 
-            /* Fix for sidebar transition */
-            .sidebar {
-                transition: width 0.3s ease, transform 0.3s ease;
-            }
-
-            /* Keep location banner full width but adjust left margin */
             .location-banner {
                 left: 60px;
                 width: calc(100% - 60px);
@@ -551,24 +515,20 @@
                 font-size: 0.9rem;
             }
 
-            /* Fix form input widths for mobile */
             .form-input,
             select {
                 width: 100% !important;
                 max-width: 100%;
             }
 
-            /* Make the form layout more compact */
             .card-body {
                 padding: 15px !important;
             }
 
-            /* Adjust question padding */
             .border-bottom {
                 padding-left: 5px !important;
             }
 
-            /* Better form group handling */
             .formp {
                 flex-direction: column;
             }
@@ -583,10 +543,7 @@
             }
         }
 
-        /* Extra small devices */
         @media (max-width: 576px) {
-
-            /* Make the step indicators more mobile-friendly */
             .step-indicator {
                 overflow-x: auto !important;
             }
@@ -606,7 +563,6 @@
                 font-size: 0.8rem;
             }
 
-            /* More compact location banner */
             .location-banner {
                 padding: 8px;
             }
@@ -626,7 +582,6 @@
                 font-size: 0.9rem;
             }
 
-            /* Make navigation buttons more accessible */
             .navigation-buttons {
                 padding: 0;
             }
@@ -636,17 +591,10 @@
                 font-size: 0.9rem;
             }
 
-            /* Progress sections for small screens */
-            .progress-sections {
-                overflow-x: auto;
-            }
-
-            /* Form elements for small screens */
             .form-check-label {
                 font-size: 0.9rem;
             }
 
-            /* Fix checkbox groups in multi-select questions */
             .checkbox-group .row {
                 margin-left: -5px;
                 margin-right: -5px;
@@ -658,26 +606,20 @@
             }
         }
 
-        /* Fix for the form structure overall on mobile */
         @media (max-width: 768px) {
-
-            /* Fix for duplicate step indicators */
             .step-indicator:nth-of-type(2) {
                 display: none !important;
             }
 
-            /* Fix for checkbox groups */
             .checkbox-group .col-md-6,
             .checkbox-group .col-lg-4 {
                 width: 100%;
             }
 
-            /* Fix for validation error messages */
             .section-validation-error {
                 font-size: 0.9rem;
             }
 
-            /* Make sure toast notifications are visible */
             .toast {
                 max-width: 90%;
             }
@@ -696,6 +638,167 @@
                 gap: 0.5rem !important;
             }
         }
+
+        .staff-count-container {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .staff-count-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .staff-count-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .staff-count-label {
+            font-weight: 500;
+            min-width: 120px;
+            color: #495057;
+        }
+
+        .staff-count-input {
+            width: 80px;
+            padding: 0.375rem 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .section-progress {
+            background-color: #e9ecef;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .validation-summary {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Enhanced error message styling */
+        .alert.border-0 {
+            border: none !important;
+        }
+
+        .alert .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .alert .card {
+            box-shadow: none;
+        }
+
+        .alert .card-header {
+            font-weight: 600;
+        }
+
+        .unanswered-questions-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            background-color: #fff;
+        }
+
+        .unanswered-questions-list ul {
+            margin-bottom: 0;
+        }
+
+        .unanswered-questions-list .badge {
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .section-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-item {
+            padding: 0.5rem;
+            border-left: 3px solid #ffc107;
+            background-color: #fffbf0;
+            margin-bottom: 0.5rem;
+            border-radius: 0 0.25rem 0.25rem 0;
+        }
+
+        .question-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Improved loading states */
+        .spinner-border-sm {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .alert .spinner-border {
+            color: inherit;
+        }
+
+        /* Better button spacing in alerts */
+        .alert .btn+.btn {
+            margin-left: 0.5rem;
+        }
+
+        /* Enhanced alert icons */
+        .alert .fa-2x {
+            font-size: 1.75rem;
+        }
+
+        .alert-heading .fas {
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive improvements for error messages */
+        @media (max-width: 768px) {
+            .alert .d-flex {
+                flex-direction: column;
+            }
+
+            .alert .flex-shrink-0 {
+                flex-shrink: 1;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .alert .flex-grow-1 {
+                margin-left: 0 !important;
+            }
+
+            .unanswered-questions-list {
+                max-height: 200px;
+                font-size: 0.9rem;
+            }
+
+            .alert .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+                margin-left: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -709,9 +812,9 @@
             <a href="#"><i class="fas fa-user-injured me-2"></i> Patients</a>
             <a href="#"><i class="fas fa-calendar-alt me-2"></i> Appointments</a>
             <a href="{{ route('assessments.index') }}"><i class="fas fa-file-medical-alt me-2"></i> Assessment</a>
-            <a href="{{ route('qip.index') }}"><i class="fas fa-file-medical-alt me-2"></i> Quality Improvement</a>
+            <a href="#" id="qip-modal-trigger"><i class="fas fa-file-medical-alt me-2"></i> Quality Improvement</a>
             <a href="#"><i class="fas fa-tasks me-2"></i> Tasks</a>
-            <a href="#"><i class="fas fa-chart-line me-2"></i> Reports</a>
+            <a href="#" id="reports-trigger"><i class="fas fa-chart-line me-2"></i> Reports</a>
             <a href="#"><i class="fas fa-envelope me-2"></i> Messages</a>
             <a href="#"><i class="fas fa-cog me-2"></i> Settings</a>
 
@@ -728,7 +831,7 @@
 
         <!-- Main Content -->
         <div class="main-content p-4">
-            <!-- Location Banner styled like screenshot -->
+            <!-- Location Banner -->
             @if (session('assessment_location_selected'))
                 <div class="location-banner">
                     <div class="d-flex justify-content-between align-items-center">
@@ -780,13 +883,11 @@
                         <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div class="progress-sections">
-                        <!-- These will be generated dynamically via JavaScript -->
-                    </div>
                 </div>
 
                 <div class="step-indicator mb-4" id="step-indicator">
                 </div>
+
                 <!-- Form with paginated sections -->
                 <form id="assessment-form" action="{{ route('assessments.store') }}" method="POST" class="mb-5">
                     @csrf
@@ -858,32 +959,78 @@
                                                             value="{{ $existingResponses[$assessment->id]->response ?? '' }}">
                                                     @break
 
-                                                    @case('form')
-                                                        <div class="formp">
+                                                    @case('year')
+                                                        @php
+                                                            $currentYear = date('Y');
+                                                            $startYear = 1960;
+                                                            $selectedYear =
+                                                                $existingResponses[$assessment->id]->response ?? '';
+                                                        @endphp
 
+                                                        <div style="margin: 15px 0;">
+                                                            <select name="responses[{{ $assessment->id }}]"
+                                                                class="form-control assessment-response"
+                                                                data-assessment-id="{{ $assessment->id }}"
+                                                                data-validation-type="year"
+                                                                style="width: 200px; height: 40px; font-size: 16px; border: 2px solid #0199dc;"
+                                                                required>
+
+                                                                <option value="">Select Year</option>
+                                                                @for ($year = $currentYear; $year >= $startYear; $year--)
+                                                                    <option value="{{ $year }}"
+                                                                        {{ $selectedYear == $year ? 'selected' : '' }}>
+                                                                        {{ $year }}
+                                                                    </option>
+                                                                @endfor
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="invalid-feedback"></div>
+                                                    @break
+
+                                                    @case('form')
+                                                        @php
+                                                            $existingData = [];
+                                                            if (isset($existingResponses[$assessment->id])) {
+                                                                $response =
+                                                                    $existingResponses[$assessment->id]->response;
+                                                                if (is_string($response)) {
+                                                                    $existingData = json_decode($response, true) ?? [];
+                                                                } elseif (is_array($response)) {
+                                                                    $existingData = $response;
+                                                                }
+                                                            }
+                                                        @endphp
+                                                        <div class="formp" data-assessment-id="{{ $assessment->id }}">
                                                             <div class="formea">
-                                                                <label class="label" for="full-time">Full Time</label>
-                                                                <input type="number" id="full-time"
+                                                                <label class="label"
+                                                                    for="full-time-{{ $assessment->id }}">Full Time</label>
+                                                                <input type="number" id="full-time-{{ $assessment->id }}"
                                                                     class="form-input assessment-response"
                                                                     data-assessment-id="{{ $assessment->id }}"
-                                                                    name="responses[{{ $assessment->id }}]"
-                                                                    value="{{ $existingResponses[$assessment->id]->response ?? '' }}">
+                                                                    data-type="full_time"
+                                                                    name="staff_responses[{{ $assessment->id }}][full_time]"
+                                                                    value="{{ $existingData['full_time'] ?? '' }}">
                                                             </div>
                                                             <div class="formea">
-                                                                <label class="label" for="cont">Contract</label>
-                                                                <input type="number" id="cont"
+                                                                <label class="label"
+                                                                    for="contract-{{ $assessment->id }}">Contract</label>
+                                                                <input type="number" id="contract-{{ $assessment->id }}"
                                                                     class="form-input assessment-response"
                                                                     data-assessment-id="{{ $assessment->id }}"
-                                                                    name="responses[{{ $assessment->id }}]"
-                                                                    value="{{ $existingResponses[$assessment->id]->response ?? '' }}">
+                                                                    data-type="contract"
+                                                                    name="staff_responses[{{ $assessment->id }}][contract]"
+                                                                    value="{{ $existingData['contract'] ?? '' }}">
                                                             </div>
                                                             <div class="formea">
-                                                                <label class="label" for="nysc">NYSC/INTERN</label>
-                                                                <input type="number" id="nysc"
+                                                                <label class="label"
+                                                                    for="nysc-{{ $assessment->id }}">NYSC/INTERN</label>
+                                                                <input type="number" id="nysc-{{ $assessment->id }}"
                                                                     class="form-input assessment-response"
                                                                     data-assessment-id="{{ $assessment->id }}"
-                                                                    name="responses[{{ $assessment->id }}]"
-                                                                    value="{{ $existingResponses[$assessment->id]->response ?? '' }}">
+                                                                    data-type="nysc_intern"
+                                                                    name="staff_responses[{{ $assessment->id }}][nysc_intern]"
+                                                                    value="{{ $existingData['nysc_intern'] ?? '' }}">
                                                             </div>
                                                         </div>
                                                     @break
@@ -904,41 +1051,17 @@
                                                             ];
                                                             $existingValues = [];
                                                             if (isset($existingResponses[$assessment->id])) {
-                                                                // Convert existing response to array if it's stored as JSON or comma-separated
-    if (
-        is_string(
-            $existingResponses[$assessment->id]->response,
-        )
-    ) {
-        if (
-            strpos(
-                $existingResponses[$assessment->id]
-                    ->response,
-                '[',
-            ) === 0
-        ) {
-            // Looks like JSON
-            $existingValues =
-                json_decode(
-                    $existingResponses[$assessment->id]
-                        ->response,
-                    true,
-                ) ?? [];
-        } else {
-            // Assume comma-separated
-            $existingValues = explode(
-                ',',
-                                                                            $existingResponses[$assessment->id]
-                                                                                ->response,
-                                                                        );
+                                                                $response =
+                                                                    $existingResponses[$assessment->id]->response;
+                                                                if (is_string($response)) {
+                                                                    if (strpos($response, '[') === 0) {
+                                                                        $existingValues =
+                                                                            json_decode($response, true) ?? [];
+                                                                    } else {
+                                                                        $existingValues = explode(',', $response);
                                                                     }
-                                                                } elseif (
-                                                                    is_array(
-                                                                        $existingResponses[$assessment->id]->response,
-                                                                    )
-                                                                ) {
-                                                                    $existingValues =
-                                                                        $existingResponses[$assessment->id]->response;
+                                                                } elseif (is_array($response)) {
+                                                                    $existingValues = $response;
                                                                 }
                                                             }
                                                         @endphp
@@ -973,41 +1096,17 @@
                                                             $serviceOptions = $assessment->options;
                                                             $existingValues = [];
                                                             if (isset($existingResponses[$assessment->id])) {
-                                                                // Convert existing response to array if it's stored as JSON or comma-separated
-    if (
-        is_string(
-            $existingResponses[$assessment->id]->response,
-        )
-    ) {
-        if (
-            strpos(
-                $existingResponses[$assessment->id]
-                    ->response,
-                '[',
-            ) === 0
-        ) {
-            // Looks like JSON
-            $existingValues =
-                json_decode(
-                    $existingResponses[$assessment->id]
-                        ->response,
-                    true,
-                ) ?? [];
-        } else {
-            // Assume comma-separated
-            $existingValues = explode(
-                ',',
-                                                                            $existingResponses[$assessment->id]
-                                                                                ->response,
-                                                                        );
+                                                                $response =
+                                                                    $existingResponses[$assessment->id]->response;
+                                                                if (is_string($response)) {
+                                                                    if (strpos($response, '[') === 0) {
+                                                                        $existingValues =
+                                                                            json_decode($response, true) ?? [];
+                                                                    } else {
+                                                                        $existingValues = explode(',', $response);
                                                                     }
-                                                                } elseif (
-                                                                    is_array(
-                                                                        $existingResponses[$assessment->id]->response,
-                                                                    )
-                                                                ) {
-                                                                    $existingValues =
-                                                                        $existingResponses[$assessment->id]->response;
+                                                                } elseif (is_array($response)) {
+                                                                    $existingValues = $response;
                                                                 }
                                                             }
                                                         @endphp
@@ -1050,41 +1149,17 @@
                                                             ];
                                                             $existingValues = [];
                                                             if (isset($existingResponses[$assessment->id])) {
-                                                                // Convert existing response to array if it's stored as JSON or comma-separated
-    if (
-        is_string(
-            $existingResponses[$assessment->id]->response,
-        )
-    ) {
-        if (
-            strpos(
-                $existingResponses[$assessment->id]
-                    ->response,
-                '[',
-            ) === 0
-        ) {
-            // Looks like JSON
-            $existingValues =
-                json_decode(
-                    $existingResponses[$assessment->id]
-                        ->response,
-                    true,
-                ) ?? [];
-        } else {
-            // Assume comma-separated
-            $existingValues = explode(
-                ',',
-                                                                            $existingResponses[$assessment->id]
-                                                                                ->response,
-                                                                        );
+                                                                $response =
+                                                                    $existingResponses[$assessment->id]->response;
+                                                                if (is_string($response)) {
+                                                                    if (strpos($response, '[') === 0) {
+                                                                        $existingValues =
+                                                                            json_decode($response, true) ?? [];
+                                                                    } else {
+                                                                        $existingValues = explode(',', $response);
                                                                     }
-                                                                } elseif (
-                                                                    is_array(
-                                                                        $existingResponses[$assessment->id]->response,
-                                                                    )
-                                                                ) {
-                                                                    $existingValues =
-                                                                        $existingResponses[$assessment->id]->response;
+                                                                } elseif (is_array($response)) {
+                                                                    $existingValues = $response;
                                                                 }
                                                             }
                                                         @endphp
@@ -1131,41 +1206,17 @@
                                                             ];
                                                             $existingValues = [];
                                                             if (isset($existingResponses[$assessment->id])) {
-                                                                // Convert existing response to array if it's stored as JSON or comma-separated
-    if (
-        is_string(
-            $existingResponses[$assessment->id]->response,
-        )
-    ) {
-        if (
-            strpos(
-                $existingResponses[$assessment->id]
-                    ->response,
-                '[',
-            ) === 0
-        ) {
-            // Looks like JSON
-            $existingValues =
-                json_decode(
-                    $existingResponses[$assessment->id]
-                        ->response,
-                    true,
-                ) ?? [];
-        } else {
-            // Assume comma-separated
-            $existingValues = explode(
-                ',',
-                                                                            $existingResponses[$assessment->id]
-                                                                                ->response,
-                                                                        );
+                                                                $response =
+                                                                    $existingResponses[$assessment->id]->response;
+                                                                if (is_string($response)) {
+                                                                    if (strpos($response, '[') === 0) {
+                                                                        $existingValues =
+                                                                            json_decode($response, true) ?? [];
+                                                                    } else {
+                                                                        $existingValues = explode(',', $response);
                                                                     }
-                                                                } elseif (
-                                                                    is_array(
-                                                                        $existingResponses[$assessment->id]->response,
-                                                                    )
-                                                                ) {
-                                                                    $existingValues =
-                                                                        $existingResponses[$assessment->id]->response;
+                                                                } elseif (is_array($response)) {
+                                                                    $existingValues = $response;
                                                                 }
                                                             }
                                                         @endphp
@@ -1283,15 +1334,12 @@
         </div>
     </div>
 
-
-    <!-- jQuery -->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Director Modal (conditionally included) -->
+    <!-- Director Modal -->
     @if (auth()->user()->role->name === 'director' &&
             isset($showDirectorModal) &&
             $showDirectorModal &&
@@ -1300,10 +1348,858 @@
     @endif
 
     <script>
+        // Global variables
         let currentSectionIndex = 0;
-        let goToSection; // Forward declaration for function we'll define in first listener
+        let goToSection;
+        let sections;
+        let totalSections;
 
+        // Validation rules from working version
+        const ValidationRules = {
+            text: (value) => {
+                if (!value || value.trim() === '') return 'This field is required';
+                if (value.length > 1000) return 'Response cannot exceed 1000 characters';
+                return null;
+            },
+            int: (value) => {
+                if (!value && value !== '0') return 'This field is required';
+                const num = parseInt(value);
+                if (isNaN(num) || num < 0) return 'Must be a non-negative number';
+                return null;
+            },
+            year: (value) => {
+                if (!value) return 'Please select a year';
+                const year = parseInt(value);
+                if (year < 1960 || year > new Date().getFullYear()) {
+                    return `Must be between 1960 and ${new Date().getFullYear()}`;
+                }
+                return null;
+            },
+            yes_no: (value) => {
+                if (!value) return 'Please select Yes, No, or Not Applicable';
+                if (!['yes', 'no', 'n/a'].includes(value)) return 'Invalid selection';
+                return null;
+            },
+            good_bad: (value) => {
+                if (!value) return 'Please select Good or Bad';
+                if (!['good', 'bad'].includes(value)) return 'Invalid selection';
+                return null;
+            },
+            'select-multiple': (values) => {
+                if (!values || values.length === 0) return 'Please select at least one option';
+                return null;
+            },
+            form: (formData) => {
+                if (!formData || typeof formData !== 'object') return 'Staff data is required';
+                const hasValue = Object.values(formData).some(val => val !== '' && val !== null && val !==
+                    undefined);
+                if (!hasValue) return 'Please provide at least one staff count';
+
+                for (const [key, value] of Object.entries(formData)) {
+                    if (value !== '' && (isNaN(value) || parseInt(value) < 0)) {
+                        return 'All staff counts must be non-negative numbers';
+                    }
+                }
+                return null;
+            }
+        };
+
+        // Global configuration
+        const phcId = "{{ session('assessment_phc_id') ?? '' }}";
+
+        // GLOBAL FUNCTIONS (available throughout the script)
+
+        /**
+         * Collect form responses - GLOBAL VERSION
+         */
+        function collectFormResponses() {
+            const responses = {};
+            const staffResponses = {};
+
+            // Handle regular assessment responses (not staff counts)
+            $('.assessment-response').not('.staff-count-input').each(function() {
+                const assessmentId = $(this).data('assessment-id');
+
+                if ($(this).is(':radio') && $(this).is(':checked')) {
+                    responses[assessmentId] = $(this).val();
+                } else if ($(this).is(':checkbox') && $(this).is(':checked')) {
+                    if (!responses[assessmentId]) {
+                        responses[assessmentId] = [];
+                    }
+                    if ($(this).attr('name').includes('[]')) {
+                        responses[assessmentId].push($(this).val());
+                    }
+                } else if ($(this).is('input[type="number"], input[type="text"], textarea, select') && $(this)
+                .val()) {
+                    if ($(this).is('input[type="number"]')) {
+                        const value = parseInt($(this).val());
+                        if (!isNaN(value) && value >= 0) {
+                            responses[assessmentId] = value;
+                        }
+                    } else {
+                        responses[assessmentId] = $(this).val();
+                    }
+                }
+            });
+
+            // Handle staff count inputs - allow zeros
+            $('.formp').each(function() {
+                const assessmentId = $(this).data('assessment-id');
+
+                // Skip if no assessment ID is found
+                if (!assessmentId || assessmentId === 'undefined') {
+                    console.warn('Found staff form without assessment ID:', this);
+                    return;
+                }
+
+                const fullTimeInput = $(this).find('input[data-type="full_time"]');
+                const contractInput = $(this).find('input[data-type="contract"]');
+                const nyscInput = $(this).find('input[data-type="nysc_intern"]');
+
+                const fullTime = parseInt(fullTimeInput.val()) || 0;
+                const contract = parseInt(contractInput.val()) || 0;
+                const nyscIntern = parseInt(nyscInput.val()) || 0;
+
+                const hasAnyInput = fullTimeInput.val() !== '' || contractInput.val() !== '' || nyscInput.val() !==
+                    '';
+
+                if (hasAnyInput) {
+                    staffResponses[assessmentId] = {
+                        full_time: fullTime,
+                        contract: contract,
+                        nysc_intern: nyscIntern
+                    };
+                }
+            });
+
+            // Also handle staff responses from name attribute (backup method)
+            $('input[name*="staff_responses"]').each(function() {
+                const name = $(this).attr('name');
+                const matches = name.match(/staff_responses\[(\d+)\]\[(\w+)\]/);
+
+                if (matches && $(this).val()) {
+                    const assessmentId = matches[1];
+                    const staffType = matches[2];
+                    const value = parseInt($(this).val()) || 0;
+
+                    // Skip if assessmentId is not a valid number
+                    if (isNaN(parseInt(assessmentId))) {
+                        console.warn('Invalid assessment ID in staff response:', assessmentId);
+                        return;
+                    }
+
+                    if (!staffResponses[assessmentId]) {
+                        staffResponses[assessmentId] = {};
+                    }
+                    staffResponses[assessmentId][staffType] = value;
+                }
+            });
+
+            // Clean up any undefined keys
+            if (staffResponses.hasOwnProperty('undefined')) {
+                delete staffResponses['undefined'];
+            }
+
+            console.log('Collected responses:', responses);
+            console.log('Collected staff responses:', staffResponses);
+
+            return {
+                responses,
+                staffResponses
+            };
+        }
+
+        /**
+         * Submit assessment form - GLOBAL VERSION
+         */
+        function submitAssessmentForm(isUpdate = false) {
+            console.log('submitAssessmentForm called, isUpdate:', isUpdate);
+
+            try {
+                const {
+                    responses,
+                    staffResponses
+                } = collectFormResponses();
+
+                // Fix URL and method for updates
+                let method, url;
+                if (isUpdate) {
+                    // For updates, we need to get the assessment ID or use the form's action
+                    const form = document.getElementById('assessment-form');
+                    const formAction = form ? form.getAttribute('action') : null;
+
+                    if (formAction && formAction !== '/assessments') {
+                        // Use the form's action URL for updates
+                        url = formAction;
+                        method = 'PUT';
+                    } else {
+                        // Fallback: try to get assessment ID from somewhere else
+                        const assessmentId = document.querySelector('input[name="assessment_id"]')?.value ||
+                            document.querySelector('[data-assessment-id]')?.dataset.assessmentId ||
+                            phcId; // Use PHC ID as fallback
+
+                        url = assessmentId ? `/assessments/${assessmentId}` : '/assessments';
+                        method = 'PUT';
+                    }
+                } else {
+                    // For new submissions
+                    url = '/assessments';
+                    method = 'POST';
+                }
+
+                console.log('Using URL:', url, 'Method:', method);
+
+                // Show loading state
+                $('#submit-btn').html(
+                        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...')
+                    .prop('disabled', true);
+
+                // AJAX request to save assessment
+                $.ajax({
+                    url: url,
+                    type: 'POST', // Always use POST, let Laravel handle the method override
+                    dataType: 'json',
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        _method: method, // Laravel will use this for method override
+                        responses: responses,
+                        staff_responses: staffResponses
+                    },
+                    success: function(response) {
+                        console.log('Success response:', response);
+
+                        if (response.success) {
+                            $('#assessment-form').replaceWith(`
+                            <div class="alert alert-success mt-4">
+                                <h4 class="alert-heading"><i class="fas fa-check-circle me-2"></i>Success!</h4>
+                                <p>${response.message}</p>
+                                <div class="mt-3">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                                    <small class="text-muted">Redirecting you back to the dashboard...</small>
+                                </div>
+                            </div>
+                        `);
+                            setTimeout(() => window.location.href = response.redirect, 2000);
+                        } else if (response.create_new) {
+                            $('#assessment-form').replaceWith(`
+                            <div class="alert alert-info mt-4">
+                                <h4 class="alert-heading"><i class="fas fa-info-circle me-2"></i>Notice</h4>
+                                <p>${response.message}</p>
+                                <hr>
+                                <div class="mt-3">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                                    <small class="text-muted">Redirecting you to submit a new assessment...</small>
+                                </div>
+                            </div>
+                        `);
+                            setTimeout(() => window.location.href = response.redirect, 2000);
+                        } else {
+                            $('#assessment-form').replaceWith(`
+                            <div class="alert alert-info mt-4">
+                                <h4 class="alert-heading"><i class="fas fa-info-circle me-2"></i>Notice</h4>
+                                <p>${response.message}</p>
+                                <div class="mt-3">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                                    <small class="text-muted">Redirecting you back...</small>
+                                </div>
+                            </div>
+                        `);
+                            setTimeout(() => window.location.href = response.redirect, 2000);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', error);
+                        console.error('Response:', xhr.responseText);
+
+                        // Restore button state
+                        $('#submit-btn').html('Submit Assessment').prop('disabled', false);
+
+                        let errorHTML = '';
+                        try {
+                            const response = JSON.parse(xhr.responseText);
+                            if (response.error_type === 'edit_window_expired' && response
+                                .unanswered_questions) {
+                                errorHTML = createUnansweredQuestionsError(response);
+                            } else if (response.message) {
+                                errorHTML = `
+                                <div class="alert alert-danger">
+                                    <h5 class="alert-heading"><i class="fas fa-exclamation-circle me-2"></i>Error</h5>
+                                    <p class="mb-0">${response.message}</p>
+                                </div>
+                            `;
+                            } else {
+                                errorHTML = `
+                                <div class="alert alert-danger">
+                                    <h5 class="alert-heading"><i class="fas fa-exclamation-circle me-2"></i>Error</h5>
+                                    <p class="mb-0">An error occurred while saving your assessment. Please try again.</p>
+                                </div>
+                            `;
+                            }
+                        } catch (e) {
+                            console.error('Error parsing error response:', e);
+                            errorHTML = `
+                            <div class="alert alert-danger">
+                                <h5 class="alert-heading"><i class="fas fa-exclamation-circle me-2"></i>Error</h5>
+                                <p class="mb-0">An unexpected error occurred. Please try again.</p>
+                            </div>
+                        `;
+                        }
+
+                        $('#form-errors').html(errorHTML).show();
+                        $('html, body').animate({
+                            scrollTop: $('#form-errors').offset().top - 100
+                        }, 200);
+                    }
+                });
+            } catch (error) {
+                console.error('Error in submitAssessmentForm:', error);
+                alert('An error occurred. Please check the console for details.');
+                $('#submit-btn').html('Submit Assessment').prop('disabled', false);
+            }
+        }
+
+        /**
+         * Create detailed error message for unanswered questions - GLOBAL VERSION
+         */
+        function createUnansweredQuestionsError(response) {
+            const {
+                unanswered_questions,
+                unanswered_count,
+                edit_window_closed,
+                can_create_new
+            } = response;
+
+            let questionsHTML = '';
+            let sectionGroups = {};
+
+            // Group questions by section
+            unanswered_questions.forEach(q => {
+                if (!sectionGroups[q.section]) {
+                    sectionGroups[q.section] = [];
+                }
+                sectionGroups[q.section].push(q);
+            });
+
+            // Build the questions list grouped by section
+            Object.keys(sectionGroups).forEach(sectionName => {
+                questionsHTML += `
+                <div class="mb-3">
+                    <h6 class="fw-bold text-primary mb-2">
+                        <i class="fas fa-folder me-1"></i>${sectionName}
+                    </h6>
+                    <ul class="list-unstyled ps-3">
+            `;
+
+                sectionGroups[sectionName].forEach(q => {
+                    const questionText = q.question.length > 80 ?
+                        q.question.substring(0, 80) + '...' :
+                        q.question;
+
+                    questionsHTML += `
+                    <li class="mb-2">
+                        <span class="badge bg-warning text-dark me-2">#${q.question_number}</span>
+                        <span class="text-muted">${questionText}</span>
+                    </li>
+                `;
+                });
+
+                questionsHTML += `
+                    </ul>
+                </div>
+            `;
+            });
+
+            let actionButtons = '';
+            if (can_create_new) {
+                actionButtons = `
+                <div class="mt-4 pt-3 border-top">
+                    <p class="mb-3">
+                        <i class="fas fa-lightbulb text-warning me-2"></i>
+                        <strong>Good news!</strong> You can still submit a new assessment for this month.
+                    </p>
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='${response.redirect}'">
+                        <i class="fas fa-plus me-2"></i>Start New Assessment
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary ms-2" onclick="window.location.href='${response.redirect}'">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                    </button>
+                </div>
+            `;
+            } else {
+                actionButtons = `
+                <div class="mt-4 pt-3 border-top">
+                    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='${response.redirect}'">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                    </button>
+                </div>
+            `;
+            }
+
+            return `
+            <div class="alert alert-warning border-0 shadow-sm">
+                <div class="d-flex align-items-start">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-clock text-warning fa-2x"></i>
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <h5 class="alert-heading mb-3">Assessment Editing Period Has Expired</h5>
+                        <div class="mb-3">
+                            <p class="mb-2">
+                                <strong>Edit window closed:</strong>
+                                <span class="text-muted">${edit_window_closed}</span>
+                            </p>
+                            <p class="mb-0">
+                                Unfortunately, you can no longer edit this assessment, and there are still
+                                <strong class="text-danger">${unanswered_count} unanswered question${unanswered_count !== 1 ? 's' : ''}</strong>
+                                that need to be completed.
+                            </p>
+                        </div>
+                        <div class="card border-warning mb-3">
+                            <div class="card-header bg-warning bg-opacity-10 border-warning">
+                                <h6 class="card-title mb-0">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    Unanswered Questions (${unanswered_count})
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div style="max-height: 300px; overflow-y: auto;">
+                                    ${questionsHTML}
+                                </div>
+                            </div>
+                        </div>
+                        ${actionButtons}
+                    </div>
+                </div>
+            </div>
+        `;
+        }
+
+        /**
+         * Validation functions from working version
+         */
+        function validateElement(element) {
+            const container = element.closest('.question-container') || element.closest('.mb-4');
+            const assessmentId = element.dataset.assessmentId;
+            const validationType = element.dataset.validationType ||
+                element.closest('[data-validation-type]')?.dataset.validationType;
+
+            let value;
+            let errorMessage = null;
+
+            // Clear previous validation state
+            element.classList.remove('is-invalid');
+            container.classList.remove('has-error', 'border-danger');
+            const feedback = container.querySelector('.invalid-feedback');
+            if (feedback) feedback.textContent = '';
+
+            // Get value based on element type
+            if (element.type === 'radio') {
+                const radioGroup = container.querySelectorAll(`input[name="${element.name}"]`);
+                value = Array.from(radioGroup).find(radio => radio.checked)?.value;
+            } else if (element.type === 'checkbox') {
+                const checkboxGroup = container.querySelectorAll(`input[name="${element.name}"]`);
+                value = Array.from(checkboxGroup).filter(cb => cb.checked).map(cb => cb.value);
+            } else if (validationType === 'form') {
+                const formContainer = container.querySelector('.formp');
+                if (formContainer) {
+                    const fullTime = formContainer.querySelector('[data-type="full_time"]')?.value || '';
+                    const contract = formContainer.querySelector('[data-type="contract"]')?.value || '';
+                    const nyscIntern = formContainer.querySelector('[data-type="nysc_intern"]')?.value || '';
+                    value = {
+                        full_time: fullTime,
+                        contract: contract,
+                        nysc_intern: nyscIntern
+                    };
+                }
+            } else {
+                value = element.value;
+            }
+
+            // Validate using appropriate rule
+            if (ValidationRules[validationType]) {
+                errorMessage = ValidationRules[validationType](value);
+            }
+
+            // Display error if validation failed
+            if (errorMessage) {
+                element.classList.add('is-invalid');
+                container.classList.add('has-error', 'border-danger');
+                if (feedback) feedback.textContent = errorMessage;
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateCurrentSection() {
+            const currentSection = sections[currentSectionIndex];
+            let isValid = true;
+            let firstInvalidElement = null;
+            let errorMessages = [];
+
+            // Clear previous validation states
+            currentSection.querySelectorAll('.is-invalid').forEach(el => {
+                el.classList.remove('is-invalid');
+            });
+            currentSection.querySelectorAll('.has-error').forEach(el => {
+                el.classList.remove('has-error', 'border-danger');
+            });
+
+            // Check all radio button groups in current section
+            const radioGroups = new Map();
+
+            currentSection.querySelectorAll('input[type="radio"]').forEach(radio => {
+                const name = radio.getAttribute('name');
+                if (!radioGroups.has(name)) {
+                    radioGroups.set(name, {
+                        elements: [],
+                        question: radio.closest('.mb-4').querySelector('.form-label')?.textContent.trim() ||
+                            'Unknown question',
+                        checked: false
+                    });
+                }
+
+                radioGroups.get(name).elements.push(radio);
+                if (radio.checked) {
+                    radioGroups.get(name).checked = true;
+                }
+            });
+
+            // Check if at least one option is selected for each radio group
+            radioGroups.forEach((group, name) => {
+                if (!group.checked) {
+                    isValid = false;
+                    errorMessages.push(`Please answer: ${group.question}`);
+
+                    if (!firstInvalidElement) {
+                        firstInvalidElement = group.elements[0];
+                    }
+
+                    const container = group.elements[0].closest('.mb-4');
+                    container.classList.add('border-danger', 'p-2', 'rounded');
+                } else {
+                    const container = group.elements[0].closest('.mb-4');
+                    container.classList.remove('border-danger', 'p-2', 'rounded');
+                }
+            });
+
+            // Check required selects
+            currentSection.querySelectorAll('select[required]').forEach(select => {
+                if (!select.value) {
+                    isValid = false;
+
+                    const label = select.closest('.mb-4').querySelector('.form-label')?.textContent.trim() ||
+                        'Unknown field';
+                    errorMessages.push(`Please select an option for: ${label}`);
+
+                    if (!firstInvalidElement) {
+                        firstInvalidElement = select;
+                    }
+
+                    select.classList.add('border-danger');
+                } else {
+                    select.classList.remove('border-danger');
+                }
+            });
+
+            // Show validation message if there are errors
+            if (!isValid) {
+                showValidationErrors(currentSection, errorMessages);
+                if (firstInvalidElement) {
+                    firstInvalidElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            } else {
+                clearValidationErrors(currentSection);
+            }
+
+            return isValid;
+        }
+
+        function showValidationErrors(section, errorMessages) {
+            let errorAlert = section.querySelector('.section-validation-error');
+            if (!errorAlert) {
+                errorAlert = document.createElement('div');
+                errorAlert.className = 'alert alert-danger section-validation-error mb-4';
+                const cardHeader = section.querySelector('.card-header');
+                if (cardHeader) {
+                    cardHeader.parentNode.insertBefore(errorAlert, cardHeader.nextSibling);
+                } else {
+                    section.insertBefore(errorAlert, section.firstChild);
+                }
+            }
+
+            let errorHTML =
+                '<i class="fas fa-exclamation-circle me-2"></i>Please complete all questions in this section before proceeding:<ul>';
+            errorMessages.forEach(msg => {
+                errorHTML += `<li>${msg}</li>`;
+            });
+            errorHTML += '</ul>';
+
+            errorAlert.innerHTML = errorHTML;
+            errorAlert.classList.add('flash-error');
+            setTimeout(() => errorAlert.classList.remove('flash-error'), 1500);
+        }
+
+        function clearValidationErrors(section) {
+            const errorAlert = section.querySelector('.section-validation-error');
+            if (errorAlert) {
+                errorAlert.remove();
+            }
+        }
+
+        /**
+         * Navigation functions
+         */
+        function updateProgressBar() {
+            const progressPercentage = ((currentSectionIndex + 1) / totalSections) * 100;
+            const progressBar = document.querySelector('.progress-bar');
+
+            if (progressBar) {
+                progressBar.style.width = `${progressPercentage}%`;
+                progressBar.setAttribute('aria-valuenow', progressPercentage);
+            }
+
+            const stepIndicators = document.querySelectorAll('.step');
+            stepIndicators.forEach((step, index) => {
+                if (index < currentSectionIndex) {
+                    step.className = 'step completed';
+                } else if (index === currentSectionIndex) {
+                    step.className = 'step active';
+                } else {
+                    step.className = 'step';
+                }
+            });
+        }
+
+        function moveToNextSection() {
+            if (!validateCurrentSection()) {
+                return;
+            }
+
+            saveTemporaryResponses();
+
+            if (currentSectionIndex < totalSections - 1) {
+                sections[currentSectionIndex].classList.remove('active');
+                sections[++currentSectionIndex].classList.add('active');
+                updateProgressBar();
+                document.querySelector('#assessment-form')?.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function moveToPreviousSection() {
+            saveTemporaryResponses();
+            if (currentSectionIndex > 0) {
+                sections[currentSectionIndex].classList.remove('active');
+                sections[--currentSectionIndex].classList.add('active');
+                updateProgressBar();
+                document.querySelector('#assessment-form')?.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        /**
+         * Child questions functionality
+         */
+        function toggleChildQuestions(element, assessmentId, value) {
+            const childQuestionsContainer = document.getElementById(`childQuestions-${assessmentId}`);
+
+            if (element.checked) {
+                childQuestionsContainer.innerHTML =
+                    '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
+                childQuestionsContainer.style.display = 'block';
+
+                fetch(`/assessments/${assessmentId}/child-questions?selected_option=${value}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.childQuestions && data.childQuestions.length > 0) {
+                            let html = '<div class="ps-4 border-start border-3 border-primary">';
+                            data.childQuestions.forEach(question => {
+                                html += `
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">${question.question || 'N/A'}</label>
+                                    ${renderQuestionInput(question)}
+                                </div>
+                            `;
+                            });
+                            html += '</div>';
+                            childQuestionsContainer.innerHTML = html;
+                        } else {
+                            childQuestionsContainer.style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching child questions:', error);
+                        childQuestionsContainer.innerHTML =
+                            '<div class="alert alert-danger">Failed to load additional questions</div>';
+                    });
+            } else {
+                childQuestionsContainer.style.display = 'none';
+            }
+        }
+
+        function renderQuestionInput(question) {
+            switch (question.response_type) {
+                case 'text':
+                    return `<input type="text" class="form-control assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}]" value="${question.existing_response || ''}">`;
+                case 'textarea':
+                    return `<textarea class="form-control assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}]" rows="3">${question.existing_response || ''}</textarea>`;
+                case 'yes_no':
+                    return `
+                    <div class="d-flex gap-3 mt-2">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                                name="responses[${question.id}]" value="yes" ${question.existing_response === 'yes' ? 'checked' : ''}
+                                onchange="toggleChildQuestions(this, '${question.id}', 'yes')">
+                            <label class="form-check-label">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                                name="responses[${question.id}]" value="no" ${question.existing_response === 'no' ? 'checked' : ''}
+                                onchange="toggleChildQuestions(this, '${question.id}', 'no')">
+                            <label class="form-check-label">No</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
+                                name="responses[${question.id}]" value="n/a" ${question.existing_response === 'n/a' ? 'checked' : ''}
+                                onchange="toggleChildQuestions(this, '${question.id}', 'n/a')">
+                            <label class="form-check-label">Not Applicable</label>
+                        </div>
+                    </div>
+                    <div id="childQuestions-${question.id}" class="child-questions mt-3" style="display: none;"></div>
+                `;
+                default:
+                    return `<input type="text" class="form-control assessment-response" data-assessment-id="${question.id}"
+                    name="responses[${question.id}]" value="${question.existing_response || ''}">`;
+            }
+        }
+
+        /**
+         * Temporary save functionality
+         */
+        function saveTemporaryResponses(showConfirmation = false) {
+            if (!phcId) {
+                console.warn('No PHC ID found. Temporary save is not available.');
+                return;
+            }
+
+            const {
+                responses,
+                staffResponses
+            } = collectFormResponses();
+            const currentPage = currentSectionIndex;
+
+            const saveData = {
+                _token: document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
+                phc_id: phcId,
+                responses: responses,
+                staff_responses: staffResponses,
+                current_page: currentPage
+            };
+
+            $.ajax({
+                url: '/assessments/save-temporary',
+                type: 'POST',
+                dataType: 'json',
+                data: saveData,
+                success: function(response) {
+                    if (showConfirmation) {
+                        console.log('Progress saved successfully');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error saving temporary responses:', error);
+                }
+            });
+        }
+
+        function loadTemporaryResponses() {
+            if (!phcId) {
+                return;
+            }
+
+            $.ajax({
+                url: `/assessments/load-temporary/${phcId}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success && response.data) {
+                        if (response.data.responses) {
+                            fillFormWithResponses(response.data.responses);
+                        }
+                        console.log('Temporary responses loaded successfully');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error loading temporary responses:', error);
+                }
+            });
+        }
+
+        function fillFormWithResponses(responses) {
+            Object.keys(responses).forEach(assessmentId => {
+                const value = responses[assessmentId];
+                const elements = document.querySelectorAll(
+                    `.assessment-response[data-assessment-id="${assessmentId}"]`);
+
+                elements.forEach(element => {
+                    if (element.type === 'radio') {
+                        if (element.value === value) {
+                            element.checked = true;
+                            const event = new Event('change');
+                            element.dispatchEvent(event);
+                        }
+                    } else if (element.type === 'checkbox') {
+                        if (Array.isArray(value) && value.includes(element.value)) {
+                            element.checked = true;
+                        } else if (value === element.value) {
+                            element.checked = true;
+                        }
+                    } else {
+                        element.value = value;
+                    }
+                });
+            });
+        }
+
+        // Make functions globally available
+        window.toggleChildQuestions = toggleChildQuestions;
+        window.handleWaterSourceChange = function(selectElement, assessmentId) {
+            const childContainer = document.getElementById(`child-question-${assessmentId}`);
+            const childSelect = childContainer ? childContainer.querySelector('select') : null;
+
+            if (childContainer) {
+                if (selectElement.value === 'Borehole') {
+                    childContainer.style.display = 'block';
+                    if (childSelect) {
+                        childSelect.setAttribute('required', 'required');
+                    }
+                } else {
+                    childContainer.style.display = 'none';
+                    if (childSelect) {
+                        childSelect.removeAttribute('required');
+                        childSelect.value = '';
+                    }
+                }
+            }
+        };
+
+        // DOCUMENT READY INITIALIZATION
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== INITIALIZING ASSESSMENT FORM ===');
+
             @if (auth()->user()->role->name === 'director' && !session('assessment_location_selected'))
                 var modalElement = document.getElementById('phcSelectionModal');
                 if (modalElement) {
@@ -1312,38 +2208,63 @@
                 }
             @endif
 
-            // Set up pagination and progress tracking
-            const sections = document.querySelectorAll('.section-page');
-            const totalSections = sections.length;
-            const style = document.createElement('style');
-            document.head.appendChild(style);
-
-            // Initialize currentSectionIndex (now defined globally)
+            // Initialize global variables
+            sections = document.querySelectorAll('.section-page');
+            totalSections = sections.length;
             currentSectionIndex = 0;
 
-            // Create step indicators
+            console.log('Sections found:', totalSections);
+            console.log('Assessment responses found:', document.querySelectorAll('.assessment-response').length);
+
+            if (totalSections === 0) {
+                console.error('No sections found! Check your HTML structure.');
+                return;
+            }
+
+            // Initialize components
             createStepIndicators(totalSections);
             updateProgressBar();
+            setupRealTimeValidation();
+            loadTemporaryResponses();
 
             // Set up navigation button event listeners
             document.querySelectorAll('.next-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    moveToNextSection();
-                });
+                btn.addEventListener('click', moveToNextSection);
             });
 
             document.querySelectorAll('.prev-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    moveToPreviousSection();
-                });
+                btn.addEventListener('click', moveToPreviousSection);
             });
 
-            // Function to create step indicators - horizontal tab style
+            // Add "Save Progress" buttons
+            document.querySelectorAll('.navigation-buttons').forEach(navButtons => {
+                const saveBtn = document.createElement('button');
+                saveBtn.type = 'button';
+                saveBtn.className = 'btn btn-outline-primary save-progress-btn';
+                saveBtn.innerHTML = '<i class="fas fa-save me-2"></i> Save Progress';
+                saveBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    saveTemporaryResponses(true);
+                });
+
+                const nextBtn = navButtons.querySelector('.next-btn, #submit-btn');
+                if (nextBtn) {
+                    navButtons.insertBefore(saveBtn, nextBtn);
+                } else {
+                    navButtons.appendChild(saveBtn);
+                }
+            });
+
+            // INTERNAL FUNCTIONS (inside DOMContentLoaded)
             function createStepIndicators(totalSteps) {
                 const stepIndicator = document.getElementById('step-indicator');
+                if (!stepIndicator) {
+                    console.error('Step indicator element not found!');
+                    return;
+                }
+
                 stepIndicator.innerHTML = '';
 
-                // Get section names
                 const sectionNames = [];
                 sections.forEach(section => {
                     const headerElement = section.querySelector('.card-header h5');
@@ -1351,7 +2272,6 @@
                         `Section ${sectionNames.length + 1}`);
                 });
 
-                // Create step indicators - use flex layout with wrap
                 const stepsContainer = document.createElement('div');
                 stepsContainer.className = 'steps-container d-flex flex-wrap justify-content-center';
 
@@ -1372,7 +2292,6 @@
                     step.appendChild(stepTitle);
                     stepsContainer.appendChild(step);
 
-                    // Add click event to jump to step
                     step.addEventListener('click', function() {
                         goToSection(parseInt(this.dataset.index));
                     });
@@ -1381,508 +2300,83 @@
                 stepIndicator.appendChild(stepsContainer);
             }
 
-
-            function validateCurrentSection() {
-                const currentSection = document.querySelectorAll('.section-page')[currentSectionIndex];
-
-                // Variables to track validation status
-                let isValid = true;
-                let firstInvalidElement = null;
-                let errorMessages = [];
-
-                // Check all radio button groups in current section
-                const radioGroups = new Map();
-
-                // Find all radio button groups in the current section
-                currentSection.querySelectorAll('input[type="radio"]').forEach(radio => {
-                    const name = radio.getAttribute('name');
-                    if (!radioGroups.has(name)) {
-                        radioGroups.set(name, {
-                            elements: [],
-                            question: radio.closest('.mb-4').querySelector('.form-label')
-                                .textContent.trim(),
-                            checked: false
-                        });
-                    }
-
-                    radioGroups.get(name).elements.push(radio);
-                    if (radio.checked) {
-                        radioGroups.get(name).checked = true;
-                    }
-                });
-
-                // Check if at least one option is selected for each radio group
-                radioGroups.forEach((group, name) => {
-                    if (!group.checked) {
-                        isValid = false;
-
-                        // Add to error messages
-                        errorMessages.push(`Please answer: ${group.question}`);
-
-                        // Set first invalid element for scrolling
-                        if (!firstInvalidElement) {
-                            firstInvalidElement = group.elements[0];
-                        }
-
-                        // Mark the container as invalid
-                        const container = group.elements[0].closest('.mb-4');
-                        container.classList.add('border-danger', 'p-2', 'rounded');
-                    } else {
-                        // Remove validation styling
-                        const container = group.elements[0].closest('.mb-4');
-                        container.classList.remove('border-danger', 'p-2', 'rounded');
-                    }
-                });
-
-                // Check required selects
-                currentSection.querySelectorAll('select[required]').forEach(select => {
-                    if (!select.value) {
-                        isValid = false;
-
-                        const label = select.closest('.mb-4').querySelector('.form-label').textContent
-                            .trim();
-                        errorMessages.push(`Please select an option for: ${label}`);
-
-                        if (!firstInvalidElement) {
-                            firstInvalidElement = select;
-                        }
-
-                        select.classList.add('border-danger');
-                    } else {
-                        select.classList.remove('border-danger');
-                    }
-                });
-
-                // Show validation message if there are errors
-                if (!isValid) {
-                    // Check if there's already an error alert
-                    let errorAlert = currentSection.querySelector('.section-validation-error');
-                    if (!errorAlert) {
-                        errorAlert = document.createElement('div');
-                        errorAlert.className = 'alert alert-danger section-validation-error mb-4';
-
-                        // Create error list
-                        let errorHTML =
-                            '<i class="fas fa-exclamation-circle me-2"></i>Please complete all questions in this section before proceeding:<ul>';
-                        errorMessages.forEach(msg => {
-                            errorHTML += `<li>${msg}</li>`;
-                        });
-                        errorHTML += '</ul>';
-
-                        errorAlert.innerHTML = errorHTML;
-
-                        // Insert at the top of the section
-                        const cardHeader = currentSection.querySelector('.card-header');
-                        cardHeader.parentNode.insertBefore(errorAlert, cardHeader.nextSibling);
-                    } else {
-                        // Update existing error message
-                        let errorHTML =
-                            '<i class="fas fa-exclamation-circle me-2"></i>Please complete all questions in this section before proceeding:<ul>';
-                        errorMessages.forEach(msg => {
-                            errorHTML += `<li>${msg}</li>`;
-                        });
-                        errorHTML += '</ul>';
-
-                        errorAlert.innerHTML = errorHTML;
-                    }
-
-                    // Scroll to first invalid element
-                    if (firstInvalidElement) {
-                        firstInvalidElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                    }
-                } else {
-                    // Remove error alert if validation passes
-                    const errorAlert = currentSection.querySelector('.section-validation-error');
-                    if (errorAlert) {
-                        errorAlert.remove();
-                    }
-
-                    // Remove any validation styling
-                    currentSection.querySelectorAll('.border-danger').forEach(el => {
-                        el.classList.remove('border-danger', 'p-2', 'rounded');
-                    });
-                }
-
-                return isValid;
-            }
-
-            // Function to update the progress bar and step indicators
-            function updateProgressBar() {
-                const progressPercentage = ((currentSectionIndex + 1) / totalSections) * 100;
-                const progressBar = document.querySelector('.progress-bar');
-
-                progressBar.style.width = `${progressPercentage}%`;
-                progressBar.setAttribute('aria-valuenow', progressPercentage);
-
-                // Update step indicators
-                const stepIndicators = document.querySelectorAll('.step');
-                stepIndicators.forEach((step, index) => {
-                    if (index < currentSectionIndex) {
-                        step.className = 'step completed';
-                    } else if (index === currentSectionIndex) {
-                        step.className = 'step active';
-                    } else {
-                        step.className = 'step';
-                    }
-                });
-            }
-
-            // Function to move to the next section
-            function moveToNextSection() {
-                // First validate the current section
-                if (!validateCurrentSection()) {
-                    return; // Stop navigation if validation fails
-                }
-
-                // saveTemporaryResponses();
-
-                if (currentSectionIndex < totalSections - 1) {
-                    // Hide current section
-                    sections[currentSectionIndex].classList.remove('active');
-                    // Show next section
-                    sections[++currentSectionIndex].classList.add('active');
-                    // Update progress
-                    updateProgressBar();
-                    // Scroll to top of the form
-                    document.querySelector('#assessment-form').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            }
-
-            function moveToPreviousSection() {
-                // saveTemporaryResponses();
-                if (currentSectionIndex > 0) {
-                    sections[currentSectionIndex].classList.remove('active');
-                    sections[--currentSectionIndex].classList.add('active');
-                    updateProgressBar();
-                    document.querySelector('#assessment-form').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            }
-
+            // Define goToSection inside DOMContentLoaded
             goToSection = function(index) {
+                if (index < 0 || index >= totalSections) {
+                    console.error('Invalid section index:', index);
+                    return;
+                }
+
                 if (index < currentSectionIndex || validateCurrentSection()) {
                     sections[currentSectionIndex].classList.remove('active');
                     currentSectionIndex = index;
                     sections[currentSectionIndex].classList.add('active');
-                    if (index >= 0 && index < totalSections) {
-                        updateProgressBar();
-                        document.querySelector('#assessment-form').scrollIntoView({
-                            behavior: 'smooth'
-                        });
+                    updateProgressBar();
+                    document.querySelector('#assessment-form')?.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            };
+
+            function setupRealTimeValidation() {
+                // Add real-time validation for form elements
+                $(document).on('change input', '.assessment-response, .staff-count-input', function() {
+                    validateElement(this);
+                });
+
+                $(document).on('change', 'input[type="checkbox"]', function() {
+                    const container = $(this).closest('.question-container, .mb-4')[0];
+                    if (container) {
+                        const checkboxGroup = container.querySelectorAll('input[type="checkbox"]');
+                        if (checkboxGroup.length > 0) {
+                            validateElement(checkboxGroup[0]);
+                        }
                     }
-                }
+                });
             }
 
-            function toggleChildQuestions(element, assessmentId, value) {
-                const childQuestionsContainer = document.getElementById(`childQuestions-${assessmentId}`);
+            // Set up autosave on navigation
+            document.querySelectorAll('.next-btn, .prev-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    saveTemporaryResponses();
+                });
+            });
 
-                if (element.checked) {
-                    // Show loading indicator
-                    childQuestionsContainer.innerHTML =
-                        '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
-                    childQuestionsContainer.style.display = 'block';
-
-                    // Fetch child questions via AJAX with the selected option
-                    fetch(`/assessments/${assessmentId}/child-questions?selected_option=${value}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            if (data.childQuestions && data.childQuestions.length > 0) {
-                                let html = '<div class="ps-4 border-start border-3 border-primary">';
-                                data.childQuestions.forEach(question => {
-                                    html += `
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold">${question.question || 'N/A'}</label>
-                        <!-- Render appropriate input based on question type -->
-                        ${renderQuestionInput(question)}
-                    </div>
-                    `;
-                                });
-                                html += '</div>';
-                                childQuestionsContainer.innerHTML = html;
-                            } else {
-                                // No child questions found for this condition
-                                childQuestionsContainer.style.display = 'none';
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching child questions:', error);
-                            childQuestionsContainer.innerHTML =
-                                '<div class="alert alert-danger">Failed to load additional questions</div>';
-                        });
-                } else {
-                    // Hide child questions when the radio button is unchecked
-                    childQuestionsContainer.style.display = 'none';
-                }
-            }
-
-            // Expose the function to global scope so it can be called from inline event handlers
-            window.toggleChildQuestions = toggleChildQuestions;
+            console.log('=== INITIALIZATION COMPLETE ===');
         });
 
-        function renderQuestionInput(question) {
-            // Render different input types based on question.response_type
-            switch (question.response_type) {
-                case 'text':
-                    return `<input type="text" class="form-control assessment-response" data-assessment-id="${question.id}"
-            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
-                case 'textarea':
-                    return `
-        <textarea class="form-control assessment-response" data-assessment-id="${question.id}"
-            name="responses[${question.id}]" rows="3">${question.existing_response || ''}</textarea>`;
-                case 'yes_no':
-                    return `
-        <div class="d-flex gap-3 mt-2">
-            <div class="form-check">
-                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                    name="responses[${question.id}]" value="yes" ${question.existing_response === 'yes' ? 'checked' : '' }
-                    onchange="toggleChildQuestions(this, '${question.id}', 'yes')">
-                <label class="form-check-label">Yes</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                    name="responses[${question.id}]" value="no" ${question.existing_response === 'no' ? 'checked' : '' }
-                    onchange="toggleChildQuestions(this, '${question.id}', 'no')">
-                <label class="form-check-label">No</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                    name="responses[${question.id}]" value="n/a" ${question.existing_response === 'n/a' ? 'checked' : '' }
-                    onchange="toggleChildQuestions(this, '${question.id}', 'n/a')">
-                <label class="form-check-label">Not Applicable</label>
-            </div>
-        </div>
-        <div id="childQuestions-${question.id}" class="child-questions mt-3" style="display: none;"></div>
-        `;
-                case 'multiple_choice':
-                    if (!question.options || !Array.isArray(question.options)) {
-                        return `<div class="alert alert-warning">No options available</div>`;
-                    }
-                    let optionsHtml = '';
-                    question.options.forEach(option => {
-                        optionsHtml += `
-            <div class="form-check">
-                <input type="radio" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                    name="responses[${question.id}]" value="${option}" ${question.existing_response === option ? 'checked' : '' }>
-                <label class="form-check-label">${option}</label>
-            </div>
-            `;
-                    });
-                    return optionsHtml;
-                case 'checkbox':
-                    if (!question.options || !Array.isArray(question.options)) {
-                        return `<div class="alert alert-warning">No options available</div>`;
-                    }
-                    let checkboxHtml = '';
-                    const existingResponses = question.existing_response ? question.existing_response.split(',') : [];
-                    question.options.forEach(option => {
-                        checkboxHtml += `
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input assessment-response" data-assessment-id="${question.id}"
-                    name="responses[${question.id}][]" value="${option}" ${existingResponses.includes(option) ? 'checked' : '' }>
-                <label class="form-check-label">${option}</label>
-            </div>
-            `;
-                    });
-                    return checkboxHtml;
-                case 'date':
-                    return `<input type="date" class="form-control assessment-response" data-assessment-id="${question.id}"
-            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
-                case 'number':
-                    return `<input type="number" class="form-control assessment-response" data-assessment-id="${question.id}"
-            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
-                case 'file':
-                    let filePreview = '';
-                    if (question.existing_response) {
-                        filePreview = `
-            <div class="mt-2">
-                <small>Current file: <a href="${question.existing_response}" target="_blank">${getFileName(question.existing_response)}</a></small>
-            </div>
-            `;
-                    }
-                    return `
-        <input type="file" class="form-control assessment-response" data-assessment-id="${question.id}"
-            name="file_responses[${question.id}]">
-        ${filePreview}
-        `;
-                default:
-                    return `<input type="text" class="form-control assessment-response" data-assessment-id="${question.id}"
-            name="responses[${question.id}]" value="${question.existing_response || ''}">`;
-            }
-        }
-
-        // Helper function to extract file name from path
-        function getFileName(path) {
-            return path.split('/').pop();
-        }
-
-        /**
-         * Submit assessment form via AJAX
-         */
-        function submitAssessmentForm(isUpdate = false) {
-            // Collect form data
-            const responses = {};
-
-            // Handle text inputs, selects, textareas
-            $('.assessment-response').each(function() {
-                const assessmentId = $(this).data('assessment-id');
-
-                // Skip if we've already processed this question
-                if (responses[assessmentId]) return;
-
-                // Different handling based on input type
-                if ($(this).is(':radio') || $(this).is(':checkbox')) {
-                    // For radio buttons, only collect if checked
-                    if ($(this).is(':checked')) {
-                        responses[assessmentId] = $(this).val();
-                    }
-                } else {
-                    // For other inputs (text, select, etc.)
-                    const response = $(this).val();
-                    if (response) {
-                        responses[assessmentId] = response;
-                    }
-                }
-            });
-
-            // Now we need to do a second pass to collect checkbox groups
-            // which may have multiple selected values
-            $('input[type="checkbox"]:checked').each(function() {
-                const assessmentId = $(this).data('assessment-id');
-                // If this is part of a checkbox group
-                if ($(this).attr('name').includes('[]')) {
-                    if (!responses[assessmentId]) {
-                        responses[assessmentId] = [];
-                    }
-                    if (Array.isArray(responses[assessmentId])) {
-                        responses[assessmentId].push($(this).val());
-                    } else {
-                        // Convert to array if it wasn't already
-                        responses[assessmentId] = [responses[assessmentId], $(this).val()];
-                    }
-                }
-            });
-
-            console.log('Submitting responses:', responses);
-
-            // Set the correct method and URL
-            const method = isUpdate ? 'PUT' : 'POST';
-            const url = '/assessments';
-
-            // Show loading state
-            $('#submit-btn').html(
-                    '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...'
-                )
-                .prop('disabled', true);
-
-            // AJAX request to save assessment
-            $.ajax({
-                url: url,
-                type: method,
-                dataType: 'json',
-                data: {
-                    _token: $('meta[name="csrf-token"]').attr('content'),
-                    _method: method, // For Laravel to recognize PUT method
-                    responses: responses
-                },
-                success: function(response) {
-                    if (response.success) {
-                        // Normal success case
-                        $('#assessment-form').replaceWith(`
-            <div class="alert alert-success mt-4">
-                <h4 class="alert-heading">Success!
-                <h4 class="alert-heading">Success!</h4>
-                <p>${response.message}</p>
-            </div>
-            `);
-
-                        // Redirect after showing the message
-                        setTimeout(function() {
-                            window.location.href = response.redirect;
-                        }, 2000);
-                    } else if (response.create_new) {
-                        // Special case: Outside editable window but open for new submissions
-                        $('#assessment-form').replaceWith(`
-            <div class="alert alert-info mt-4">
-                <h4 class="alert-heading">Notice</h4>
-                <p>${response.message}</p>
-                <hr>
-                <p class="mb-0">Redirecting you to submit a new assessment...</p>
-            </div>
-            `);
-
-                        // Redirect to create new assessment
-                        setTimeout(function() {
-                            window.location.href = response.redirect;
-                        }, 2000);
-                    } else {
-                        // Other non-success case
-                        $('#assessment-form').replaceWith(`
-            <div class="alert alert-info mt-4">
-                <h4 class="alert-heading">Notice</h4>
-                <p>${response.message}</p>
-            </div>
-            `);
-
-                        // Redirect
-                        setTimeout(function() {
-                            window.location.href = response.redirect;
-                        }, 2000);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    // Restore button state
-                    $('#submit-btn').html('Submit Assessment').prop('disabled', false);
-
-                    // Show error message
-                    let errorMessage =
-                        'An error occurred while saving your assessment. Please try again.';
-
-                    try {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.message) {
-                            errorMessage = response.message;
-                        }
-                    } catch (e) {
-                        console.error('Error parsing error response:', e);
-                    }
-
-                    $('#form-errors').html(`
-        <div class="alert alert-danger">
-            <i class="fas fa-exclamation-circle"></i> ${errorMessage}
-        </div>
-        `).show();
-
-                    // Scroll to error message
-                    $('html, body').animate({
-                        scrollTop: $('#form-errors').offset().top - 100
-                    }, 200);
-                }
-            });
-        }
-
-        // Add event handler for submit button
+        // JQUERY READY FOR SUBMIT FUNCTIONALITY
         $(document).ready(function() {
+            console.log('jQuery ready - setting up submit handler');
+
             $('#submit-btn').on('click', function(e) {
                 e.preventDefault();
+                console.log('Submit button clicked!');
+
+                // Final validation before submit
+                if (!validateCurrentSection()) {
+                    $('#form-errors').html(`
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i> Please correct all validation errors before submitting.
+                    </div>
+                `).show();
+                    return;
+                }
+
                 // Determine if this is an update or new submission
                 const isUpdate = $('#form-action').val() === 'update';
+                console.log('Submitting form, isUpdate:', isUpdate);
+
+                // Call the global submit function
                 submitAssessmentForm(isUpdate);
             });
+
+            // Debug: Log that submit handler is attached
+            console.log('Submit button handler attached');
+            console.log('Submit button element:', document.getElementById('submit-btn'));
         });
     </script>
 
-    <!-- Debug information - only include modal if location not selected -->
     @if (
         (auth()->user()->role->name === 'director' || auth()->user()->role->name === 'Director') &&
             !session('assessment_location_selected'))
@@ -1910,525 +2404,13 @@
     @endif
 
     <script>
-        // Global fix for missing Question #48
-        document.addEventListener('DOMContentLoaded', function() {
-            // Override the submit button click
-            $('#submit-btn').off('click').on('click', function(e) {
+          $('#qip-modal-trigger').on('click', function(e) {
                 e.preventDefault();
-
-                // Force add question #48 first
-                let hiddenInput = document.createElement('input');
-                hiddenInput.type = 'hidden';
-                hiddenInput.name = 'responses[48]';
-                hiddenInput.value = 'yes';
-                document.querySelector('form').appendChild(hiddenInput);
-
-                console.log('Added hidden field for question #48');
-
-                // Now proceed with normal form submission
-                const isUpdate = $('#form-action').val() === 'update';
-                submitAssessmentForm(isUpdate);
+                var modal = new bootstrap.Modal(document.getElementById('qipModal'));
+                modal.show();
             });
-
-            const assessmentForm = document.getElementById('assessment-form');
-            const phcId = "{{ session('assessment_phc_id') ?? '' }}"; // Get current PHC ID from session
-
-            // Load any existing temporary responses when the page loads
-            loadTemporaryResponses();
-
-            // Set up autosave on page navigation
-            document.querySelectorAll('.next-btn, .prev-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Save responses before navigating
-                    saveTemporaryResponses();
-                });
-            });
-
-            // Also add autosave on step indicator clicks
-            document.addEventListener('click', function(e) {
-                if (e.target.closest('.step')) {
-                    saveTemporaryResponses();
-                }
-            });
-
-            // Add a "Save Progress" button to each page
-            document.querySelectorAll('.navigation-buttons').forEach(navButtons => {
-                const saveBtn = document.createElement('button');
-                saveBtn.type = 'button';
-                saveBtn.className = 'btn btn-outline-primary save-progress-btn';
-                saveBtn.innerHTML = '<i class="fas fa-save me-2"></i> Save Progress';
-                saveBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    saveTemporaryResponses(true); // true = show confirmation
-                });
-
-                // Insert before the next/submit button
-                const nextBtn = navButtons.querySelector('.next-btn, #submit-btn');
-                if (nextBtn) {
-                    navButtons.insertBefore(saveBtn, nextBtn);
-                } else {
-                    navButtons.appendChild(saveBtn);
-                }
-            });
-
-
-
-            /**
-             * Save responses temporarily in the database
-             */
-            function saveTemporaryResponses(showConfirmation = false) {
-                if (!phcId) {
-                    console.warn('No PHC ID found. Temporary save is not available.');
-                    return;
-                }
-
-                const responses = collectFormResponses();
-
-                const currentPage = currentSectionIndex;
-                console.log('Current section for saving:', currentPage);
-
-                // Create the data to be sent
-                const saveData = {
-                    _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    phc_id: phcId,
-                    responses: responses,
-                    current_page: currentPage
-                };
-
-                // Show a saving indicator if requested
-                let saveIndicator = null;
-                if (showConfirmation) {
-                    saveIndicator = document.createElement('div');
-                    saveIndicator.className = 'position-fixed top-0 end-0 p-3';
-                    saveIndicator.style.zIndex = '9999';
-                    saveIndicator.innerHTML = `
-            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header bg-primary text-white">
-                    <i class="fas fa-save me-2"></i>
-                    <strong class="me-auto">Saving Progress</strong>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    <div class="d-flex align-items-center">
-                        <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
-                            <span class="visually-hidden">Saving...</span>
-                        </div>
-                        <span>Saving your progress...</span>
-                    </div>
-                </div>
-            </div>
-        `;
-                    document.body.appendChild(saveIndicator);
-                }
-
-                // Send the AJAX request to save temporary data
-                $.ajax({
-                    url: '/assessments/save-temporary',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: saveData,
-                    success: function(response) {
-                        if (showConfirmation) {
-                            // Update the toast to show success
-                            if (saveIndicator) {
-                                const toastBody = saveIndicator.querySelector('.toast-body');
-                                if (toastBody) {
-                                    toastBody.innerHTML = `
-                            <div class="d-flex align-items-center text-success">
-                                <i class="fas fa-check-circle me-2"></i>
-                                <span>Progress saved successfully!</span>
-                            </div>
-                        `;
-
-                                    // Remove the toast after a delay
-                                    setTimeout(function() {
-                                        saveIndicator.remove();
-                                    }, 3000);
-                                }
-                            }
-
-                            console.log('Progress saved successfully');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error saving temporary responses:', error);
-                        console.error('Response:', xhr.responseText);
-
-                        if (showConfirmation && saveIndicator) {
-                            const toastBody = saveIndicator.querySelector('.toast-body');
-                            if (toastBody) {
-                                toastBody.innerHTML = `
-                        <div class="d-flex align-items-center text-danger">
-                            <i class="fas fa-exclamation-circle me-2"></i>
-                            <span>Failed to save progress. Please try again.</span>
-                        </div>
-                    `;
-
-                                // Remove the toast after a delay
-                                setTimeout(function() {
-                                    saveIndicator.remove();
-                                }, 3000);
-                            }
-                        }
-                    }
-                });
-            }
-
-            /**
-             * Load temporary responses from the database
-             */
-            function loadTemporaryResponses() {
-                if (!phcId) {
-                    return;
-                }
-
-                $.ajax({
-                    url: `/assessments/load-temporary/${phcId}`,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.success && response.data) {
-                            // Display resume banner if there's saved data
-                            showResumeBanner(response.data.current_page || 0);
-
-                            // Fill the form with the saved responses
-                            if (response.data.responses) {
-                                fillFormWithResponses(response.data.responses);
-                            }
-
-                            console.log('Temporary responses loaded successfully');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error loading temporary responses:', error);
-                    }
-                });
-            }
-
-            /**
-             * Show resume banner with option to continue from where they left off
-             */
-            function showResumeBanner(savedPage) {
-                if (savedPage <= 0) return;
-
-                const banner = document.createElement('div');
-                banner.className = 'alert alert-info alert-dismissible fade show mb-4';
-                banner.innerHTML = `
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <i class="fas fa-info-circle me-2"></i>
-                <strong>Resume Assessment</strong>
-                <p class="mb-0">You have a partially completed assessment. Would you like to resume from where you left off?</p>
-            </div>
-            <div>
-                <button type="button" class="btn btn-sm btn-primary resume-btn me-2">
-                    <i class="fas fa-play me-1"></i> Resume
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="alert">
-                    Start Over
-                </button>
-            </div>
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
-
-                // Insert the banner at the top of the form
-                const container = document.querySelector('.container.py-4');
-                const firstElement = container.firstChild;
-                container.insertBefore(banner, firstElement);
-
-                // Add event listener to resume button
-                banner.querySelector('.resume-btn').addEventListener('click', function() {
-                    goToSection(savedPage);
-                    banner.remove();
-                });
-            }
-
-            /**
-             * Collect all form responses
-             */
-            function collectFormResponses() {
-                const responses = {};
-
-                // Handle text inputs, selects, textareas
-                $('.assessment-response').each(function() {
-                    const assessmentId = $(this).data('assessment-id');
-
-                    // Skip if we've already processed this question
-                    if (responses[assessmentId]) return;
-
-                    // Different handling based on input type
-                    if ($(this).is(':radio') || $(this).is(':checkbox')) {
-                        // For radio buttons, only collect if checked
-                        if ($(this).is(':checked')) {
-                            responses[assessmentId] = $(this).val();
-                        }
-                    } else {
-                        // For other inputs (text, select, etc.)
-                        const response = $(this).val();
-                        if (response) {
-                            responses[assessmentId] = response;
-                        }
-                    }
-                });
-
-                // Now collect checkbox groups which may have multiple selected values
-                $('input[type="checkbox"]:checked').each(function() {
-                    const assessmentId = $(this).data('assessment-id');
-                    // If this is part of a checkbox group
-                    if ($(this).attr('name').includes('[]')) {
-                        if (!responses[assessmentId]) {
-                            responses[assessmentId] = [];
-                        }
-                        if (Array.isArray(responses[assessmentId])) {
-                            responses[assessmentId].push($(this).val());
-                        } else {
-                            // Convert to array if it wasn't already
-                            responses[assessmentId] = [responses[assessmentId], $(this).val()];
-                        }
-                    }
-                });
-
-                return responses;
-            }
-
-            /**
-             * Fill the form with saved responses
-             */
-
-            function fillFormWithResponses(responses) {
-                // Process each saved response
-                Object.keys(responses).forEach(assessmentId => {
-                    const value = responses[assessmentId];
-
-                    // Find all elements for this assessment ID
-                    const elements = document.querySelectorAll(
-                        `.assessment-response[data-assessment-id="${assessmentId}"]`);
-
-                    elements.forEach(element => {
-                        if (element.type === 'radio') {
-                            // For radio buttons, check if value matches
-                            if (element.value === value) {
-                                element.checked = true;
-
-                                // Trigger change event for any conditional logic
-                                if (element.hasAttribute('onchange')) {
-                                    const event = new Event('change');
-                                    element.dispatchEvent(event);
-                                }
-                            }
-                        } else if (element.type === 'checkbox') {
-                            // For checkboxes, check if value is in the array
-                            if (Array.isArray(value) && value.includes(element.value)) {
-                                element.checked = true;
-                            } else if (value === element.value) {
-                                element.checked = true;
-                            }
-                        } else {
-                            // For text inputs, selects, and textareas
-                            element.value = value;
-                        }
-                    });
-                });
-            }
-        });
-
-        function enhanceMobileExperience() {
-            // Check if we're on a mobile device
-            const isMobile = window.innerWidth <= 768;
-
-            if (isMobile) {
-                // Add smooth scrolling to form sections
-                enhanceSmoothScrolling();
-
-                // Make step indicators mobile friendly
-                enhanceStepIndicators();
-
-                // Adjust validation behavior for mobile
-                enhanceMobileValidation();
-
-                // Add swipe navigation between sections (if supported)
-                setupSwipeNavigation();
-            }
-        }
-
-        /**
-         * Enhance smooth scrolling behavior for form sections
-         */
-        function enhanceSmoothScrolling() {
-            // Make sure all scrolling to sections is smooth and considers the fixed header
-            const scrollToSection = (element) => {
-                const headerOffset = 70; // Account for the fixed header
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            };
-
-            // Override the default scrollIntoView behavior
-            const originalGoToSection = window.goToSection;
-            window.goToSection = function(index) {
-                if (index >= 0 && index < totalSections) {
-                    sections[currentSectionIndex].classList.remove('active');
-                    currentSectionIndex = index;
-                    sections[currentSectionIndex].classList.add('active');
-                    updateProgressUI();
-
-                    // Use our custom scroll function
-                    scrollToSection(document.querySelector('#assessment-form'));
-                }
-            };
-
-            // Also update moveToNextSection and moveToPreviousSection
-            window.moveToNextSection = function() {
-                if (!validateCurrentSection()) return;
-
-                if (currentSectionIndex < totalSections - 1) {
-                    sections[currentSectionIndex].classList.remove('active');
-                    sections[++currentSectionIndex].classList.add('active');
-                    updateProgressUI();
-                    scrollToSection(document.querySelector('#assessment-form'));
-                }
-            };
-
-            window.moveToPreviousSection = function() {
-                if (currentSectionIndex > 0) {
-                    sections[currentSectionIndex].classList.remove('active');
-                    sections[--currentSectionIndex].classList.add('active');
-                    updateProgressUI();
-                    scrollToSection(document.querySelector('#assessment-form'));
-                }
-            };
-        }
-
-        /**
-         * Enhanced step indicators for mobile
-         */
-        function enhanceStepIndicators() {
-            // Make sure we only have one step indicator visible
-            const stepIndicators = document.querySelectorAll('.step-indicator');
-            if (stepIndicators.length > 1) {
-                for (let i = 1; i < stepIndicators.length; i++) {
-                    stepIndicators[i].style.display = 'none';
-                }
-            }
-
-            // Add horizontal scrolling for step indicators on mobile
-            const stepsContainer = document.querySelector('.steps-container');
-            if (stepsContainer) {
-                stepsContainer.style.flexWrap = 'nowrap';
-                stepsContainer.style.justifyContent = 'flex-start';
-                stepsContainer.style.minWidth = 'max-content';
-                stepsContainer.style.overflowX = 'auto';
-
-                // Scroll to active step
-                const scrollToActiveStep = () => {
-                    const activeStep = stepsContainer.querySelector('.step.active');
-                    if (activeStep) {
-                        stepsContainer.scrollLeft = activeStep.offsetLeft - stepsContainer.offsetWidth / 2 + activeStep
-                            .offsetWidth / 2;
-                    }
-                };
-
-                // Call on init and after navigation
-                scrollToActiveStep();
-
-                // Override updateProgressUI to scroll to active step
-                const originalUpdateProgressUI = window.updateProgressUI;
-                window.updateProgressUI = function() {
-                    originalUpdateProgressUI();
-                    scrollToActiveStep();
-                };
-            }
-        }
-
-        /**
-         * Enhance mobile validation for better UX
-         */
-        function enhanceMobileValidation() {
-            // Scroll to the first error message more precisely
-            const originalValidateCurrentSection = window.validateCurrentSection;
-            if (typeof originalValidateCurrentSection === 'function') {
-                window.validateCurrentSection = function() {
-                    const result = originalValidateCurrentSection();
-
-                    if (!result) {
-                        // Find the error alert
-                        const errorAlert = document.querySelector('.section-validation-error');
-                        if (errorAlert) {
-                            const headerOffset = 70;
-                            const elementPosition = errorAlert.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-
-                    return result;
-                };
-            }
-        }
-
-        /**
-         * Set up swipe navigation for mobile devices
-         */
-        function setupSwipeNavigation() {
-            // Only proceed if touch events are supported
-            if ('ontouchstart' in window) {
-                let touchStartX = 0;
-                let touchEndX = 0;
-
-                const handleSwipe = (e) => {
-                    const sectionsContainer = document.getElementById('sections-container');
-                    if (!sectionsContainer.contains(e.target)) return;
-
-                    const swipeThreshold = 100; // Minimum distance for a swipe
-                    const swipeDistance = touchEndX - touchStartX;
-
-                    // Detect left/right swipe
-                    if (Math.abs(swipeDistance) > swipeThreshold) {
-                        if (swipeDistance > 0) {
-                            // Right swipe - go to previous section
-                            window.moveToPreviousSection();
-                        } else {
-                            // Left swipe - go to next section
-                            window.moveToNextSection();
-                        }
-                    }
-                };
-
-                // Add touch event listeners
-                document.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                }, {
-                    passive: true
-                });
-
-                document.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe(e);
-                }, {
-                    passive: true
-                });
-            }
-        }
-
-        // Call our mobile enhancements on document ready
-        document.addEventListener('DOMContentLoaded', function() {
-            enhanceMobileExperience();
-
-            // Also call on resize to handle orientation changes
-            window.addEventListener('resize', function() {
-                enhanceMobileExperience();
-            });
-        });
     </script>
+
 </body>
 
 </html>

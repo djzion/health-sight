@@ -212,7 +212,11 @@
                 </a>
                 <a href="{{ route('admin.assessments.set-next-date-form') }}"
                     class="list-group-item list-group-item-action bg-transparent text-white">
-                    <i class="fas fa-user-clock me-2"></i> Set Next Assessment Date
+                    <i class="fas fa-user-clock me-2"></i>Set General Assessment Date
+                </a>
+                <a href="{{ route('admin.safecare.dashboard') }}"
+                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    <i class="fas fa-user-clock me-2"></i>Set Safecare Assessment Date
                 </a>
             </div>
         </div>
