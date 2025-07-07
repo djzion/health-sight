@@ -812,7 +812,11 @@
             <a href="#"><i class="fas fa-user-injured me-2"></i> Patients</a>
             <a href="#"><i class="fas fa-calendar-alt me-2"></i> Appointments</a>
             <a href="{{ route('assessments.index') }}"><i class="fas fa-file-medical-alt me-2"></i> Assessment</a>
+<<<<<<< HEAD
             <a href="#" id="qip-modal-trigger"><i class="fas fa-file-medical-alt me-2"></i> SafeCare</a>
+=======
+            <a href="#" id="qip-modal-trigger"><i class="fas fa-file-medical-alt me-2"></i> Quality Improvement</a>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
             <a href="#"><i class="fas fa-tasks me-2"></i> Tasks</a>
             <a href="#" id="reports-trigger"><i class="fas fa-chart-line me-2"></i> Reports</a>
             <a href="#"><i class="fas fa-envelope me-2"></i> Messages</a>
@@ -1421,7 +1425,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Director Modal -->
+<<<<<<< HEAD
     {{-- @if (auth()->user()->role->name === 'director' && isset($showDirectorModal) && $showDirectorModal && !session('assessment_location_selected'))
+=======
+    @if (auth()->user()->role->name === 'director' &&
+            isset($showDirectorModal) &&
+            $showDirectorModal &&
+            !session('assessment_location_selected'))
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
         @include('components.director-phc-modal')
     @endif --}}
 
@@ -1527,7 +1538,11 @@
                         responses[assessmentId].push($(this).val());
                     }
                 } else if ($(this).is('input[type="number"], input[type="text"], textarea, select') && $(this)
+<<<<<<< HEAD
                     .val()) {
+=======
+                .val()) {
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                     if ($(this).is('input[type="number"]')) {
                         const value = parseInt($(this).val());
                         if (!isNaN(value) && value >= 0) {
@@ -2501,11 +2516,19 @@
     @endif
 
     <script>
+<<<<<<< HEAD
         $('#qip-modal-trigger').on('click', function(e) {
             e.preventDefault();
             var modal = new bootstrap.Modal(document.getElementById('qipModal'));
             modal.show();
         });
+=======
+          $('#qip-modal-trigger').on('click', function(e) {
+                e.preventDefault();
+                var modal = new bootstrap.Modal(document.getElementById('qipModal'));
+                modal.show();
+            });
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     </script>
 
 </body>

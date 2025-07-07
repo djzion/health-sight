@@ -382,6 +382,7 @@
             border-color: #c3e6cb;
         }
 
+<<<<<<< HEAD
         /* Enhanced Modal Styles */
         .modal-xl {
             max-width: 95%;
@@ -618,6 +619,8 @@
             }
         }
 
+=======
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
         /* New Styles for Enhanced Features */
         .progress-container {
             position: sticky;
@@ -658,6 +661,30 @@
             color: white;
         }
 
+<<<<<<< HEAD
+=======
+        .section-progress {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .section-progress-bar {
+            flex: 1;
+            height: 6px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .section-progress-fill {
+            height: 100%;
+            background-color: #28a745;
+            transition: width 0.3s ease;
+        }
+
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
         .floating-save-button {
             position: fixed;
             bottom: 30px;
@@ -675,6 +702,97 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
+<<<<<<< HEAD
+=======
+        .question-row.answered {
+            background-color: #f8f9fa;
+        }
+
+        .question-row.highlighted {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .section-card.highlighted-section {
+            border: 2px solid #ffc107;
+            box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .validation-summary-section {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .validation-summary-section:hover {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+
+        .question-counter {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+
+        .section-completion-badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+        }
+
+        .question-row.reviewing {
+            background-color: #fff3cd !important;
+            border-left: 4px solid #ffc107 !important;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+            }
+        }
+
+        /* Assessment Mode Styles */
+        .mode-option {
+            margin-bottom: 15px;
+        }
+
+        .mode-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mode-option input[type="radio"]:checked+label .mode-card {
+            border-color: #0199dc !important;
+            background-color: rgba(1, 153, 220, 0.05);
+            box-shadow: 0 0 0 2px rgba(1, 153, 220, 0.2);
+        }
+
+        .facility-info {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #28a745;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .facility-info h6 {
+            color: #343a40;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
         /* Mobile responsiveness for floating button */
         @media (max-width: 768px) {
             .floating-save-button {
@@ -684,6 +802,16 @@
                 font-size: 0.875rem;
             }
         }
+<<<<<<< HEAD
+=======
+
+        .mode-option input[type="radio"]:checked+label .mode-card {
+            border-color: #0199dc !important;
+            background-color: rgba(1, 153, 220, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(1, 153, 220, 0.15);
+        }
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     </style>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -801,6 +929,7 @@
                         <form id="qip-selection-form">
                             @csrf
                             <div class="modal-body">
+<<<<<<< HEAD
                                 <!-- Facility Selection Section -->
                                 <div class="enhanced-form-group">
                                     <h6 class="form-section-title">
@@ -848,6 +977,18 @@
                                             </div>
                                         </div>
                                     </div>
+=======
+                                <div class="form-group">
+                                    <label for="district_id">District</label>
+                                    <select id="district_id" name="district_id" required>
+                                        <option value="">Select District</option>
+                                        @foreach ($districts as $district)
+                                            <option value="{{ $district->id }}" data-name="{{ $district->name }}">
+                                                {{ $district->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                                 </div>
 
                                 <!-- Assessment Period Selection -->
@@ -963,11 +1104,14 @@
             let answeredQuestions = 0;
             let existingAssessmentId = null;
             let currentAssessmentMode = 'new';
+<<<<<<< HEAD
             let currentYear = new Date().getFullYear();
 
             // Initialize current year
             $('#current-year').text(currentYear);
             $('#selected_year').val(currentYear);
+=======
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
 
             // Setup AJAX with CSRF token
             $.ajaxSetup({
@@ -979,6 +1123,7 @@
             // Load saved progress on page load
             loadSavedProgress();
 
+<<<<<<< HEAD
             // Auto-open modal if coming from dashboard or URL parameter
             const urlParams = new URLSearchParams(window.location.search);
             const autoOpen = urlParams.get('auto_open') === 'true' ||
@@ -1010,6 +1155,13 @@
 
                 console.log('DOM ready, checking for modals...');
                 console.log('Enhanced modal exists:', $('#qipModal').length > 0);
+=======
+            // Quality Improvement modal trigger
+            $('#qip-modal-trigger').on('click', function(e) {
+                e.preventDefault();
+                var modal = new bootstrap.Modal(document.getElementById('qipModal'));
+                modal.show();
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
             });
 
             // Quality Improvement modal trigger - Updated to handle both old and new triggers
@@ -1441,7 +1593,11 @@
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                     <i class="fas fa-clock me-2"></i>
                     <strong>Resume Assessment:</strong> You have an unfinished assessment for
+<<<<<<< HEAD
                     <strong>${savedSelections.phc_name}</strong> (${savedSelections.quarter} ${savedSelections.year}) saved on ${timeAgo.toLocaleDateString()} at ${timeAgo.toLocaleTimeString()}.
+=======
+                    <strong>${savedSelections.phc_name}</strong> saved on ${timeAgo.toLocaleDateString()} at ${timeAgo.toLocaleTimeString()}.
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                     <div class="mt-2">
                         <button id="resume-assessment" class="btn btn-sm btn-success me-2">
                             <i class="fas fa-play me-1"></i> Resume Assessment
@@ -1468,16 +1624,81 @@
                 }
             }
 
+<<<<<<< HEAD
+=======
+            // function loadSafecareAssessment(restoreProgress = false) {
+            //     var selections = JSON.parse(localStorage.getItem('qip_selections'));
+            //     console.log("Loading assessment with selections:", selections);
+
+            //     $('.main-content').append(
+            //         '<div id="loading" class="text-center mt-5"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Loading assessment questions...</p></div>'
+            //     );
+
+            //     $.ajax({
+            //         url: '/get-safecare-assessment',
+            //         type: 'GET',
+            //         dataType: 'json',
+            //         data: {
+            //             district_id: selections.district_id,
+            //             lga_id: selections.lga_id,
+            //             phc_id: selections.phc_id
+            //         },
+            //         success: function(response) {
+            //             $('#loading').remove();
+            //             console.log("Response received:", response);
+
+            //             if (!response.questions || response.questions.length === 0) {
+            //                 $('.main-content').append(
+            //                     '<div class="alert alert-warning">No assessment questions found. Please check your database.</div>'
+            //                 );
+            //                 return;
+            //             }
+
+            //             // Store response globally
+            //             window.response = response;
+            //             totalQuestions = response.questions.length;
+
+            //             // Check if there's existing assessment data
+            //             if (response.safecare_result && response.safecare_result.id) {
+            //                 existingAssessmentId = response.safecare_result.id;
+            //                 currentAssessmentData = response.safecare_result;
+            //             } else {
+            //                 existingAssessmentId = null;
+            //                 currentAssessmentData = {};
+            //             }
+
+            //             displayAssessment(response.questions, selections, restoreProgress);
+            //         },
+            //         error: function(xhr, status, error) {
+            //             $('#loading').remove();
+            //             console.error("AJAX Error:", status, error);
+            //             console.error("Response:", xhr.responseText);
+            //             $('.main-content').append(
+            //                 '<div class="alert alert-danger">Error loading assessment. Please try again.</div>'
+            //             );
+            //         }
+            //     });
+            // }
+
+            // ADD THIS DEBUG VERSION TO YOUR JAVASCRIPT
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
             function loadSafecareAssessment(restoreProgress = false) {
                 var selections = JSON.parse(localStorage.getItem('qip_selections'));
                 console.log("Loading assessment with selections:", selections);
 
                 // ENHANCED ERROR CHECKING
+<<<<<<< HEAD
                 if (!selections || !selections.district_id || !selections.lga_id || !selections.phc_id || !
                     selections.quarter || !selections.year || !selections.assessment_date) {
                     console.error("Invalid selections:", selections);
                     $('.main-content').append(
                         '<div class="alert alert-danger">Invalid selections. Please select District, LGA, PHC, Quarter, Year, and Assessment Date again.</div>'
+=======
+                if (!selections || !selections.district_id || !selections.lga_id || !selections.phc_id) {
+                    console.error("Invalid selections:", selections);
+                    $('.main-content').append(
+                        '<div class="alert alert-danger">Invalid selections. Please select District, LGA, and PHC again.</div>'
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                     );
                     return;
                 }
@@ -1490,10 +1711,14 @@
                 console.log("Making AJAX request with params:", {
                     district_id: selections.district_id,
                     lga_id: selections.lga_id,
+<<<<<<< HEAD
                     phc_id: selections.phc_id,
                     quarter: selections.quarter,
                     year: selections.year,
                     assessment_date: selections.assessment_date
+=======
+                    phc_id: selections.phc_id
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                 });
 
                 $.ajax({
@@ -1610,12 +1835,17 @@
                 });
             }
 
+<<<<<<< HEAD
+=======
+            // ALSO ADD THIS ENHANCED DISPLAYASSESSMENT FUNCTION CHECK
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
             function displayAssessment(questions, selections, restoreProgress = false) {
                 console.log("displayAssessment called with:");
                 console.log("- Questions count:", questions.length);
                 console.log("- Selections:", selections);
                 console.log("- Restore progress:", restoreProgress);
 
+<<<<<<< HEAD
                 // Clear any existing assessment
                 $('#assessment-container').remove();
 
@@ -1630,6 +1860,61 @@
                 console.log("Questions received:", questions);
                 console.log("Full response object:", window.response);
 
+=======
+                // Clear any existing assessment
+                $('#assessment-container').remove();
+
+                if (!questions || questions.length === 0) {
+                    console.error("No questions provided to displayAssessment");
+                    $('.main-content').append(
+                        '<div class="alert alert-danger">No questions available to display.</div>'
+                    );
+                    return;
+                }
+
+                console.log("Questions received:", questions);
+                console.log("Full response object:", window.response);
+
+                // Continue with your existing displayAssessment logic...
+                // Sort questions
+                questions.sort(function(a, b) {
+                    var aNum = a.question_no.split('.').map(Number);
+                    var bNum = b.question_no.split('.').map(Number);
+                    for (var i = 0; i < Math.max(aNum.length, bNum.length); i++) {
+                        var aVal = aNum[i] || 0;
+                        var bVal = bNum[i] || 0;
+                        if (aVal !== bVal) {
+                            return aVal - bVal;
+                        }
+                    }
+                    return 0;
+                });
+
+                console.log("Questions sorted successfully");
+
+                // Group questions by section
+                var sectionGroups = {};
+                questions.forEach(function(question) {
+                    if (!sectionGroups[question.section]) {
+                        sectionGroups[question.section] = [];
+                    }
+                    sectionGroups[question.section].push(question);
+                });
+
+                console.log("Section groups created:", Object.keys(sectionGroups));
+
+                // Continue with the rest of your displayAssessment function...
+                // Rest of your existing code here
+            }
+
+            function displayAssessment(questions, selections, restoreProgress = false) {
+                // Clear any existing assessment
+                $('#assessment-container').remove();
+
+                console.log("Questions received:", questions);
+                console.log("Full response object:", window.response);
+
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                 // Sort questions
                 questions.sort(function(a, b) {
                     var aNum = a.question_no.split('.').map(Number);
@@ -1708,7 +1993,11 @@
 
                 // Assessment Mode Selector - Only show if there's existing data
                 if (hasExistingAssessment) {
+<<<<<<< HEAD
                     const existingAssessmentData = window.response.safecare_result;
+=======
+                    const assessment = window.response.safecare_result;
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
 
                     html += `
         <!-- Assessment Mode Selector -->
@@ -1736,7 +2025,11 @@
                                                 <small class="text-muted">Recommended</small>
                                             </div>
                                         </div>
+<<<<<<< HEAD
                                         <p class="small mb-0">Create a fresh assessment for the selected period (${selections.quarter} ${selections.year}). This is the recommended option for regular quality improvement tracking.</p>
+=======
+                                        <p class="small mb-0">Create a fresh assessment with a new ID. This is the recommended option for regular quality improvement tracking.</p>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                                         <div class="mt-2">
                                             <span class="badge bg-success">✓ Creates new record</span>
                                             <span class="badge bg-info">✓ Archives old data</span>
@@ -1757,7 +2050,11 @@
                                                 <small class="text-muted">Modify current</small>
                                             </div>
                                         </div>
+<<<<<<< HEAD
                                         <p class="small mb-0">Modify the existing assessment (ID: #${existingAssessmentId || 'N/A'}) for ${selections.quarter} ${selections.year}. Use this if you need to correct or add to the current assessment data.</p>
+=======
+                                        <p class="small mb-0">Modify the existing assessment (ID: #${existingAssessmentId || 'N/A'}). Use this if you need to correct or add to the current assessment data.</p>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                                         <div class="mt-2">
                                             <span class="badge bg-warning">✓ Modifies existing</span>
                                             <span class="badge bg-info">✓ Preserves dates</span>
@@ -1770,13 +2067,18 @@
 
                     <div id="mode-description" class="alert alert-success mt-3">
                         <i class="fas fa-lightbulb me-2"></i>
+<<<<<<< HEAD
                         <strong>New Assessment Mode:</strong> You will create a fresh assessment for ${selections.quarter} ${selections.year} with a new ID. The previous assessment will be preserved for historical reference.
+=======
+                        <strong>New Assessment Mode:</strong> You will create a fresh assessment with a new ID. The previous assessment will be preserved for historical reference.
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                     </div>
                 </div>
             </div>
         </div>`;
 
                     // Show existing assessment information with enhanced date handling
+<<<<<<< HEAD
                     const currentAssessmentData = window.response.safecare_result;
                     const assessmentDate = currentAssessmentData.assessment_date ? new Date(currentAssessmentData
                         .assessment_date) : null;
@@ -1791,6 +2093,17 @@
                     html += `
         <div class="previous-assessment-info">
             <h6><i class="fas fa-history me-2"></i>Previous Assessment Information (${currentAssessmentData.quarter} ${currentAssessmentData.year})</h6>
+=======
+                    const assessmentDate = assessment.assessment_date ? new Date(assessment.assessment_date) : null;
+                    const createdDate = assessment.created_at ? new Date(assessment.created_at) : null;
+                    const lastUpdatedDate = assessment.last_updated_date ? new Date(assessment.last_updated_date) :
+                        null;
+                    const hasBeenUpdated = assessment.has_been_updated || assessment.updated_by_name;
+
+                    html += `
+        <div class="previous-assessment-info">
+            <h6><i class="fas fa-history me-2"></i>Previous Assessment Information</h6>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
             <div class="row">
                 <!-- Facility Information -->
                 <div class="col-md-4 mb-3">
@@ -1809,6 +2122,7 @@
                 <!-- Assessment Results -->
                 <div class="col-md-4 mb-3">
                     <span class="assessment-label">SafeCare Level:</span>
+<<<<<<< HEAD
                     <span class="badge bg-info">${currentAssessmentData.safecare_level || 'Not Assessed'}</span>
                 </div>
                 <div class="col-md-4 mb-3">
@@ -1818,11 +2132,26 @@
                 <div class="col-md-4 mb-3">
                     <span class="assessment-label">Assessment ID:</span>
                     <span class="badge bg-info">#${currentAssessmentData.id || 'N/A'}</span>
+=======
+                    <span class="badge bg-info">${assessment.safecare_level || 'Not Assessed'}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">SafeCare Score:</span>
+                    <span class="badge bg-primary">${assessment.safecare_score || assessment.compliance_percentage || 'N/A'}${(assessment.safecare_score || assessment.compliance_percentage) ? '%' : ''}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">Assessment ID:</span>
+                    <span class="badge bg-info">#${assessment.id || 'N/A'}</span>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                 </div>
 
                 <!-- Date Information -->
                 <div class="col-md-4 mb-3">
+<<<<<<< HEAD
                     <span class="assessment-label">Assessment Date:</span>
+=======
+                    <span class="assessment-label">Original Assessment Date:</span>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                     <span class="badge bg-success">${assessmentDate ? assessmentDate.toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',
@@ -1841,6 +2170,7 @@
                     }) : 'Unknown'}</span>
                 </div>
                 ${hasBeenUpdated ? `
+<<<<<<< HEAD
                                     <div class="col-md-4 mb-3">
                                         <span class="assessment-label">Last Updated:</span>
                                         <span class="badge bg-warning text-dark">${lastUpdatedDate ? lastUpdatedDate.toLocaleDateString('en-US', {
@@ -1853,10 +2183,25 @@
                                         }) : 'Unknown'}</span>
                                     </div>
                                     ` : ''}
+=======
+                                <div class="col-md-4 mb-3">
+                                    <span class="assessment-label">Last Updated:</span>
+                                    <span class="badge bg-warning text-dark">${lastUpdatedDate ? lastUpdatedDate.toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric'
+                                    }) + ' at ' + lastUpdatedDate.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    }) : 'Unknown'}</span>
+                                </div>
+                                ` : ''}
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
 
                 <!-- User Information -->
                 <div class="col-md-4 mb-3">
                     <span class="assessment-label">Original Assessor:</span>
+<<<<<<< HEAD
                     <span class="badge bg-dark">${currentAssessmentData.assessor_name || currentAssessmentData.user_name || 'Unknown'}</span>
                 </div>
                 ${hasBeenUpdated ? `
@@ -1915,6 +2260,57 @@
                             month: 'long',
                             day: 'numeric'
                         })}
+=======
+                    <span class="badge bg-dark">${assessment.assessor_name || assessment.user_name || 'Unknown'}</span>
+                </div>
+                ${hasBeenUpdated ? `
+                                <div class="col-md-4 mb-3">
+                                    <span class="assessment-label">Last Updated By:</span>
+                                    <span class="badge bg-warning text-dark">${assessment.updated_by_name || 'Unknown'}</span>
+                                </div>
+                                ` : ''}
+            </div>
+
+            ${hasBeenUpdated ? `
+                            <div class="alert alert-warning mt-3 mb-0">
+                                <i class="fas fa-edit me-2"></i>
+                                <strong>Update History:</strong> This assessment has been previously modified.
+                                The original assessment date (${assessmentDate ? assessmentDate.toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                }) : 'N/A'}) is preserved for audit purposes.
+                            </div>
+                            ` : `
+                            <div class="alert alert-info mt-3 mb-0">
+                                <i class="fas fa-info-circle me-2"></i>
+                                <strong>Original Assessment:</strong> This assessment has not been modified since its creation.
+                            </div>
+                            `}
+        </div>`;
+                } else {
+                    // No existing assessment - First time assessment
+                    html += `
+        <div class="facility-info">
+            <h6><i class="fas fa-info-circle me-2"></i>Current Facility Information</h6>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">District:</span>
+                    <span class="badge bg-secondary">${selections.district_name}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">LGA:</span>
+                    <span class="badge bg-secondary">${selections.lga_name}</span>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span class="assessment-label">PHC:</span>
+                    <span class="badge bg-secondary">${selections.phc_name}</span>
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-info mt-2">
+                        <i class="fas fa-star me-2"></i>
+                        <strong>First Assessment:</strong> No previous SafeCare assessment data found for this facility. This will be the first assessment.
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                     </div>
                 </div>
             </div>
@@ -2071,7 +2467,11 @@
                         description.removeClass('alert-warning').addClass('alert-success');
                         description.html(`
                     <i class="fas fa-lightbulb me-2"></i>
+<<<<<<< HEAD
                     <strong>New Assessment Mode:</strong> You will create a fresh assessment for ${selections.quarter} ${selections.year} with a new ID.
+=======
+                    <strong>New Assessment Mode:</strong> You will create a fresh assessment with a new ID.
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                     The previous assessment will be preserved for historical reference.
                 `);
 
@@ -2085,8 +2485,13 @@
                         description.removeClass('alert-success').addClass('alert-warning');
                         description.html(`
                     <i class="fas fa-edit me-2"></i>
+<<<<<<< HEAD
                     <strong>Update Mode:</strong> You will modify the existing assessment (ID: #${existingAssessmentId || 'N/A'}) for ${selections.quarter} ${selections.year}.
                     Changes will be saved to the current assessment record.
+=======
+                    <strong>Update Mode:</strong> You will modify the existing assessment (ID: #${existingAssessmentId || 'N/A'}).
+                    Changes will be saved to the current assessment record. The original assessment date will be preserved.
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                 `);
 
                         // Populate previous responses for update mode
@@ -2338,16 +2743,24 @@
                 // Choose the correct endpoint based on mode
                 const endpoint = isUpdateMode ? '/update-safecare-assessment' : '/save-safecare-assessment';
 
+<<<<<<< HEAD
                 // Prepare request data with enhanced parameters
+=======
+                // Prepare request data
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                 const requestData = {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                     district_id: selections.district_id,
                     lga_id: selections.lga_id,
                     phc_id: selections.phc_id,
+<<<<<<< HEAD
                     responses: responses,
                     quarter: selections.quarter,
                     year: selections.year,
                     assessment_date: selections.assessment_date
+=======
+                    responses: responses
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                 };
 
                 // Add assessment_id if updating
@@ -2522,7 +2935,11 @@
                 const compliancePercentage = response.compliance_percentage;
                 const summary = response.summary;
                 const trackingInfo = response.tracking_info;
+<<<<<<< HEAD
                 const selections = JSON.parse(localStorage.getItem('qip_selections'));
+=======
+
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
 
                 const actionText = isUpdateMode ? 'Updated' : 'Completed';
                 const actionVerb = isUpdateMode ? 'updated' : 'saved and submitted';
@@ -2533,7 +2950,11 @@
                 <i class="fas fa-check-circle me-2"></i>
                 SafeCare Assessment Successfully ${actionText}!
             </h4>
+<<<<<<< HEAD
             <p class="mb-3">Your quality improvement assessment for ${selections.quarter} ${selections.year} has been ${actionVerb}.</p>
+=======
+            <p class="mb-3">Your quality improvement assessment has been ${actionVerb}.</p>
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
 
             <!-- Assessment Summary Card -->
             <div class="card mt-3">
@@ -2554,7 +2975,10 @@
                             <div class="text-center mb-3">
                                 <h3 class="text-info">#${assessmentId}</h3>
                                 <p class="text-muted mb-0">Assessment ID</p>
+<<<<<<< HEAD
                                 <small class="text-muted">${selections.quarter} ${selections.year}</small>
+=======
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                             </div>
                         </div>
                     </div>
@@ -2605,13 +3029,22 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
             </div>
 
             <!-- Assessment Information -->
+=======
+            </div>`;
+
+                // Add comprehensive date and user tracking information with better null checks
+                successHtml += `
+            <!-- Assessment Tracking Information -->
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
             <div class="card mt-3">
                 <div class="card-header ${isUpdateMode ? 'bg-warning text-dark' : 'bg-success text-white'}">
                     <h6 class="card-title mb-0">
                         <i class="fas ${isUpdateMode ? 'fa-history' : 'fa-calendar'} me-2"></i>
+<<<<<<< HEAD
                         Assessment Information
                     </h6>
                 </div>
@@ -2639,6 +3072,171 @@
                             }) : 'Just now'}</span></div>
                         </div>
                     </div>
+=======
+                        ${isUpdateMode ? 'Assessment History & Tracking' : 'Assessment Information'}
+                    </h6>
+                </div>
+                <div class="card-body">`;
+
+                if (isUpdateMode && trackingInfo) {
+                    // For updates - show both original and update information with better null checks
+                    const assessmentDate = trackingInfo.assessment_date ? new Date(trackingInfo.assessment_date) :
+                        null;
+                    const createdDate = trackingInfo.created_at ? new Date(trackingInfo.created_at) : null;
+                    const lastUpdatedDate = trackingInfo.last_updated_date ? new Date(trackingInfo
+                        .last_updated_date) : null;
+
+                    successHtml += `
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-primary mb-3">
+                                    <i class="fas fa-user-plus me-2"></i>Original Assessment
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Original Assessor:</strong>
+                                        <span class="badge bg-primary ms-2">${trackingInfo.original_assessor || 'Unknown'}</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Assessment Date:</strong>
+                                        <span class="badge bg-info ms-2">${assessmentDate ? assessmentDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        }) : 'Not Available'}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Created On:</strong>
+                                        <span class="badge bg-secondary ms-2">${createdDate ? createdDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric'
+                                        }) + ' at ' + createdDate.toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        }) : 'Not Available'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-warning mb-3">
+                                    <i class="fas fa-user-edit me-2"></i>Latest Update
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Updated by:</strong>
+                                        <span class="badge bg-warning text-dark ms-2">${trackingInfo.updated_by || 'Current User'}</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Update Date:</strong>
+                                        <span class="badge bg-success ms-2">${lastUpdatedDate ? lastUpdatedDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        }) : 'Today'}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Update Time:</strong>
+                                        <span class="badge bg-dark ms-2">${lastUpdatedDate ? lastUpdatedDate.toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit'
+                                        }) : new Date().toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit'
+                                        })}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    </div>`;
+                } else {
+                    // For new assessments - show single assessment information with better date handling
+                    const assessmentDate = trackingInfo && trackingInfo.assessment_date ? new Date(trackingInfo
+                        .assessment_date) : new Date();
+                    const createdDate = trackingInfo && trackingInfo.created_at ? new Date(trackingInfo
+                        .created_at) : new Date();
+
+                    successHtml += `
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-success mb-3">
+                                    <i class="fas fa-calendar-plus me-2"></i>Assessment Information
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Assessment Date:</strong>
+                                        <span class="badge bg-success ms-2">${assessmentDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        })}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Created On:</strong>
+                                        <span class="badge bg-secondary ms-2">${createdDate.toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric'
+                                        })} at ${createdDate.toLocaleTimeString('en-US', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tracking-section">
+                                <h6 class="text-primary mb-3">
+                                    <i class="fas fa-user me-2"></i>Assessor Information
+                                </h6>
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        <strong>Assessed by:</strong>
+                                        <span class="badge bg-primary ms-2">${trackingInfo && trackingInfo.assessor_name ? trackingInfo.assessor_name : 'Current User'}</span>
+                                    </div>
+                                    <div class="mb-0">
+                                        <strong>Assessment ID:</strong>
+                                        <span class="badge bg-info ms-2">#${assessmentId}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success mt-3 mb-0">
+                        <div class="row align-items-center">
+                            <div class="col-md-1 text-center">
+                                <i class="fas fa-check-circle fa-2x text-success"></i>
+                            </div>
+                            <div class="col-md-11">
+                                <h6 class="mb-1"><strong>New Assessment Created</strong></h6>
+                                <p class="mb-0">
+                                    This assessment was successfully created on ${assessmentDate.toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
+                                    })} at ${createdDate.toLocaleTimeString('en-US', {
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}.
+                                </p>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+
+                successHtml += `
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
                 </div>
             </div>
 
@@ -2682,6 +3280,7 @@
                     alert('Download report feature coming soon!');
                 });
             }
+<<<<<<< HEAD
 
             // Initialize the current quarter based on today's date
             function initializeCurrentQuarter() {
@@ -2758,6 +3357,12 @@
         });
     </script>
 
+=======
+        });
+    </script>
+
+
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

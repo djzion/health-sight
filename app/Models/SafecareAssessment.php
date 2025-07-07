@@ -505,3 +505,349 @@ class SafecareAssessment extends Model
         ];
     }
 }
+<<<<<<< HEAD
+=======
+// namespace App\Models;
+
+// use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Relations\BelongsTo;
+// use Carbon\Carbon;
+
+// class SafecareAssessment extends Model
+// {
+//     protected $table = 'safecare_assessments';
+
+//     protected $fillable = [
+//         'user_id',
+//         'updated_by',
+//         'district_id',
+//         'lga_id',
+//         'phc_id',
+//         'assessment_date',
+//         'last_updated_date',
+//         'total_questions',
+//         'fully_compliant_count',
+//         'partially_compliant_count',
+//         'not_compliant_count',
+//         'not_applicable_count',
+//         'compliance_percentage',
+//         'safecare_period_id',
+//         'quarter',
+//         'year',
+//         'q_1_1_1_1',
+//         'q_1_1_2_1',
+//         'q_1_2_1_1',
+//         'q_1_2_2_1',
+//         'q_1_2_3_1',
+//         'q_1_2_4_1',
+//         'q_1_2_5_1',
+//         'q_1_2_6_1',
+//         'q_1_2_7_1',
+//         'q_1_2_8_1',
+//         'q_2_1_1_1',
+//         'q_2_1_2_1',
+//         'q_2_2_1_1',
+//         'q_2_2_2_1',
+//         'q_2_2_3_1',
+//         'q_2_3_1_1',
+//         'q_2_3_2_1',
+//         'q_3_1_1_1',
+//         'q_3_1_3_1',
+//         'q_3_1_5_1',
+//         'q_3_1_6_1',
+//         'q_3_2_1_1',
+//         'q_3_1_2_1',
+//         'q_3_1_4_1',
+//         'q_3_2_3_1',
+//         'q_3_2_2_1',
+//         'q_4_1_2_1',
+//         'q_4_2_4_1',
+//         'q_4_2_3_1',
+//         'q_4_1_1_1',
+//         'q_4_2_2_1',
+//         'q_4_2_1_1',
+//         'q_5_1_1_1',
+//         'q_5_1_2_1',
+//         'q_5_1_3_1',
+//         'q_5_2_2_1',
+//         'q_5_3_1_1',
+//         'q_5_3_2_1',
+//         'q_5_2_1_1',
+//         'q_6_1_1_1',
+//         'q_6_3_3_1',
+//         'q_6_3_4_1',
+//         'q_6_4_1_1',
+//         'q_6_4_3_1',
+//         'q_6_4_4_1',
+//         'q_6_4_6_1',
+//         'q_6_5_2_1',
+//         'q_6_5_5_1',
+//         'q_6_7_2_1',
+//         'q_6_2_1_1',
+//         'q_6_2_2_1',
+//         'q_6_2_3_1',
+//         'q_6_3_1_1',
+//         'q_6_3_2_1',
+//         'q_6_4_2_1',
+//         'q_6_4_5_1',
+//         'q_6_4_7_1',
+//         'q_6_5_1_1',
+//         'q_6_5_3_1',
+//         'q_6_5_4_1',
+//         'q_6_6_1_1',
+//         'q_6_6_2_1',
+//         'q_6_5_6_1',
+//         'q_6_6_5_1',
+//         'q_6_6_3_1',
+//         'q_6_6_4_1',
+//         'q_6_6_7_1',
+//         'q_6_6_8_1',
+//         'q_6_6_6_1',
+//         'q_6_6_9_1',
+//         'q_6_7_3_1',
+//         'q_6_7_1_1',
+//         'q_6_9_1_1',
+//         'q_6_9_2_1',
+//         'q_7_1_1_1',
+//         'q_7_1_3_1',
+//         'q_7_2_1_1',
+//         'q_7_1_2_1',
+//         'q_7_2_2_1',
+//         'q_7_3_2_1',
+//         'q_7_3_1_1',
+//         'q_7_4_1_1',
+//         'q_7_4_10_1',
+//         'q_7_4_11_1',
+//         'q_7_4_2_1',
+//         'q_7_4_3_1',
+//         'q_7_4_4_1',
+//         'q_7_4_5_1',
+//         'q_7_4_6_1',
+//         'q_7_4_7_1',
+//         'q_7_4_8_1',
+//         'q_7_4_9_1',
+//         'q_9_1_1_1',
+//         'q_9_1_2_1',
+//         'q_9_2_1_1',
+//         'q_9_2_3_1',
+//         'q_9_2_2_1',
+//         'q_9_3_7_1',
+//         'q_9_3_8_1',
+//         'q_9_3_2_1',
+//         'q_9_3_1_1',
+//         'q_9_3_3_1',
+//         'q_9_3_4_1',
+//         'q_9_3_5_1',
+//         'q_9_3_6_1',
+//         'q_10_1_3_1',
+//         'q_11_1_1_1',
+//         'q_11_3_1_1',
+//         'q_11_4_3_1',
+//         'q_11_2_1_1',
+//         'q_11_2_2_1',
+//         'q_11_3_2_1',
+//         'q_11_4_1_1',
+//         'q_11_4_2_1',
+//         'q_11_5_1_1',
+//         'q_12_1_3_1',
+//         'q_12_1_4_1',
+//         'q_12_2_1_1',
+//         'q_12_2_3_1',
+//         'q_12_1_1_1',
+//         'q_12_1_2_1',
+//         'q_12_1_5_1',
+//         'q_12_1_6_1',
+//         'q_12_1_7_1',
+//         'q_12_2_2_1',
+//         'q_12_2_4_1',
+//         'q_13_2_2_1',
+//         'q_13_3_2_1',
+//         'q_13_2_1_1',
+//         'q_13_3_3_1',
+//         'q_13_3_1_1'
+//     ];
+
+
+//     protected $casts = [
+//         'assessment_date' => 'datetime',
+//         'last_updated_date' => 'datetime',
+//         'created_at' => 'datetime',
+//         'updated_at' => 'datetime',
+//         'compliance_percentage' => 'decimal:2',
+//         'total_questions' => 'integer',
+//         'fully_compliant_count' => 'integer',
+//         'partially_compliant_count' => 'integer',
+//         'not_compliant_count' => 'integer',
+//         'not_applicable_count' => 'integer',
+//         'year' => 'integer'
+//     ];
+
+//     /**
+//      * Relationship to the user who created the assessment
+//      */
+//     public function user(): BelongsTo
+//     {
+//         return $this->belongsTo(User::class, 'user_id');
+//     }
+
+//     public function safecarePeriod(): BelongsTo
+//     {
+//         return $this->belongsTo(SafecarePeriod::class, 'safecare_period_id');
+//     }
+
+//     /**
+//      * Check if assessment can be edited (within 7 days)
+//      */
+//     public function canEdit(): bool
+//     {
+//         return $this->created_at->gt(now()->subWeek());
+//     }
+
+//     public function getEditExpiresAtAttribute()
+//     {
+//         return $this->created_at->addWeek();
+//     }
+
+//     /**
+//      * Scope for getting assessments within a specific period
+//      */
+//     public function scopeInPeriod($query, $periodId)
+//     {
+//         return $query->where('safecare_period_id', $periodId);
+//     }
+
+//     /**
+//      * Scope for getting assessments by quarter and year
+//      */
+//     public function scopeByQuarter($query, $quarter, $year = null)
+//     {
+//         $query->where('quarter', $quarter);
+
+//         if ($year) {
+//             $query->where('year', $year);
+//         }
+
+//         return $query;
+//     }
+
+//     /**
+//      * Scope for getting assessments by year
+//      */
+//     public function scopeByYear($query, $year)
+//     {
+//         return $query->where('year', $year);
+//     }
+
+//     /**
+//      * Scope for getting assessments within date range
+//      */
+//     // public function scopeDateRange($query, $startDate, $endDate)
+//     // {
+//     //     return $query->whereBetween('assessment_date', [$startDate, $endDate]);
+//     // }
+
+//     /**
+//      * Scope for getting assessments for comparison
+//      */
+//     // public function scopeGetForComparison($query, $phcIds, $startDate = null, $endDate = null)
+//     // {
+//     //     $query->whereIn('phc_id', $phcIds)
+//     //         ->with(['phc', 'district', 'lga', 'safecarePeriod'])
+//     //         ->orderBy('assessment_date', 'desc');
+
+//     //     if ($startDate && $endDate) {
+//     //         $query->whereBetween('assessment_date', [$startDate, $endDate]);
+//     //     }
+
+//     //     return $query;
+//     // }
+
+//     /**
+//      * Scope for getting editable assessments (within 7 days)
+//      */
+//     public function scopeEditable($query)
+//     {
+//         return $query->where('created_at', '>', now()->subWeek());
+//     }
+
+//     /**
+//      * Relationship to the user who last updated the assessment
+//      */
+//     public function updatedBy(): BelongsTo
+//     {
+//         return $this->belongsTo(User::class, 'updated_by');
+//     }
+
+//     /**
+//      * Relationship to the PHC
+//      */
+//     public function phc(): BelongsTo
+//     {
+//         return $this->belongsTo(Phc::class);
+//     }
+
+//     /**
+//      * Relationship to the LGA
+//      */
+//     public function lga(): BelongsTo
+//     {
+//         return $this->belongsTo(Lga::class);
+//     }
+
+//     /**
+//      * Relationship to the District
+//      */
+//     public function district(): BelongsTo
+//     {
+//         return $this->belongsTo(District::class);
+//     }
+
+//     /**
+//      * Scope for date range queries
+//      */
+//     public function scopeDateRange($query, $startDate, $endDate)
+//     {
+//         return $query->whereBetween('assessment_date', [$startDate, $endDate]);
+//     }
+
+//     /**
+//      * Scope for getting assessments for comparison
+//      */
+//     public function scopeGetForComparison($query, $phcIds, $startDate = null, $endDate = null)
+//     {
+//         $query = $query->whereIn('phc_id', $phcIds)
+//             ->with(['phc:id,name', 'user:id,full_name,name', 'updatedBy:id,full_name,name'])
+//             ->orderBy('assessment_date', 'desc');
+
+//         if ($startDate && $endDate) {
+//             $query->whereBetween('assessment_date', [$startDate, $endDate]);
+//         }
+
+//         return $query;
+//     }
+
+//     /**
+//      * Get the assessor's name (preferring full_name over name)
+//      */
+//     public function getAssessorNameAttribute()
+//     {
+//         return $this->user ? ($this->user->full_name ?? $this->user->name) : 'Unknown';
+//     }
+
+//     /**
+//      * Get the updater's name (preferring full_name over name)
+//      */
+//     public function getUpdatedByNameAttribute()
+//     {
+//         return $this->updatedBy ? ($this->updatedBy->full_name ?? $this->updatedBy->name) : null;
+//     }
+
+//     /**
+//      * Check if this assessment has been updated
+//      */
+//     public function getHasBeenUpdatedAttribute()
+//     {
+//         return !is_null($this->updated_by);
+//     }
+// }
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee

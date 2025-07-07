@@ -14,6 +14,7 @@ class AssessmentResponse extends Model
         'phc_id',
         'assessment_id',
         'response',
+<<<<<<< HEAD
         'assessment_period_id', // Keep for backward compatibility if needed
         'quarter', // User-selected quarter (Q1, Q2, Q3, Q4)
         'assessment_date', // The actual date when assessment is conducted (flexible)
@@ -22,16 +23,36 @@ class AssessmentResponse extends Model
         'comments',
         'submitted_at', // When the form was submitted to the system
         'is_final_submission'
+=======
+        'assessment_period_id',    // MISSING - This is why period ID wasn't saving
+        'quarter',                 // MISSING - This is why quarter was NULL
+        'year',                    // MISSING - This is why year was NULL
+        'additional_response',     // MISSING - For additional responses
+        'comments',                // MISSING - For comments
+        'submitted_at',            // MISSING - For submission timestamp
+        'is_final_submission'      // MISSING - For final submission flag
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     ];
 
     protected $casts = [
         'submitted_at' => 'datetime',
+<<<<<<< HEAD
         'assessment_date' => 'date', // Cast to date for proper handling
+=======
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
         'is_final_submission' => 'boolean',
         'year' => 'integer'
     ];
 
+<<<<<<< HEAD
     // Relationships
+=======
+    public function responses()
+    {
+        return $this->hasMany(AssessmentResponse::class);
+    }
+
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -42,11 +63,36 @@ class AssessmentResponse extends Model
         return $this->belongsTo(Assessment::class);
     }
 
+<<<<<<< HEAD
+    public function district()
+=======
+    public function assessmentPeriod()
+    {
+        return $this->belongsTo(AssessmentPeriod::class);
+    }
+
     public function district()
     {
         return $this->belongsTo(District::class);
     }
 
+    public function lga()
+    {
+        return $this->belongsTo(Lga::class);
+    }
+
+    public function phc()
+    {
+        return $this->belongsTo(Phc::class);
+    }
+
+    public function roleCategories()
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
+    {
+        return $this->belongsTo(District::class);
+    }
+
+<<<<<<< HEAD
     public function lga()
     {
         return $this->belongsTo(Lga::class);
@@ -101,6 +147,8 @@ class AssessmentResponse extends Model
     }
 
     // Helper methods
+=======
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     public function getFormattedResponse()
     {
         $user = auth('web')->user();
@@ -144,6 +192,7 @@ class AssessmentResponse extends Model
         if (is_string($this->response) && $this->isJson($this->response)) {
             return json_decode($this->response, true);
         }
+<<<<<<< HEAD
 
         return $this->response;
     }
@@ -358,10 +407,16 @@ class AssessmentResponse extends Model
     }
 
     // Private helper methods
+=======
+        return $this->response;
+    }
+
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     private function isJson($string)
     {
         json_decode($string);
         return json_last_error() === JSON_ERROR_NONE;
+<<<<<<< HEAD
     }
 
     // Mutators
@@ -415,5 +470,7 @@ class AssessmentResponse extends Model
             'lga_id' => 'Local Government Area where assessment was conducted',
             'phc_id' => 'Primary Health Center where assessment was conducted'
         ];
+=======
+>>>>>>> a15ae561d52746b4fd377fd78effafc2d4fff0ee
     }
 }
