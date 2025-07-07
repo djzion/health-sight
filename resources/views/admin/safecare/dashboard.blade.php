@@ -174,25 +174,6 @@
         a {
             text-decoration: none !important;
         }
-
-        .admin-card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
-        }
-
-        .period-card.active {
-            border-left: 5px solid #28a745;
-        }
-
-        .period-card.expired {
-            border-left: 5px solid #dc3545;
-        }
-
-        .period-card.upcoming {
-            border-left: 5px solid #ffc107;
-        }
     </style>
 </head>
 
@@ -206,7 +187,7 @@
             </div>
             <div class="list-group list-group-flush">
                 <a href="{{ route('dashboard') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    class="list-group-item list-group-item-action bg-transparent text-white active">
                     <i class="fas fa-tachometer-alt me-2"></i> Dashboard
                 </a>
                 <a href="{{ route('users.index') }}"
@@ -230,12 +211,12 @@
                     <i class="fas fa-user-clock me-2"></i> View Pending Users
                 </a>
                 <a href="{{ route('admin.assessments.set-next-date-form') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white active">
-                    <i class="fas fa-calendar-check me-2"></i> General Assessment Periods
+                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    <i class="fas fa-user-clock me-2"></i>Set General Assessment Date
                 </a>
                 <a href="{{ route('admin.safecare.dashboard') }}"
                     class="list-group-item list-group-item-action bg-transparent text-white">
-                    <i class="fas fa-shield-alt me-2"></i> SafeCare Assessment Periods
+                    <i class="fas fa-user-clock me-2"></i>Set Safecare Assessment Date
                 </a>
             </div>
         </div>
@@ -243,7 +224,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2><i class="fas fa-calendar-check text-primary me-2"></i>General Assessment Settings</h2>
+                        <h2><i class="fas fa-shield-alt text-primary me-2"></i>SafeCare Settings</h2>
                         <a href="{{ route('dashboard') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
                         </a>
@@ -300,8 +281,8 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <h6 class="card-title">Avg Completion</h6>
-                                    <h3 class="mb-0" id="avg-completion">-</h3>
+                                    <h6 class="card-title">Avg Compliance</h6>
+                                    <h3 class="mb-0" id="avg-compliance">-</h3>
                                 </div>
                                 <i class="fas fa-chart-line fa-2x opacity-75"></i>
                             </div>
@@ -323,7 +304,7 @@
                                     <div class="col-md-3">
                                         <label for="period-name" class="form-label">Period Name</label>
                                         <input type="text" class="form-control" id="period-name" name="name"
-                                            placeholder="e.g., Q1 2024 General Assessment" required>
+                                            placeholder="e.g., Q1 2024 SafeCare" required>
                                     </div>
 
                                     <div class="col-md-2">
@@ -425,7 +406,7 @@
                 };
 
                 $.ajax({
-                    url: '{{ route("admin.assessment-periods.create") }}',
+                    url: '/admin/safecare-periods',
                     method: 'POST',
                     data: formData,
                     success: function(response) {
@@ -444,7 +425,7 @@
 
             // Load periods
             function loadPeriods() {
-                $.get('{{ route("admin.assessment-periods.list") }}', function(response) {
+                $.get('/admin/safecare-periods', function(response) {
                     if (response.success) {
                         displayPeriods(response.periods);
                     }
@@ -518,7 +499,7 @@
                 }
 
                 $.ajax({
-                    url: `/admin/assessment-periods/${periodId}/toggle-status`,
+                    url: `/admin/safecare-periods/${periodId}/toggle-status`,
                     method: 'PATCH',
                     data: {
                         _token: $('meta[name="csrf-token"]').attr('content')
@@ -537,13 +518,11 @@
 
             // Load statistics
             function loadStatistics() {
-                $.get('{{ route("admin.assessment-periods.statistics") }}', function(response) {
+                $.get('/safecare-analytics', function(response) {
                     if (response.success) {
-                        const stats = response.statistics;
-                        $('#total-periods').text(stats.total_periods || 0);
-                        $('#active-periods').text(stats.active_periods || 0);
-                        $('#total-assessments').text(stats.total_assessments || 0);
-                        $('#avg-completion').text((stats.avg_completion || 0) + '%');
+                        const analytics = response.analytics;
+                        $('#total-assessments').text(analytics.total_assessments || 0);
+                        $('#avg-compliance').text((analytics.average_compliance || 0).toFixed(1) + '%');
                     }
                 });
             }

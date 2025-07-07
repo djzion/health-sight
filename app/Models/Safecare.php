@@ -16,6 +16,13 @@ class Safecare extends Model
      */
     protected $table = 'safecare';
 
+    protected $casts = [
+        'assessment_date' => 'datetime',
+        'last_updated_date' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     /**
      * Indicates if the model should be timestamped.
      *

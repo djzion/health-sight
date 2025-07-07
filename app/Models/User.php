@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Closure;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -112,5 +113,26 @@ class User extends Authenticatable
     public function hasPermissionTo($permission)
     {
         return $this->role->permissions()->where('name', $permission)->exists();
+    }
+
+        public function safecareAssessments(): HasMany
+    {
+        return $this->hasMany(SafecareAssessment::class, 'user_id');
+    }
+
+    /**
+     * Get all SafeCare assessments updated by this user
+     */
+    public function updatedSafecareAssessments(): HasMany
+    {
+        return $this->hasMany(SafecareAssessment::class, 'updated_by');
+    }
+
+    /**
+     * Get the user's display name (prefer full_name over name)
+     */
+    public function getDisplayNameAttribute()
+    {
+        return $this->full_name ?: $this->name;
     }
 }
